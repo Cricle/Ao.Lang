@@ -1,0 +1,24 @@
+<Project>
+    <PropertyGroup>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Version>4.0.0</Version>
+        <NoWarn>CS1591;</NoWarn>
+        <Description>
+        This is cross platform i18n library.
+        It not only can provider static string, and it can hot reload/hot switch culture, use in wpf xaml etc...
+        This package is base on Microsoft.Extensions.Configuration.
+        If you want some other support files, you can intall package Microsoft.Extensions.Configuration.* or install Ao.Lang.Sources.
+        If you want us it in wpf, you can install Ao.Lang.Wpf.
+        
+        Already implement *.resx and *.resources(or stream) reader. If you wan use embed resources, you can use extensions methods.
+        If you want auto add lang files, you can named file *.zh-cn.json/*.zh-cn.resx to Raise.
+        If you want auto add lang resources, you can named compile rex file *.zh_cn.*.resouces and index your lang identity.
+        </Description>
+        <Company>Ao.Lang</Company>
+        <Product>Ao.Lang</Product>
+        <RepositoryUrl>https://github.com/Cricle/Ao.Lang</RepositoryUrl>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+            <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+</Project>

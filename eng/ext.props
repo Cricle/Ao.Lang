@@ -1,0 +1,12 @@
+<Project>
+    <PropertyGroup>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Version>1.0.0</Version>
+        <Company>Ao.Lang</Company>
+        <Product>Ao.Lang</Product>
+        <RepositoryUrl>https://github.com/Cricle/Ao.Lang</RepositoryUrl>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,14 @@
+image: Visual Studio 2019
+
+before_build:
+- nuget restore
+- choco install opencover.portable
+- choco install codecov
+
+build:
+  project: Ao.SavableConfig.sln
+  verbosity: minimal
+
+test_script:
+- OpenCover.Console.exe -target:test.bat -register:user
+- codecov -f "results.xml"

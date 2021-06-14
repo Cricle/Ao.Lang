@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup Condition="'$(TargetFramework.Trim(`0123456789`))' != 'net' and '$(TargetFramework.Trim(`0123456789`))'!='netcoreapp'">
+    <UsingNETStandard>true</UsingNETStandard>
+  <DefineConstants>UsingNETStandard;$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0' or '$(TargetFramework)'=='net461' or '$(TargetFramework)'=='netcoreapp3.0' or '$(TargetFramework)'=='net5.0'">
+    <UsingGreatOrEqualTf>true</UsingGreatOrEqualTf>
+  </PropertyGroup>
+</Project>

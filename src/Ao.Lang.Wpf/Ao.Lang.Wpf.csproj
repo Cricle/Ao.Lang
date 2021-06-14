@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <Import Project="..\..\eng\pkg.props" />
+  <PropertyGroup>
+    <TargetFrameworks>net45;netcoreapp3.0;net5.0-windows</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ao.Lang\Ao.Lang.csproj" />
+  </ItemGroup>
+
+</Project>

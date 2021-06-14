@@ -1,0 +1,32 @@
+﻿<Window x:Class="Ao.Lang.Wpf.Sample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ao.Lang.Wpf.Sample"
+        xmlns:l="clr-namespace:System.Windows.Data;assembly=Ao.Lang.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <ScrollViewer>
+        <StackPanel x:Name="Sp" Orientation="Vertical">
+            <Button Click="Button_Click">change</Button>
+            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}"/>
+            <!--<ListView x:Name="Lv" VirtualizingPanel.IsVirtualizing="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{l:Lang Title}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+        </StackPanel>
+    </ScrollViewer>
+</Window>
