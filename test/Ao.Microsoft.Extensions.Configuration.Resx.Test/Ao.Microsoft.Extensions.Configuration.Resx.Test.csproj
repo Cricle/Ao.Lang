@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Microsoft.Extensions.Configuration.Resx\Microsoft.Extensions.Configuration.Resx.csproj" />
+    <ProjectReference Include="..\..\src\Ao.Microsoft.Extensions.Configuration.Resx\Ao.Microsoft.Extensions.Configuration.Resx.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Resource1.resx">

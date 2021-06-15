@@ -1,4 +1,4 @@
-# What is this [![.NET](https://github.com/Cricle/Ao.Lang/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Cricle/Ao.Lang/actions/workflows/dotnet.yml)
+# What is this [![.NET](https://github.com/Cricle/Ao.Lang/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Cricle/Ao.Lang/actions/workflows/dotnet.yml) [![codecov](https://codecov.io/gh/Cricle/Ao.Lang/branch/main/graph/badge.svg?token=LhgM9EegtX)](https://codecov.io/gh/Cricle/Ao.Lang)
 
 It is i18n libraries. It given many solutions make your app support i18n.
 
@@ -127,9 +127,9 @@ You can watch `samples\Ao.Lang.Sample` or `samples\Ao.Lang.Wpf.Sample`
 
 |Version|Status|
 |:-:|:-:|
-|1.x.x|In [Nuget](https://www.nuget.org/packages/Ao.Lang/)|
-|3.0.0|In [Nuget](https://www.nuget.org/packages/Ao.Lang/), Is was a break change for 1.x.x|
-|4.0.0|In development(It was a break change for 3.0.0)|
+|1.x.x|In [Nuget](https://www.nuget.org/packages/Ao.Lang/1.3.1)|
+|3.0.0|In [Nuget](https://www.nuget.org/packages/Ao.Lang/3.0.0), Is was a break change for 1.x.x|
+|4.0.0|In [Nuget](https://www.nuget.org/packages/Ao.Lang/4.0.0)(It was a break change for 3.0.0)|
 
 # Project extensions
 

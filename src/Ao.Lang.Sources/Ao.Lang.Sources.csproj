@@ -24,8 +24,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ao.Lang\Ao.Lang.csproj" />
-    <ProjectReference Include="..\Microsoft.Extensions.Configuration.Resources\Microsoft.Extensions.Configuration.Resources.csproj" />
-    <ProjectReference Include="..\Microsoft.Extensions.Configuration.Resx\Microsoft.Extensions.Configuration.Resx.csproj" />
+    <ProjectReference Include="..\Ao.Microsoft.Extensions.Configuration.Resources\Ao.Microsoft.Extensions.Configuration.Resources.csproj" />
+    <ProjectReference Include="..\Ao.Microsoft.Extensions.Configuration.Resx\Ao.Microsoft.Extensions.Configuration.Resx.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resource1.Designer.cs">

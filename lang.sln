@@ -21,15 +21,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.Wpf", "src\Ao.Lang.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.Wpf.Sample", "samples\Ao.Lang.Wpf.Sample\Ao.Lang.Wpf.Sample.csproj", "{5829E8B3-3838-42A7-8F73-6FA3E3BFA9AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.Configuration.Resx", "src\Microsoft.Extensions.Configuration.Resx\Microsoft.Extensions.Configuration.Resx.csproj", "{AB8832FA-178A-47EA-BDFD-1BA52171E068}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Microsoft.Extensions.Configuration.Resx", "src\Ao.Microsoft.Extensions.Configuration.Resx\Ao.Microsoft.Extensions.Configuration.Resx.csproj", "{AB8832FA-178A-47EA-BDFD-1BA52171E068}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.Configuration.Resources", "src\Microsoft.Extensions.Configuration.Resources\Microsoft.Extensions.Configuration.Resources.csproj", "{C38910BC-2F25-4585-ADF0-9EFE4B5646DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Microsoft.Extensions.Configuration.Resources", "src\Ao.Microsoft.Extensions.Configuration.Resources\Ao.Microsoft.Extensions.Configuration.Resources.csproj", "{C38910BC-2F25-4585-ADF0-9EFE4B5646DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.Configuration.Resx.Test", "test\Microsoft.Extensions.Configuration.Resx.Test\Microsoft.Extensions.Configuration.Resx.Test.csproj", "{B6944533-1E07-4A8C-AF6A-8F3811C5F072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Microsoft.Extensions.Configuration.Resx.Test", "test\Ao.Microsoft.Extensions.Configuration.Resx.Test\Ao.Microsoft.Extensions.Configuration.Resx.Test.csproj", "{B6944533-1E07-4A8C-AF6A-8F3811C5F072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ao.Lang.Sources.Test", "test\Ao.Lang.Sources.Test\Ao.Lang.Sources.Test.csproj", "{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.Sources.Test", "test\Ao.Lang.Sources.Test\Ao.Lang.Sources.Test.csproj", "{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ao.Lang.Wpf.Test", "test\Ao.Lang.Wpf.Test\Ao.Lang.Wpf.Test.csproj", "{E13CAB25-A71B-4089-A3A4-862B4083F2A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.Wpf.Test", "test\Ao.Lang.Wpf.Test\Ao.Lang.Wpf.Test.csproj", "{E13CAB25-A71B-4089-A3A4-862B4083F2A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
