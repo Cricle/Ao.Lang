@@ -19,13 +19,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.Test", "test\Ao.Lan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.Wpf", "src\Ao.Lang.Wpf\Ao.Lang.Wpf.csproj", "{36ABB25B-9659-4B90-8C04-B748E3EB03AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ao.Lang.Wpf.Sample", "samples\Ao.Lang.Wpf.Sample\Ao.Lang.Wpf.Sample.csproj", "{5829E8B3-3838-42A7-8F73-6FA3E3BFA9AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.Wpf.Sample", "samples\Ao.Lang.Wpf.Sample\Ao.Lang.Wpf.Sample.csproj", "{5829E8B3-3838-42A7-8F73-6FA3E3BFA9AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Extensions.Configuration.Resx", "src\Microsoft.Extensions.Configuration.Resx\Microsoft.Extensions.Configuration.Resx.csproj", "{AB8832FA-178A-47EA-BDFD-1BA52171E068}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.Configuration.Resx", "src\Microsoft.Extensions.Configuration.Resx\Microsoft.Extensions.Configuration.Resx.csproj", "{AB8832FA-178A-47EA-BDFD-1BA52171E068}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Extensions.Configuration.Resources", "src\Microsoft.Extensions.Configuration.Resources\Microsoft.Extensions.Configuration.Resources.csproj", "{C38910BC-2F25-4585-ADF0-9EFE4B5646DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.Configuration.Resources", "src\Microsoft.Extensions.Configuration.Resources\Microsoft.Extensions.Configuration.Resources.csproj", "{C38910BC-2F25-4585-ADF0-9EFE4B5646DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Extensions.Configuration.Resx.Test", "test\Microsoft.Extensions.Configuration.Resx.Test\Microsoft.Extensions.Configuration.Resx.Test.csproj", "{B6944533-1E07-4A8C-AF6A-8F3811C5F072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.Configuration.Resx.Test", "test\Microsoft.Extensions.Configuration.Resx.Test\Microsoft.Extensions.Configuration.Resx.Test.csproj", "{B6944533-1E07-4A8C-AF6A-8F3811C5F072}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ao.Lang.Sources.Test", "test\Ao.Lang.Sources.Test\Ao.Lang.Sources.Test.csproj", "{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ao.Lang.Wpf.Test", "test\Ao.Lang.Wpf.Test\Ao.Lang.Wpf.Test.csproj", "{E13CAB25-A71B-4089-A3A4-862B4083F2A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,6 +149,30 @@ Global
 		{B6944533-1E07-4A8C-AF6A-8F3811C5F072}.Release|x64.Build.0 = Release|Any CPU
 		{B6944533-1E07-4A8C-AF6A-8F3811C5F072}.Release|x86.ActiveCfg = Release|Any CPU
 		{B6944533-1E07-4A8C-AF6A-8F3811C5F072}.Release|x86.Build.0 = Release|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Debug|x64.Build.0 = Debug|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Debug|x86.Build.0 = Debug|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Release|x64.ActiveCfg = Release|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Release|x64.Build.0 = Release|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Release|x86.ActiveCfg = Release|Any CPU
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42}.Release|x86.Build.0 = Release|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Debug|x64.Build.0 = Debug|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Debug|x86.Build.0 = Debug|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Release|x64.ActiveCfg = Release|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Release|x64.Build.0 = Release|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Release|x86.ActiveCfg = Release|Any CPU
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,6 +187,8 @@ Global
 		{AB8832FA-178A-47EA-BDFD-1BA52171E068} = {E29EC5CD-A1FB-4426-8F66-7901C7C4491B}
 		{C38910BC-2F25-4585-ADF0-9EFE4B5646DC} = {E29EC5CD-A1FB-4426-8F66-7901C7C4491B}
 		{B6944533-1E07-4A8C-AF6A-8F3811C5F072} = {D22A9340-F00D-4718-A14D-04F8E888D43A}
+		{4898EF4F-6AEA-4DFF-9AEE-DA9B832F9A42} = {D22A9340-F00D-4718-A14D-04F8E888D43A}
+		{E13CAB25-A71B-4089-A3A4-862B4083F2A4} = {D22A9340-F00D-4718-A14D-04F8E888D43A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A99D1E1-33AC-446D-A41B-50E0E2C7AB68}

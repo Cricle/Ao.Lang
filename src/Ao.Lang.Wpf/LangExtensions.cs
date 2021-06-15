@@ -23,26 +23,37 @@ namespace System.Windows.Controls
                 fixedCulture,
                 noUpdate);
         }
-        public static void BindText(this Label label, string key,
+        public static void BindText(this ContentControl label, string key,
            object[] args = null,
            string defaultValue = null,
            string fixedCulture = null,
            bool noUpdate = false)
         {
-            BindLang(label, Label.ContentProperty,
+            BindLang(label, ContentControl.ContentProperty,
                 key,
                 args, defaultValue,
                 fixedCulture,
                 noUpdate);
         }
-        public static void BindLang(this FrameworkElement fe,
-            DependencyProperty property,
-            string key,
-            object[] args=null,
-            string defaultValue=null,
-            string fixedCulture=null,
-            bool noUpdate=false)
+        public static void BindText(this Run label, string key,
+          object[] args = null,
+          string defaultValue = null,
+          string fixedCulture = null,
+          bool noUpdate = false)
         {
+            BindLang(label, Run.TextProperty,
+                key,
+                args, defaultValue,
+                fixedCulture,
+                noUpdate);
+        }
+        public static Binding CreateLangBinding(string key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+
             var box = new LangStrBox
             {
                 Args = args,
@@ -63,8 +74,29 @@ namespace System.Windows.Controls
                 Source = box,
                 Mode = BindingMode.OneWay
             };
+            return binding;
+        }
+        public static void BindLang(this FrameworkElement fe,
+            DependencyProperty property,
+            string key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            var binding = CreateLangBinding(key, args, defaultValue, fixedCulture, noUpdate);
             fe.SetBinding(property, binding);
         }
-
+        public static void BindLang(this FrameworkContentElement fe,
+            DependencyProperty property,
+            string key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            var binding = CreateLangBinding(key, args, defaultValue, fixedCulture, noUpdate);
+            fe.SetBinding(property, binding);
+        }
     }
 }

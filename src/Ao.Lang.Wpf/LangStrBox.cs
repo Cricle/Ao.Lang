@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace System.Windows.Data
 {
@@ -12,11 +14,19 @@ namespace System.Windows.Data
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string value;
+        private readonly DispatcherObject dispatcherObject;
 
+        public LangStrBox()
+        {
+            dispatcherObject = Application.Current;
+        }
         public string Value
         {
             get => value;
-            set => RaisePropertyChanged(ref this.value, value);
+            set
+            {
+                RaisePropertyChanged(ref this.value, value);
+            }
         }
         public ILanguageRoot LangRoot { get; set; }
 

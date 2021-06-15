@@ -13,8 +13,13 @@ namespace Ao.Lang
     /// </summary>
     public static class LanguageMetadataExtensions
     {
-        public static string[] RaiseAssemblyResources<TAssemblyType>(this ILanguageService langSer,int langRevIndex)
+        public static string[] RaiseAssemblyResources<TAssemblyType>(this ILanguageService langSer, int langRevIndex)
         {
+            if (langSer is null)
+            {
+                throw new ArgumentNullException(nameof(langSer));
+            }
+
             var ass = typeof(TAssemblyType).Assembly;
             return RaiseAssemblyResources(langSer, ass, langRevIndex);
         }
@@ -53,6 +58,11 @@ namespace Ao.Lang
         }
         public static void EnableJson(this ILangLookup lookup)
         {
+            if (lookup is null)
+            {
+                throw new ArgumentNullException(nameof(lookup));
+            }
+
             lookup.EnableFileType("json", (n, b) =>
             {
                 if (b.Stream == null)
@@ -69,6 +79,11 @@ namespace Ao.Lang
         }
         public static void EnableIni(this ILangLookup lookup)
         {
+            if (lookup is null)
+            {
+                throw new ArgumentNullException(nameof(lookup));
+            }
+
             lookup.EnableFileType("ini", (n, b) =>
             {
                 if (b.Stream == null)
@@ -86,6 +101,11 @@ namespace Ao.Lang
         }
         public static void EnableXml(this ILangLookup lookup)
         {
+            if (lookup is null)
+            {
+                throw new ArgumentNullException(nameof(lookup));
+            }
+
             lookup.EnableFileType("xml", (n, b) =>
                {
                    if (b.Stream == null)
@@ -102,6 +122,11 @@ namespace Ao.Lang
         }
         public static void EnableYaml(this ILangLookup lookup)
         {
+            if (lookup is null)
+            {
+                throw new ArgumentNullException(nameof(lookup));
+            }
+
             lookup.EnableFileType("yaml", (n, b) =>
             {
                 if (b.Stream == null)
@@ -127,6 +152,11 @@ namespace Ao.Lang
         }
         public static void EnableResx(this ILangLookup lookup)
         {
+            if (lookup is null)
+            {
+                throw new ArgumentNullException(nameof(lookup));
+            }
+
             lookup.EnableFileType("resx", (n, b) =>
             {
                 if (b.Stream == null)
@@ -141,6 +171,11 @@ namespace Ao.Lang
         }
         public static void EnableAll(this ILangLookup lookup)
         {
+            if (lookup is null)
+            {
+                throw new ArgumentNullException(nameof(lookup));
+            }
+
             EnableJson(lookup);
             EnableIni(lookup);
             EnableYaml(lookup);

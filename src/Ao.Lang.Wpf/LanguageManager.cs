@@ -18,7 +18,7 @@ namespace System.Windows.Data
                 {
                     throw new ArgumentNullException(nameof(LangService));
                 }
-                langService = LangService;
+                langService = value;
             }
         }
         public CultureInfo CultureInfo

@@ -1,4 +1,4 @@
-# What is this 
+# What is this [![.NET](https://github.com/Cricle/Ao.Lang/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Cricle/Ao.Lang/actions/workflows/dotnet.yml)
 
 It is i18n libraries. It given many solutions make your app support i18n.
 
@@ -118,7 +118,7 @@ Strings
 var ser = LanguageManager.Instance.LangService;
 ser.RaiseAssemblyResources<App>(2);
 //Because resx file will compile to namespace.folders.fileName.resources
-//So 2 is get from last select file block en_us/zh_cn(quto _ will replace to -)
+//So 2 is get from last select file block en_us/zh_cn(symbol `_` will replace to `-`)
 ```
 
 You can watch `samples\Ao.Lang.Sample` or `samples\Ao.Lang.Wpf.Sample`
