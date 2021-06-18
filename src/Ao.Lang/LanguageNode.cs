@@ -14,7 +14,7 @@ namespace Ao.Lang
         {
             Culture = culture ?? throw new ArgumentNullException(nameof(culture));
             CollectionChanged += LanguageNode_CollectionChanged;
-            propertites = new Dictionary<string, object>();
+            propertites = new Dictionary<string, object>(0);
             ReBuild();
         }
 

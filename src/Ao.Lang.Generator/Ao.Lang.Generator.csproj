@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\eng\pkg.props" />
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net461;netstandard1.3;net45</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ao.Lang\Ao.Lang.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <Compile Remove="Editor\"></Compile>
+    <PackageReference Include="System.IO.FileSystem" Version="4.3.0"/>
+    <PackageReference Include="System.IO" Version="4.3.0" />
+  </ItemGroup>
+</Project>

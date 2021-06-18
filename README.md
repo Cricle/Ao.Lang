@@ -80,6 +80,10 @@ textblock = new TextBlock();
 textblock.BindText("Title");
 ```
 
+## If you want dynamic generator lang
+
+Please Use package `Ao.Lang.Generator`, is implement json and resource compile.
+
 # After
 
 - [ ] Add more unit test

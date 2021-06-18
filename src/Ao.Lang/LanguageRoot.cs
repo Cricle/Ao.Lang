@@ -17,7 +17,7 @@ namespace Ao.Lang
 
         public CultureInfo Culture { get; }
 
-        public string this[string key,params object[] args]
+        public string this[string key, params object[] args]
         {
             get
             {
@@ -26,12 +26,12 @@ namespace Ao.Lang
                 {
                     return null;
                 }
-                if (args==null||args.Length==0)
+                if (args == null || args.Length == 0)
                 {
                     return template;
                 }
                 return string.Format(template, args);
-            } 
+            }
         }
     }
 }

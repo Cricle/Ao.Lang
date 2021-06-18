@@ -14,12 +14,7 @@ namespace System.Windows.Data
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string value;
-        private readonly DispatcherObject dispatcherObject;
 
-        public LangStrBox()
-        {
-            dispatcherObject = Application.Current;
-        }
         public string Value
         {
             get => value;

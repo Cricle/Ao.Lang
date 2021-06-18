@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 
 namespace Ao.Lang
 {
@@ -19,13 +20,13 @@ namespace Ao.Lang
 
         public string this[string key]
         {
-            get => this.GetCurrentValue(key);
+            get => GetRoot(CultureInfo.CurrentCulture)?[key];
         }
         public string this[string key, params object[] args]
         {
             get
             {
-                var val = this.GetCurrentValue(key);
+                var val = GetRoot(CultureInfo.CurrentCulture)?[key];
                 if (args == null || string.IsNullOrEmpty(val))
                 {
                     return val;
@@ -43,14 +44,14 @@ namespace Ao.Lang
                 {
                     item.ReBuildIfCollectionChanged = value;
                 }
-                ReBuildIfCollectionChangedValueChanged?.Invoke(this,value);
+                ReBuildIfCollectionChangedValueChanged?.Invoke(this, value);
             }
         }
         public IReadOnlyCollection<CultureInfo> SupportCultures => cultureToLangs.Keys.ToArray();
 
         public int Count => sources.Count;
 
-        public event Action<LanguageService,bool> ReBuildIfCollectionChangedValueChanged;
+        public event Action<LanguageService, bool> ReBuildIfCollectionChangedValueChanged;
 
         public ILanguageRoot GetRoot(CultureInfo cultureInfo)
         {
@@ -125,7 +126,7 @@ namespace Ao.Lang
             }
 
             var node = GetLangNode(cultureInfo);
-            if (node==null)
+            if (node == null)
             {
                 node = new LanguageNode(cultureInfo);
                 node.ReBuildIfCollectionChanged = reBuildIfCollectionChanged;
