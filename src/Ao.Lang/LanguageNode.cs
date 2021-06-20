@@ -50,6 +50,10 @@ namespace Ao.Lang
 
         private ILanguageRoot Build()
         {
+            if (root.IsValueCreated && root.Value is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
             var builder = new LanguageBuilder(Culture);
             var sources = this.SelectMany(s => s).ToArray();
             foreach (var item in sources)
