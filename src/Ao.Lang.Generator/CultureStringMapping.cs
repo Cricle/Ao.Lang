@@ -7,44 +7,34 @@ namespace Ao.Lang.Generator
     {
         #region 构造函数
 
-        public CultureStringMapping()
+
+        public CultureStringMapping(IDictionary<string, string> dictionary) 
+            : base(dictionary,StringComparer.OrdinalIgnoreCase)
         {
         }
 
-        public CultureStringMapping(IDictionary<string, string> dictionary) : base(dictionary)
+        public CultureStringMapping() 
+            : base(StringComparer.OrdinalIgnoreCase)
         {
         }
 
-        public CultureStringMapping(IDictionary<string, string> dictionary, IEqualityComparer<string> comparer) : base(dictionary, comparer)
-        {
-        }
-
-        public CultureStringMapping(IEqualityComparer<string> comparer) : base(comparer)
-        {
-        }
-
-        public CultureStringMapping(int capacity) : base(capacity)
-        {
-        }
-
-        public CultureStringMapping(int capacity, IEqualityComparer<string> comparer) : base(capacity, comparer)
+        public CultureStringMapping(int capacity) 
+            : base(capacity, StringComparer.OrdinalIgnoreCase)
         {
         }
 
         #endregion
         string IDictionary<string, string>.this[string key]
         {
-            get => base[key];
+            get => this[key];
             set
             {
-                ThrowHelper.ThrowIfCultureNotFound(key);
-                base[key] = value;
+                this[key] = value;
             }
         }
         void IDictionary<string, string>.Add(string key, string value)
         {
-            ThrowHelper.ThrowIfCultureNotFound(key);
-            base.Add(key, value);
+            this.Add(key, value);
         }
         public new string this[string key]
         {

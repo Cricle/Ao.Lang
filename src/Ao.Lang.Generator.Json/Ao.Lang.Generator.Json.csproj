@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ao.Lang.Editor\Ao.Lang.Generator.csproj" />
     <ProjectReference Include="..\Ao.Lang.Generator\Ao.Lang.Generator.csproj" />
     <ProjectReference Include="..\Ao.Lang\Ao.Lang.csproj" />
   </ItemGroup>

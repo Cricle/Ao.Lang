@@ -41,8 +41,12 @@ namespace Ao.Lang
             var names = assembly.GetManifestResourceNames();
             foreach (var item in names)
             {
+                if (!item.EndsWith(".resources"))
+                {
+                    continue;
+                }
                 var sps = item.Split('.');
-                if (sps.Length > 1 && sps.Length >= langRevIndex && sps[sps.Length - 1] == "resources")
+                if (sps.Length > 1 && sps.Length >= langRevIndex)
                 {
                     var lang = sps[sps.Length - langRevIndex - 1].Replace('_', '-');
                     if (CultureInfoHelper.IsAvaliableCulture(lang))

@@ -94,6 +94,7 @@ namespace System.Windows.Data
         public void Dispose()
         {
             LanguageManager.Instance.CultureInfoChanged -= RaiseCultureInfoChanged;
+            GC.SuppressFinalize(this);
         }
     }
 }

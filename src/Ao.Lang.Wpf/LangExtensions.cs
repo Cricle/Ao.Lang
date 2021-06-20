@@ -17,6 +17,16 @@ namespace System.Windows.Controls
             string fixedCulture = null,
             bool noUpdate = false)
         {
+            if (block is null)
+            {
+                throw new ArgumentNullException(nameof(block));
+            }
+
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
             BindLang(block, TextBlock.TextProperty,
                 key,
                 args, defaultValue,
@@ -29,6 +39,11 @@ namespace System.Windows.Controls
            string fixedCulture = null,
            bool noUpdate = false)
         {
+            if (label is null)
+            {
+                throw new ArgumentNullException(nameof(label));
+            }
+
             BindLang(label, ContentControl.ContentProperty,
                 key,
                 args, defaultValue,
@@ -41,6 +56,16 @@ namespace System.Windows.Controls
           string fixedCulture = null,
           bool noUpdate = false)
         {
+            if (label is null)
+            {
+                throw new ArgumentNullException(nameof(label));
+            }
+
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
             BindLang(label, Run.TextProperty,
                 key,
                 args, defaultValue,
@@ -53,6 +78,10 @@ namespace System.Windows.Controls
             string fixedCulture = null,
             bool noUpdate = false)
         {
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
 
             var box = new LangStrBox
             {
@@ -84,6 +113,21 @@ namespace System.Windows.Controls
             string fixedCulture = null,
             bool noUpdate = false)
         {
+            if (fe is null)
+            {
+                throw new ArgumentNullException(nameof(fe));
+            }
+
+            if (property is null)
+            {
+                throw new ArgumentNullException(nameof(property));
+            }
+
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
             var binding = CreateLangBinding(key, args, defaultValue, fixedCulture, noUpdate);
             fe.SetBinding(property, binding);
         }
@@ -95,6 +139,21 @@ namespace System.Windows.Controls
             string fixedCulture = null,
             bool noUpdate = false)
         {
+            if (fe is null)
+            {
+                throw new ArgumentNullException(nameof(fe));
+            }
+
+            if (property is null)
+            {
+                throw new ArgumentNullException(nameof(property));
+            }
+
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
             var binding = CreateLangBinding(key, args, defaultValue, fixedCulture, noUpdate);
             fe.SetBinding(property, binding);
         }

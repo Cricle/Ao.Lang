@@ -53,6 +53,11 @@ namespace Ao.Lang.Generator.Test.Editor
             var d = scope.LangBlocks;
             Assert.AreEqual(datas, d);
             Assert.IsTrue(scope.Save());
+
+            file.Delete();
+            scope = new ValueLanguageScope(file) { Blocks = datas };
+            var blocks = scope.LangBlocks;
+            Assert.AreEqual(0, blocks.Count);
         }
     }
 }

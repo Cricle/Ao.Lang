@@ -22,16 +22,20 @@ namespace Ao.Lang.Test
             var culture = new CultureInfo(cultureStr);
 
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add(null,culture,new IConfigurationSource[0]));
-            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add(langSer, (CultureInfo)null, new IConfigurationSource[0]));
-            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add(langSer, (string)null, new IConfigurationSource[0]));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add<IConfigurationSource>(langSer, culture, null));
-            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.GetRoot(null, cultureStr));
+            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add(langSer, (string)null, new IConfigurationSource[0]));
+            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add(langSer, (CultureInfo)null, new IConfigurationSource[0]));
+
             Assert.ThrowsException<ArgumentException>(() => LanguageServiceExtensions.GetRoot(langSer, null));
+            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.GetRoot(null, cultureStr));
+
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.GetCurrentRoot(null));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.GetCurrentValue(null, "a"));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.GetCurrentValue(langSer, null));
-            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.CultureIsSupport(null, cultureStr));
+
             Assert.ThrowsException<ArgumentException>(() => LanguageServiceExtensions.CultureIsSupport(langSer, null));
+            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.CultureIsSupport(null, cultureStr));
+
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.AddFromCurrentCulture(null, new IConfigurationSource[0]));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.AddFromCurrentCulture<IConfigurationSource>(langSer, null));
         }

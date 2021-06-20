@@ -76,7 +76,7 @@ namespace Ao.Lang.Test
             Assert.IsNotNull(root);
             Assert.AreEqual(culutre, root.Culture);
 
-            IConfigurationRoot configRoot = builder.Build();
+            IConfigurationRoot configRoot = ((ILanguageBuilder)builder).Build();
             Assert.IsNotNull(configRoot);
         }
 

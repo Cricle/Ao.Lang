@@ -15,10 +15,9 @@ namespace Ao.Lang.Generator.Test
         public void InitWithConstruct()
         {
             var c = new CultureStringMapping(10);
-            c = new CultureStringMapping(EqualityComparer<string>.Default);
-            c = new CultureStringMapping(10, EqualityComparer<string>.Default);
+            c = new CultureStringMapping();
+            c = new CultureStringMapping(10);
             c = new CultureStringMapping(new Dictionary<string, string>(0));
-            c = new CultureStringMapping(new Dictionary<string, string>(0), EqualityComparer<string>.Default);
         }
         [TestMethod]
         [DataRow("sdak")]
@@ -51,6 +50,18 @@ namespace Ao.Lang.Generator.Test
             Assert.AreEqual(1, c.Count);
             Assert.AreEqual("hello", c[culture]);
             Assert.AreEqual("hello", m[culture]);
+        }
+        [TestMethod]
+        public void CaseAdd_KeyMustSame()
+        {
+            var map = new CultureStringMapping();
+
+            map.Add("zh-cn", "a");
+
+            map["zh-CN"] = "b";
+            Assert.AreEqual(1, map.Count);
+            Assert.AreEqual("b", map["zh-cn"]);
+            Assert.AreEqual("b", map["zh-CN"]);
         }
     }
 }

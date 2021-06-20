@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Resources;
 
@@ -6,8 +7,17 @@ namespace Microsoft.Extensions.Configuration.Resources
 {
     internal static class ResourceHelper
     {
-        public static IDictionary<string,string> GetData(Stream stream)
+        public static IDictionary<string, string> GetData(Stream stream)
         {
+            if (stream is null)
+            {
+                throw new ArgumentNullException(nameof(stream));
+            }
+            if (!stream.CanRead)
+            {
+                throw new InvalidOperationException("Stream can't read");
+            }
+
             var datas = new Dictionary<string, string>();
             using (var resx = new ResourceReader(stream))
             {

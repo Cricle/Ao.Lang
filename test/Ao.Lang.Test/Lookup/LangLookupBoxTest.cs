@@ -43,6 +43,10 @@ namespace Ao.Lang.Test.Lookup
             Assert.AreEqual("json",box.Extension);
             Assert.AreEqual("zh-cn", box.GetLangIdentity('.'));
             Assert.AreEqual("zh-cn", box.GetLangIdentity('.', 1));
+
+            path = "C:\\json";
+            box = new LangLookupBox(path);
+            Assert.IsNull(box.Extension);
         }
         [TestMethod]
         public void GetLangIdentity()
