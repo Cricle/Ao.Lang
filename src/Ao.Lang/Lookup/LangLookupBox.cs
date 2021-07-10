@@ -78,7 +78,7 @@ namespace Ao.Lang.Lookup
                 return null;
             }
             var sps = name.Split(new[] { split }, StringSplitOptions.RemoveEmptyEntries);
-            if (sps.Length > lastRevIndex )
+            if (sps.Length > lastRevIndex)
             {
                 return sps[sps.Length - lastRevIndex-1];
             }

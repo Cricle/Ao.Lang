@@ -26,7 +26,7 @@ namespace Ao.Lang
                 {
                     return null;
                 }
-                if (args == null || args.Length == 0)
+                if (args is null || args.Length == 0)
                 {
                     return template;
                 }

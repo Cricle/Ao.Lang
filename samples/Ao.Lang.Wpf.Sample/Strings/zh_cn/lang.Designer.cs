@@ -72,9 +72,9 @@ namespace Ao.Lang.Wpf.Sample.Strings.zh_cn {
         /// <summary>
         ///   查找类似 多语言 的本地化字符串。
         /// </summary>
-        internal static string Title {
+        internal static string Titlex {
             get {
-                return ResourceManager.GetString("Title", resourceCulture);
+                return ResourceManager.GetString("Titlex", resourceCulture);
             }
         }
     }

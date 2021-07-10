@@ -128,8 +128,10 @@ namespace Ao.Lang
             var node = GetLangNode(cultureInfo);
             if (node == null)
             {
-                node = new LanguageNode(cultureInfo);
-                node.ReBuildIfCollectionChanged = reBuildIfCollectionChanged;
+                node = new LanguageNode(cultureInfo)
+                {
+                    ReBuildIfCollectionChanged = reBuildIfCollectionChanged
+                };
                 cultureToLangs.Add(cultureInfo, node);
             }
             return node;
@@ -139,6 +141,7 @@ namespace Ao.Lang
         {
             cultureToLangs.Clear();
             sources.Clear();
+            sources.TrimExcess();
         }
 
         public bool Remove(ILanguageMetadata item)

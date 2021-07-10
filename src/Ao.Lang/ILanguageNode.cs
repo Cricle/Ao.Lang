@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
@@ -9,5 +10,7 @@ namespace Ao.Lang
     {
         bool IsBuilt { get; }
         ILanguageRoot Root { get; }
+
+        event Action<ILanguageNode, ILanguageRoot> Rebuilt;
     }
 }

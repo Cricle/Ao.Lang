@@ -20,10 +20,10 @@ namespace Ao.Lang.Wpf.Sample
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10; i++)
             {
-                var textblock = new TextBlock();
-                textblock.BindText("Title");
+                var textblock = new TextBlock { TextWrapping = TextWrapping.NoWrap };
+                textblock.BindText("Ao.Lang.Wpf.Sample.Title" + i);
                 Sp.Children.Add(textblock);
             }
         }

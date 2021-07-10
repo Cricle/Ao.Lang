@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Ao.Lang.Generator.Json\Ao.Lang.Generator.Json.csproj" />
+    <ProjectReference Include="..\..\src\Ao.Lang.Generator\Ao.Lang.Generator.csproj" />
     <ProjectReference Include="..\..\src\Ao.Lang.Sources\Ao.Lang.Sources.csproj" />
     <ProjectReference Include="..\..\src\Ao.Lang.Wpf\Ao.Lang.Wpf.csproj" />
     <ProjectReference Include="..\..\src\Ao.Lang\Ao.Lang.csproj" />
@@ -35,6 +37,15 @@
       <LastGenOutput>lang.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Strings\en_us\hello.en-us.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Strings\zh_cn\hello.zh-cn.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

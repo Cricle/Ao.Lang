@@ -42,6 +42,7 @@ namespace Ao.Lang
 
 #endif
 
+        public event Action<ILanguageNode, ILanguageRoot> Rebuilt;
 
         public void ReBuild()
         {
@@ -55,12 +56,13 @@ namespace Ao.Lang
                 disposable.Dispose();
             }
             var builder = new LanguageBuilder(Culture);
-            var sources = this.SelectMany(s => s).ToArray();
-            foreach (var item in sources)
+            foreach (var item in this.SelectMany(s => s))
             {
                 builder.Add(item);
             }
-            return builder.Build();
+            var rt= builder.Build();
+            Rebuilt?.Invoke(this, rt);
+            return rt;
         }
 
         public IConfigurationBuilder Add(IConfigurationSource source)
