@@ -6,7 +6,7 @@ namespace Ao.Lang.Generator.Editor
     public abstract class JsonStoreLanguageScope<TLangBlock> : LanguageScope<TLangBlock>
         where TLangBlock : ILangBlock
     {
-        public JsonStoreLanguageScope(FileInfo physicalFile)
+        protected JsonStoreLanguageScope(FileInfo physicalFile)
             : base(physicalFile)
         {
         }

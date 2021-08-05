@@ -1,5 +1,4 @@
-﻿
-using Ao.Lang;
+﻿using Ao.Lang;
 using System;
 using System.Collections;
 using System.Collections.Generic;

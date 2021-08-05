@@ -20,9 +20,9 @@ namespace Ao.Lang.Wpf.Sample
             ser.RaiseAssemblyResources<App>(2);
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Strings");
             var zhNode = ser.EnsureGetLangNode("zh-cn");
-            zhNode.AddJsonFile(Path.Combine(path, "zh_cn", "hello.zh-cn.json"), false);
+            zhNode.AddJsonFile(Path.Combine(path, "zh_cn", "hello.zh-cn.json"),false,true);
             var enNode = ser.EnsureGetLangNode("en-us");
-            enNode.AddJsonFile(Path.Combine(path, "en_us", "hello.en-us.json"), false);
+            enNode.AddJsonFile(Path.Combine(path, "en_us", "hello.en-us.json"), false, true);
         }
     }
 }

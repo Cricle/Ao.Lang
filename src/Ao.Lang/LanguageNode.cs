@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Ao.Lang
 {
-    public class LanguageNode : ObservableCollection<ILanguageMetadata>, IConfigurationBuilder, ICultureIdentity, ILanguageNode
+    public class LanguageNode : ObservableCollection<ILanguageMetadata>, IConfigurationBuilder, ILanguageNode
     {
         public LanguageNode(CultureInfo culture)
         {

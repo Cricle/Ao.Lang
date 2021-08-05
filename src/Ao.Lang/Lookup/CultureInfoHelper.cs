@@ -24,7 +24,7 @@ namespace Ao.Lang.Lookup
 #else
             try
             {
-                new CultureInfo(culture);
+                _ = new CultureInfo(culture);
                 return true;
             }
             catch (Exception)

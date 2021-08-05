@@ -16,7 +16,7 @@ namespace System.Windows.Data
             {
                 if (value ==null)
                 {
-                    throw new ArgumentNullException(nameof(LangService));
+                    throw new ArgumentNullException(nameof(value));
                 }
                 langService = value;
             }
@@ -28,7 +28,7 @@ namespace System.Windows.Data
             {
                 if (value == null)
                 {
-                    throw new ArgumentNullException(nameof(CultureInfo));
+                    throw new ArgumentNullException(nameof(value));
                 }
                 cultureInfo = value;
                 CultureInfoChanged?.Invoke(value);

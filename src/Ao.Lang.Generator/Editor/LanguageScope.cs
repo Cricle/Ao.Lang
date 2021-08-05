@@ -58,7 +58,7 @@ namespace Ao.Lang.Generator.Editor
 
         public virtual void Compile(ILangIdentityCompiler compiler)
         {
-            var map = LangBlocks.ToCultureMap<TLangBlock, ILangIdentity>();
+            var map = LangBlocks.ToCultureMap();
             foreach (var item in map)
             {
                 var kvstr = item.Value.ToDictionary(x => compiler.Compile(x.Key), x => x.Value);

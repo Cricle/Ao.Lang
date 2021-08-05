@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace Ao.Lang
 {
-    public interface ILanguageNode : IConfigurationBuilder, ICollectionChangeReproducible, INotifyCollectionChanged, IList<ILanguageMetadata>, ICollection<ILanguageMetadata>, IEnumerable<ILanguageMetadata>, ICultureIdentity
+    public interface ILanguageNode : IConfigurationBuilder, ICollectionChangeReproducible, INotifyCollectionChanged, IList<ILanguageMetadata>, ICultureIdentity
     {
         bool IsBuilt { get; }
         ILanguageRoot Root { get; }
