@@ -1,5 +1,6 @@
 ﻿
 using Ao.Lang;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -7,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Threading;
 
-namespace System.Windows.Data
+namespace Ao.Lang.Wpf
 {
     internal class LangStrBox : INotifyPropertyChanged, IDisposable
     {

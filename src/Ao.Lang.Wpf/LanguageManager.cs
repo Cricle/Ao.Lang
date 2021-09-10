@@ -1,8 +1,7 @@
-﻿
-using Ao.Lang;
+﻿using System;
 using System.Globalization;
 
-namespace System.Windows.Data
+namespace Ao.Lang.Wpf
 {
     public class LanguageManager
     {

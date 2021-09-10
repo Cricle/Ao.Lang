@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ao.Lang.Wpf.Sample"
-        xmlns:l="clr-namespace:System.Windows.Data;assembly=Ao.Lang.Wpf"
+        xmlns:l="https://github.com/Cricle/Ao.Lang"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <ScrollViewer>

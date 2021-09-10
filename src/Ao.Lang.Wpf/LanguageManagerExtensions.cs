@@ -1,6 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
-namespace System.Windows.Data
+namespace Ao.Lang.Wpf
 {
     public static class LanguageManagerExtensions
     {

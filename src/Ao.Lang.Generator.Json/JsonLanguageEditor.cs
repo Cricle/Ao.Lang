@@ -8,10 +8,10 @@ namespace Ao.Lang.Generator.Editor
     public class JsonLanguageEditor<TLangBlock> : PhysicalLanguageEditor<TLangBlock>
         where TLangBlock : ILangBlock
     {
-        public const string JsonDesignFileExtensions = "jsoni18nd";
-        public const string JsonDesignFileNameTemplate = "{0}." + JsonDesignFileExtensions;
-        public const string JsonCompiledFileExtensions = "jsoni18n";
-        public const string JsonCompiledFileNameTemplate = "{0}.{1}." + JsonCompiledFileExtensions;
+        public static readonly string JsonDesignFileExtensions = "jsoni18nd";
+        public static readonly string JsonDesignFileNameTemplate = "{0}." + JsonDesignFileExtensions;
+        public static readonly string JsonCompiledFileExtensions = "jsoni18n";
+        public static readonly string JsonCompiledFileNameTemplate = "{0}.{1}." + JsonCompiledFileExtensions;
 
         public JsonLanguageEditor(DirectoryInfo workspace)
             : base(workspace)

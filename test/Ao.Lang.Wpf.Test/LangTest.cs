@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Markup;
-using CLang=System.Windows.Data.Lang;
+using CLang=Ao.Lang.Wpf.Lang;
 
 namespace Ao.Lang.Wpf.Test
 {

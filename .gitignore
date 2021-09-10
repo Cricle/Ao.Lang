@@ -456,3 +456,4 @@ $RECYCLE.BIN/
 results.xml
 uploadtest.cmd
 .sonarqube/*.*
+uploadnuget.ps1

@@ -6,9 +6,11 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Windows;
+using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace System.Windows.Data
+namespace Ao.Lang.Wpf
 {
     public class Lang : MarkupExtension
     {
