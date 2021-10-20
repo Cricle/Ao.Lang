@@ -1,0 +1,39 @@
+name: Upload test report
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+      - name: Install choco
+        shell: powershell
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+          choco -v
+      - name: Install opencover&codecov
+        shell: powershell
+        run: |
+          choco install opencover.portable
+          choco install codecov
+      - name: Create test report
+        shell: powershell
+        run: |
+          OpenCover.Console.exe -target:test.bat -register:user
+      - name: Upload to codecov
+        shell: powershell
+        run: |
+          codecov --version
+          codecov -f "results.xml" -t "${{ secrets.CODECOV }}"
+      - name: Upload to codacy
+        shell: bash
+        run: |
+          export CODACY_PROJECT_TOKEN="${{ secrets.CODACY_PROJECT_TOKEN }}";
+          bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r results.xml

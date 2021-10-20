@@ -54,6 +54,8 @@ namespace Ao.Lang.Wpf
 
         public object[] Args { get; set; }
 
+        public Func<object[]> ArgFetcher { get; set; }
+
         public string FixedCulture { get; set; }
 
         public string DefaultValue { get; set; }
@@ -68,7 +70,8 @@ namespace Ao.Lang.Wpf
                 Key = Key,
                 Args = Args,
                 FixedCulture = FixedCulture,
-                DefaultValue = DefaultValue
+                DefaultValue = DefaultValue,
+                ArgFetcher = ArgFetcher
             };
             if (NoUpdate)
             {
@@ -83,10 +86,7 @@ namespace Ao.Lang.Wpf
             {
                 return binding;
             }
-            else
-            {
-                return binding.ProvideValue(serviceProvider);
-            }
+            return binding.ProvideValue(serviceProvider);
         }
     }
 }

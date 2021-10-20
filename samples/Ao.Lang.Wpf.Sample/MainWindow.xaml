@@ -10,7 +10,7 @@
     <ScrollViewer>
         <StackPanel x:Name="Sp" Orientation="Vertical">
             <Button Click="Button_Click">change</Button>
-            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Title}" d:Text="123!"/>
             <TextBlock Text="{l:Lang Title}"/>
             <TextBlock Text="{l:Lang Title}"/>
             <TextBlock Text="{l:Lang Title}"/>

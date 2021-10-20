@@ -12,6 +12,7 @@ namespace Ao.Lang.Wpf
 {
     internal class LangStrBox : INotifyPropertyChanged, IDisposable
     {
+        private static readonly PropertyChangedEventArgs valueEventArgs = new PropertyChangedEventArgs(nameof(Value));
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string value;
@@ -21,7 +22,11 @@ namespace Ao.Lang.Wpf
             get => value;
             set
             {
-                RaisePropertyChanged(ref this.value, value);
+                if (this.value != value)
+                {
+                    this.value = value;
+                    RaisePropertyChanged(valueEventArgs);
+                }
             }
         }
         public ILanguageRoot LangRoot { get; set; }
@@ -29,6 +34,8 @@ namespace Ao.Lang.Wpf
         public string Key { get; set; }
 
         public object[] Args { get; set; }
+
+        public Func<object[]> ArgFetcher { get; set; }
 
         public string FixedCulture { get; set; }
 
@@ -77,7 +84,12 @@ namespace Ao.Lang.Wpf
         }
         internal void UpdateValue()
         {
-            Value = LangRoot?[Key, Args] ?? DefaultValue;
+            var args = Args;
+            if (ArgFetcher!=null)
+            {
+                args = ArgFetcher();
+            }
+            Value = LangRoot?[Key, args] ?? DefaultValue;
         }
 
         protected void RaisePropertyChanged<T>(ref T prop, T value, [CallerMemberName] string name = null)
@@ -88,12 +100,21 @@ namespace Ao.Lang.Wpf
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
             }
         }
+        protected void RaisePropertyChanged(PropertyChangedEventArgs eventArgs)
+        {
+            PropertyChanged?.Invoke(this, eventArgs);
+        }
+        protected void RaisePropertyChanged([CallerMemberName]string name=null)
+        {
+            RaisePropertyChanged(new PropertyChangedEventArgs(name));
+        }
         private void RaiseCultureInfoChanged(CultureInfo cultureInfo)
         {
             SwitchRoot();
         }
         public void Dispose()
         {
+            disposable?.Dispose();
             LanguageManager.Instance.CultureInfoChanged -= RaiseCultureInfoChanged;
             GC.SuppressFinalize(this);
         }
