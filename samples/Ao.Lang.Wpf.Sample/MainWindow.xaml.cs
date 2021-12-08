@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
+﻿using Ao.Lang.Runtime;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 
 namespace Ao.Lang.Wpf.Sample
 {
@@ -12,6 +11,23 @@ namespace Ao.Lang.Wpf.Sample
     /// </summary>
     public partial class MainWindow : Window
     {
+        class MulLang : INotifyPropertyChanged
+        {
+            private string myString;
+
+            public string MyString
+            {
+                get => myString;
+                set
+                {
+                    myString = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MyString)));
+                }
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -26,6 +42,13 @@ namespace Ao.Lang.Wpf.Sample
                 textblock.BindText("Ao.Lang.Wpf.Sample.Title" + i);
                 Sp.Children.Add(textblock);
             }
+            var m=new MulLang();
+            LanguageManager.Instance.BindTo("Ao.Lang.Wpf.Sample.Title0", m, x => x.MyString).Dispose();
+            ObjectBind.SetBinding(TextBlock.TextProperty, new Binding(nameof(MulLang.MyString))
+            {
+                Source = m
+            });
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

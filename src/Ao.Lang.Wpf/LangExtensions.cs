@@ -1,10 +1,4 @@
-﻿using Ao.Lang.Wpf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using Ao.Lang.Runtime;
 using System.Windows.Data;
 using System.Windows.Documents;
 
@@ -12,7 +6,19 @@ namespace System.Windows.Controls
 {
     public static class LangExtensions
     {
+        public static void BindToObject(string key)
+        {
+
+        }
         public static void BindText(this TextBlock block, string key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            BindText(block,LanguageManager.Instance, key, args, defaultValue, fixedCulture, noUpdate);
+        }
+        public static void BindText(this TextBlock block, LanguageManager langMgr, string key,
             object[] args = null,
             string defaultValue = null,
             string fixedCulture = null,
@@ -28,13 +34,21 @@ namespace System.Windows.Controls
                 throw new ArgumentNullException(nameof(key));
             }
 
-            BindLang(block, TextBlock.TextProperty,
+            BindLang(block, langMgr, TextBlock.TextProperty,
                 key,
                 args, defaultValue,
                 fixedCulture,
                 noUpdate);
         }
-        public static void BindText(this ContentControl label, string key,
+        public static void BindText(this ContentControl label,string key,
+           object[] args = null,
+           string defaultValue = null,
+           string fixedCulture = null,
+           bool noUpdate = false)
+        {
+            BindText(label,LanguageManager.Instance, key, args,defaultValue, fixedCulture, noUpdate);
+        }
+        public static void BindText(this ContentControl label, LanguageManager langMgr, string key,
            object[] args = null,
            string defaultValue = null,
            string fixedCulture = null,
@@ -45,13 +59,21 @@ namespace System.Windows.Controls
                 throw new ArgumentNullException(nameof(label));
             }
 
-            BindLang(label, ContentControl.ContentProperty,
+            BindLang(label, langMgr,ContentControl.ContentProperty,
                 key,
                 args, defaultValue,
                 fixedCulture,
                 noUpdate);
         }
         public static void BindText(this Run label, string key,
+              object[] args = null,
+              string defaultValue = null,
+              string fixedCulture = null,
+              bool noUpdate = false)
+        {
+            BindText(label, LanguageManager.Instance, key, args, fixedCulture, defaultValue, noUpdate);
+        }
+        public static void BindText(this Run label, LanguageManager langMgr, string key,
           object[] args = null,
           string defaultValue = null,
           string fixedCulture = null,
@@ -67,46 +89,38 @@ namespace System.Windows.Controls
                 throw new ArgumentNullException(nameof(key));
             }
 
-            BindLang(label, Run.TextProperty,
+            BindLang(label, langMgr, Run.TextProperty,
                 key,
                 args, defaultValue,
                 fixedCulture,
                 noUpdate);
         }
-        public static Binding CreateLangBinding(string key,
+        public static Binding CreateLangBinding(this LanguageManager langMgr,
+            string key,
             object[] args = null,
             string defaultValue = null,
             string fixedCulture = null,
             bool noUpdate = false)
         {
-            if (key is null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
-
-            var box = new LangStrBox
-            {
-                Args = args,
-                Key = key,
-                DefaultValue = defaultValue,
-                FixedCulture = fixedCulture
-            };
-            if (noUpdate)
-            {
-                box.UpdateValue();
-            }
-            else
-            {
-                box.Init();
-            }
-            var binding = new Binding(nameof(LangStrBox.Value))
+            var box = LangBindExtensions.CreateLangBox(langMgr, key, args, defaultValue, fixedCulture, noUpdate);
+            var binding = new Binding(nameof(ILangStrBox.Value))
             {
                 Source = box,
                 Mode = BindingMode.OneWay
             };
             return binding;
         }
-        public static void BindLang(this FrameworkElement fe,
+        public static void BindLang(this FrameworkElement fe, 
+            DependencyProperty property,
+            string key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            BindLang(fe,LanguageManager.Instance, property, key, args, defaultValue,fixedCulture, noUpdate);
+        }
+        public static void BindLang(this FrameworkElement fe, LanguageManager langMgr,
             DependencyProperty property,
             string key,
             object[] args = null,
@@ -129,7 +143,7 @@ namespace System.Windows.Controls
                 throw new ArgumentNullException(nameof(key));
             }
 
-            var binding = CreateLangBinding(key, args, defaultValue, fixedCulture, noUpdate);
+            var binding = CreateLangBinding(langMgr,key, args, defaultValue, fixedCulture, noUpdate);
             fe.SetBinding(property, binding);
         }
         public static void BindLang(this FrameworkContentElement fe,
@@ -140,6 +154,16 @@ namespace System.Windows.Controls
             string fixedCulture = null,
             bool noUpdate = false)
         {
+            BindLang(fe, LanguageManager.Instance, property, key, args, defaultValue, fixedCulture, noUpdate);
+        }
+        public static void BindLang(this FrameworkContentElement fe, LanguageManager langMgr,
+            DependencyProperty property,
+            string key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
             if (fe is null)
             {
                 throw new ArgumentNullException(nameof(fe));
@@ -155,7 +179,7 @@ namespace System.Windows.Controls
                 throw new ArgumentNullException(nameof(key));
             }
 
-            var binding = CreateLangBinding(key, args, defaultValue, fixedCulture, noUpdate);
+            var binding = CreateLangBinding(langMgr,key, args, defaultValue, fixedCulture, noUpdate);
             fe.SetBinding(property, binding);
         }
     }

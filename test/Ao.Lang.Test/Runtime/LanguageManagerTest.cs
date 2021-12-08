@@ -3,9 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-using System.Windows.Data;
 
-namespace Ao.Lang.Wpf.Test
+namespace Ao.Lang.Runtime.Test
 {
     [TestClass]
     public class LanguageManagerTest

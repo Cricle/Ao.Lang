@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Data;
 using Ao.Lang.Generator;
 using Ao.Lang.Generator.Editor;
+using Ao.Lang.Runtime;
 using Microsoft.Extensions.Configuration;
 
 namespace Ao.Lang.Wpf.Sample

@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>4.0.2</Version>
+        <Version>4.1.0</Version>
         <NoWarn>CS1591;</NoWarn>
         <Description>
         This is cross platform i18n library.
@@ -17,6 +17,7 @@
         <Company>Ao.Lang</Company>
         <Product>Ao.Lang</Product>
         <RepositoryUrl>https://github.com/Cricle/Ao.Lang</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Cricle/Ao.Lang</PackageProjectUrl>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
             <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

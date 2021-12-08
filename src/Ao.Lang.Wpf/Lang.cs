@@ -1,11 +1,5 @@
-﻿using Ao.Lang;
+﻿using Ao.Lang.Runtime;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
@@ -49,12 +43,12 @@ namespace Ao.Lang.Wpf
             Args = args;
         }
 
+        public LanguageManager LangMgr { get; set; }
+
         [ConstructorArgument("key")]
         public string Key { get; set; }
 
         public object[] Args { get; set; }
-
-        public Func<object[]> ArgFetcher { get; set; }
 
         public string FixedCulture { get; set; }
 
@@ -65,28 +59,21 @@ namespace Ao.Lang.Wpf
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             var target = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
-            var box = new LangStrBox
-            {
-                Key = Key,
-                Args = Args,
-                FixedCulture = FixedCulture,
-                DefaultValue = DefaultValue,
-                ArgFetcher = ArgFetcher
-            };
-            if (NoUpdate)
-            {
-                box.UpdateValue();
-            }
-            else
-            {
-                box.Init();
-            }
-            var binding = new Binding(nameof(LangStrBox.Value)) { Source = box };
+            var box = LangBindExtensions.CreateLangBox(LangMgr ?? LanguageManager.Instance,
+                Key,
+                Args,
+                FixedCulture,
+                DefaultValue,
+                NoUpdate);
+            var binding = new Binding(nameof(ILangStrBox.Value)) { Source = box };
             if (target.TargetObject is Setter)
             {
                 return binding;
             }
-            return binding.ProvideValue(serviceProvider);
+            else
+            {
+                return binding.ProvideValue(serviceProvider);
+            }
         }
     }
 }

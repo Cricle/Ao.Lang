@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Ao.Lang.Lookup;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.FileProviders;
 using System;
 using System.Globalization;
+using System.Text;
 
 namespace Ao.Lang.Sample
 {
@@ -10,6 +12,7 @@ namespace Ao.Lang.Sample
     {
         static void Main(string[] args)
         {
+            var h = CultureInfoHelper.IsAvaliableCulture("zh");
             var langSer = new LanguageService();
             langSer.EnsureGetLangNode("zh-cn")
                 .AddJsonFile("lang.zh-cn.json");

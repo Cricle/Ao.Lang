@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Data;
 
-namespace Ao.Lang.Wpf.Test
+namespace Ao.Lang.Runtime.Test
 {
     [TestClass]
     public class LangStrBoxTest

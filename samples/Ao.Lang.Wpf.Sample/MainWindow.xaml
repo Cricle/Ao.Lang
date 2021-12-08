@@ -9,8 +9,9 @@
         Title="MainWindow" Height="450" Width="800">
     <ScrollViewer>
         <StackPanel x:Name="Sp" Orientation="Vertical">
+            <TextBlock x:Name="ObjectBind"/>
             <Button Click="Button_Click">change</Button>
-            <TextBlock Text="{l:Lang Title}" d:Text="123!"/>
+            <TextBlock Text="{l:Lang Title}"/>
             <TextBlock Text="{l:Lang Title}"/>
             <TextBlock Text="{l:Lang Title}"/>
             <TextBlock Text="{l:Lang Title}"/>
