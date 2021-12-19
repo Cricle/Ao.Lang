@@ -1,9 +1,7 @@
 ﻿using Ao.Lang.Lookup;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Ao.Lang.Sources.Test
 {
@@ -24,9 +22,9 @@ namespace Ao.Lang.Sources.Test
             var ass = typeof(LanguageMetadataExtensionsTest).Assembly;
             var langSer = LanguageService.Default;
 
-            Assert.ThrowsException<ArgumentNullException>(() => LanguageMetadataExtensions.RaiseAssemblyResources(null,ass,1));
+            Assert.ThrowsException<ArgumentNullException>(() => LanguageMetadataExtensions.RaiseAssemblyResources(null, ass, 1));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageMetadataExtensions.RaiseAssemblyResources(langSer, null, 1));
-            Assert.ThrowsException<ArgumentNullException>(() => LanguageMetadataExtensions.RaiseAssemblyResources<object>(null,2));
+            Assert.ThrowsException<ArgumentNullException>(() => LanguageMetadataExtensions.RaiseAssemblyResources<object>(null, 2));
         }
         [TestMethod]
         [DataRow("json")]

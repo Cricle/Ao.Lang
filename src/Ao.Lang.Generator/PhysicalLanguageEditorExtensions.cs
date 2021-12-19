@@ -1,7 +1,6 @@
-﻿using Ao.Lang;
+﻿using Ao.Lang.Generator.Editor;
 using Ao.Lang.Lookup;
 using Microsoft.Extensions.Configuration;
-using Ao.Lang.Generator.Editor;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

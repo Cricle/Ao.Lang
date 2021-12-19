@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="Ao.Lang.Uwp.Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Ao.Lang.Uwp.Sample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:l="using:Ao.Lang.Uwp"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical">
+        <TextBlock>
+            <i:Interaction.Behaviors>
+                <l:LangBehavior Property="Text" Key="Title"/>                    
+            </i:Interaction.Behaviors>
+        </TextBlock>
+        <TextBlock l:Lang.Text="Title"/>
+        <Button Click="Button_Click">切换</Button>
+    </StackPanel>
+</Page>

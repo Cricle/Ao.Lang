@@ -1,13 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Memory;
 using System.Threading;
 
 namespace Ao.Lang.Test
@@ -60,7 +57,7 @@ namespace Ao.Lang.Test
             var ser = new LanguageService();
             var node = ser.GetLangNode(culture);
             Assert.IsNull(node);
-            node=ser.EnsureGetLangNode(culture);
+            node = ser.EnsureGetLangNode(culture);
             node.AddInMemoryCollection(new Dictionary<string, string>
             {
                 ["Title"] = "title",
@@ -81,7 +78,7 @@ namespace Ao.Lang.Test
 #if NET452
             Thread.CurrentThread.CurrentCulture = culture;
 #else
-            CultureInfo.CurrentCulture =culture;
+            CultureInfo.CurrentCulture = culture;
 #endif
             var ser = new LanguageService();
             var m = new DefaultLanguageMetadata(culture);
@@ -89,10 +86,10 @@ namespace Ao.Lang.Test
 
             var root = ser.GetRoot(culture);
             var rootx = ser.GetRoot(culture);
-            Assert.IsTrue(root== rootx);
+            Assert.IsTrue(root == rootx);
             ser.ReBuild();
             var root2 = ser.GetRoot(culture);
-            Assert.IsFalse(root== root2);
+            Assert.IsFalse(root == root2);
         }
         [TestMethod]
         public void ReBuildOnChangedIsSyncMedatas()
@@ -125,7 +122,7 @@ namespace Ao.Lang.Test
             var m = new DefaultLanguageMetadata(culture);
             ser.Add(m);
             Assert.IsFalse(ser.IsBuilt(culture));
-            var root=ser.GetRoot(culture);
+            var root = ser.GetRoot(culture);
             Assert.IsTrue(ser.IsBuilt(culture));
         }
         [TestMethod]
@@ -143,7 +140,7 @@ namespace Ao.Lang.Test
         {
             var ser = new LanguageService();
             LanguageService nser = null;
-            bool value=false;
+            bool value = false;
             ser.ReBuildIfCollectionChangedValueChanged += (o, e) =>
             {
                 nser = o;
@@ -161,7 +158,7 @@ namespace Ao.Lang.Test
 #if NET452
             Thread.CurrentThread.CurrentCulture = culture;
 #else
-            CultureInfo.CurrentCulture =culture;
+            CultureInfo.CurrentCulture = culture;
 #endif
             var ser = new LanguageService();
             var node = ser.EnsureGetLangNode(culture);
@@ -183,7 +180,7 @@ namespace Ao.Lang.Test
 #if NET452
             Thread.CurrentThread.CurrentCulture = culture;
 #else
-            CultureInfo.CurrentCulture =culture;
+            CultureInfo.CurrentCulture = culture;
 #endif
             var ser = new LanguageService();
             var node = ser.EnsureGetLangNode(culture);
@@ -191,12 +188,12 @@ namespace Ao.Lang.Test
             {
                 ["Title"] = "title",
                 ["Name"] = "name",
-                ["Format"]="hello{0}world"
+                ["Format"] = "hello{0}world"
             });
-            var title = ser["Format","a"];
+            var title = ser["Format", "a"];
             Assert.AreEqual("helloaworld", title);
 
-            var nothing = ser["q","a"];
+            var nothing = ser["q", "a"];
             Assert.IsNull(nothing);
         }
     }

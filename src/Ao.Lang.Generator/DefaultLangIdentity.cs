@@ -8,7 +8,7 @@ namespace Ao.Lang.Generator
         {
         }
 
-        public DefaultLangIdentity(IEnumerable<string> collection) 
+        public DefaultLangIdentity(IEnumerable<string> collection)
             : base(collection)
         {
         }

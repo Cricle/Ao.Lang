@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Ao.Lang.Runtime
 {
-    public interface ILangStrBox :INotifyPropertyChanged,IDisposable
+    public interface ILangStrBox : INotifyPropertyChanged, IDisposable
     {
         string Value { get; }
 

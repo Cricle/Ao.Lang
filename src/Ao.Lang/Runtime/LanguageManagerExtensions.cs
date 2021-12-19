@@ -33,7 +33,7 @@ namespace Ao.Lang.Runtime
 
             return string.Equals(culture, mgr.CultureInfo.Name, StringComparison.OrdinalIgnoreCase);
         }
-        public static bool SwitchIfNot(this LanguageManager mgr, string culture,CultureInfo newCulture)
+        public static bool SwitchIfNot(this LanguageManager mgr, string culture, CultureInfo newCulture)
         {
             if (mgr is null)
             {
@@ -50,7 +50,7 @@ namespace Ao.Lang.Runtime
                 throw new ArgumentNullException(nameof(newCulture));
             }
 
-            if (IsCulture(mgr,culture))
+            if (IsCulture(mgr, culture))
             {
                 mgr.CultureInfo = newCulture;
                 return true;

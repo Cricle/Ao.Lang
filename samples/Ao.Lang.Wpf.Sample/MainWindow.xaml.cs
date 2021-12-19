@@ -42,7 +42,7 @@ namespace Ao.Lang.Wpf.Sample
                 textblock.BindText("Ao.Lang.Wpf.Sample.Title" + i);
                 Sp.Children.Add(textblock);
             }
-            var m=new MulLang();
+            var m = new MulLang();
             LanguageManager.Instance.BindTo("Ao.Lang.Wpf.Sample.Title0", m, x => x.MyString).Dispose();
             ObjectBind.SetBinding(TextBlock.TextProperty, new Binding(nameof(MulLang.MyString))
             {

@@ -1,9 +1,7 @@
-﻿using Microsoft.Extensions.FileProviders;
+﻿using Microsoft.Extensions.Configuration.Resources;
+using Microsoft.Extensions.FileProviders;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using Microsoft.Extensions.Configuration.Resources;
 
 namespace Microsoft.Extensions.Configuration
 {
@@ -14,7 +12,7 @@ namespace Microsoft.Extensions.Configuration
 #if !NET452
             return builder.Add(configureSource);
 #else
-            var s=new ResourceConfigurationSource();
+            var s = new ResourceConfigurationSource();
             configureSource?.Invoke(s);
             builder.Add(s);
             return builder;
@@ -33,7 +31,7 @@ namespace Microsoft.Extensions.Configuration
             return AddResourceFile(builder, provider: null, path: path, optional: optional, reloadOnChange: reloadOnChange);
         }
 #if NET452
-        public static IConfigurationBuilder AddResourceStream(this IConfigurationBuilder builder,Stream stream)
+        public static IConfigurationBuilder AddResourceStream(this IConfigurationBuilder builder, Stream stream)
         {
             var source = new ResourceStreamConfigurataionSource(stream);
             return builder.Add(source);

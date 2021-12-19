@@ -22,11 +22,11 @@ namespace Ao.Lang.Generator.BenchmarkTest
                 {
                     A = "d" + i,
                     B = "f" + i,
-                    C= "m" + i,
-                    D= "y" + i,
+                    C = "m" + i,
+                    D = "y" + i,
                     CultureStringMapping =
                     {
-                        ["zh-cn"]="你好鸭"+i,
+                        ["zh"]="你好鸭"+i,
                         ["en-us"]="Hello"+i,
                     }
                 });

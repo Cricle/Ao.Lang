@@ -4,10 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Ao.Lang.Test
 {
@@ -21,7 +18,7 @@ namespace Ao.Lang.Test
             var cultureStr = "zh-cn";
             var culture = new CultureInfo(cultureStr);
 
-            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add(null,culture,new IConfigurationSource[0]));
+            Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add(null, culture, new IConfigurationSource[0]));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add<IConfigurationSource>(langSer, culture, null));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add(langSer, (string)null, new IConfigurationSource[0]));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.Add(langSer, (CultureInfo)null, new IConfigurationSource[0]));
@@ -84,21 +81,21 @@ namespace Ao.Lang.Test
 #else
             CultureInfo.CurrentCulture = new CultureInfo("zh-cn");
 #endif
-            var value = LanguageServiceExtensions.GetCurrentValue(langSer,"Title");
-            Assert.AreEqual("title",value);
+            var value = LanguageServiceExtensions.GetCurrentValue(langSer, "Title");
+            Assert.AreEqual("title", value);
         }
         [TestMethod]
         public void CultureIsSupport()
         {
             var langSer = MakeService();
             var value = LanguageServiceExtensions.CultureIsSupport(langSer, "zh-cn");
-            Assert.IsTrue( value);
+            Assert.IsTrue(value);
         }
         [TestMethod]
         public void Add()
         {
             var langSer = MakeService();
-            langSer.Add("en-us", new IConfigurationSource[] 
+            langSer.Add("en-us", new IConfigurationSource[]
             {
 
             });

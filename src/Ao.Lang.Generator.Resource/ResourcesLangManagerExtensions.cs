@@ -5,7 +5,7 @@ namespace Ao.Lang.Generator
 {
     public static class ResourcesLangManagerExtensions
     {
-        
+
         public static ResxLanguageEditor<TLangBlock> CreateResxLanguageEditor<TLangBlock>(this LangManager mgr)
             where TLangBlock : ILangBlock
         {

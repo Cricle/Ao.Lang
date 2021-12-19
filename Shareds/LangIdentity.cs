@@ -1,9 +1,5 @@
-﻿using Ao.Lang.Lookup;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.Serialization;
 
 namespace Ao.Lang.Generator
 {

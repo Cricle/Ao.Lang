@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Ao.Lang.Generator.BenchmarkTest
+﻿namespace Ao.Lang.Generator.BenchmarkTest
 {
     class Program
     {

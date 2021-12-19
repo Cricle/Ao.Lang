@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Resources;
-using System.Text;
-using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.Extensions.Configuration.Resources
 {

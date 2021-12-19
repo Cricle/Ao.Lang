@@ -4,9 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ao.Lang.Test
 {
@@ -16,13 +13,13 @@ namespace Ao.Lang.Test
         [TestMethod]
         public void GivenNullInit_MustThrowException()
         {
-            Assert.ThrowsException<ArgumentNullException>(() => new LanguageRoot(null,new IConfigurationProvider[0]));
+            Assert.ThrowsException<ArgumentNullException>(() => new LanguageRoot(null, new IConfigurationProvider[0]));
         }
         [TestMethod]
         public void InitWithCultureInfo_PropertyValueMustEquals()
         {
             var culture = new CultureInfo("zh-cn");
-            var root=new LanguageRoot(culture, new IConfigurationProvider[0]);
+            var root = new LanguageRoot(culture, new IConfigurationProvider[0]);
             Assert.AreEqual(culture, root.Culture);
         }
         [TestMethod]
@@ -42,7 +39,7 @@ namespace Ao.Lang.Test
             var title = root["Title"];
             Assert.AreEqual("title", title);
             var formatFail = root["Format", null];
-            Assert.AreEqual("hello{0}!",formatFail);
+            Assert.AreEqual("hello{0}!", formatFail);
             var formatSucceed = root["Format", "a"];
             Assert.AreEqual("helloa!", formatSucceed);
         }

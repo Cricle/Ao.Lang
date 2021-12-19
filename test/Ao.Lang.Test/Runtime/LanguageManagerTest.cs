@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace Ao.Lang.Runtime.Test
 {
@@ -39,7 +37,7 @@ namespace Ao.Lang.Runtime.Test
             var mgr = LanguageManager.Instance;
             var c = new CultureInfo("zh-cn");
             mgr.CultureInfo = c;
-            var node=mgr.LangService.EnsureGetLangNode(c);
+            var node = mgr.LangService.EnsureGetLangNode(c);
             Assert.AreEqual(node.Root, mgr.Root);
         }
         [TestMethod]

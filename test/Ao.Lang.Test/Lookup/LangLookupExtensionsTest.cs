@@ -1,11 +1,8 @@
 ﻿using Ao.Lang.Lookup;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ao.Lang.Test.Lookup
 {
@@ -37,8 +34,8 @@ namespace Ao.Lang.Test.Lookup
             Assert.ThrowsException<ArgumentException>(() => LangLookupExtensions.RaiseDirectory(lookup, null));
             Assert.ThrowsException<ArgumentNullException>(() => LangLookupExtensions.RaiseDirectory(null, "a", SearchOption.AllDirectories));
             Assert.ThrowsException<ArgumentException>(() => LangLookupExtensions.RaiseDirectory(lookup, null, SearchOption.AllDirectories));
-            Assert.ThrowsException<ArgumentNullException>(() => LangLookupExtensions.RaiseDirectory(null, "a", SearchOption.AllDirectories,false,false));
-            Assert.ThrowsException<ArgumentException>(() => LangLookupExtensions.RaiseDirectory(lookup, null, SearchOption.AllDirectories,false,false));
+            Assert.ThrowsException<ArgumentNullException>(() => LangLookupExtensions.RaiseDirectory(null, "a", SearchOption.AllDirectories, false, false));
+            Assert.ThrowsException<ArgumentException>(() => LangLookupExtensions.RaiseDirectory(lookup, null, SearchOption.AllDirectories, false, false));
         }
         [TestMethod]
         public void EnableType_LookupMustContains()

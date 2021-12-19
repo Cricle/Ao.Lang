@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Ao.Lang.Generator
+﻿namespace Ao.Lang.Generator
 {
     public interface ILangIdentity
     {

@@ -3,11 +3,8 @@ using Microsoft.Extensions.Configuration.Memory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ao.Lang.Test
 {
@@ -26,7 +23,15 @@ namespace Ao.Lang.Test
         {
             var c = new CultureInfo("zh-cn");
             var m = new DefaultLanguageMetadata(c);
-            Assert.AreEqual(c,m.Culture);
+            Assert.AreEqual(c, m.Culture);
+        }
+        [TestMethod]
+        public void GivenCultureInitAndCapacity_PropertyValueMustEqualInput()
+        {
+            var c = new CultureInfo("zh-cn");
+            var m = new DefaultLanguageMetadata(c, 9);
+            Assert.AreEqual(c, m.Culture);
+            Assert.AreEqual(9, m.Capacity);
         }
         [TestMethod]
         public void GivenAnySourcesInit_PropertyValueMustEqualInput()

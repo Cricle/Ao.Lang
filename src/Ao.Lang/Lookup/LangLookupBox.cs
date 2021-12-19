@@ -50,7 +50,7 @@ namespace Ao.Lang.Lookup
                 {
                     return null;
                 }
-                return name.Substring(last+1, name.Length - last-1);
+                return name.Substring(last + 1, name.Length - last - 1);
             }
         }
 
@@ -80,7 +80,7 @@ namespace Ao.Lang.Lookup
             var sps = name.Split(new[] { split }, StringSplitOptions.RemoveEmptyEntries);
             if (sps.Length > lastRevIndex)
             {
-                return sps[sps.Length - lastRevIndex-1];
+                return sps[sps.Length - lastRevIndex - 1];
             }
             return null;
         }

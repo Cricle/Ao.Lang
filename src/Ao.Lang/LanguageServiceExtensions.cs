@@ -1,18 +1,13 @@
-﻿using Ao.Lang.Lookup;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Threading;
 
 namespace Ao.Lang
 {
     public static class LanguageServiceExtensions
     {
-        public static ILanguageNode EnsureGetLangNode(this ILanguageService service,string culture)
+        public static ILanguageNode EnsureGetLangNode(this ILanguageService service, string culture)
         {
             return service.EnsureGetLangNode(new CultureInfo(culture));
         }
@@ -58,7 +53,7 @@ namespace Ao.Lang
             }
             return null;
         }
-        
+
         public static bool CultureIsSupport(this ILanguageService service, string cultureName)
         {
             if (service is null)
@@ -74,7 +69,7 @@ namespace Ao.Lang
             var cul = new CultureInfo(cultureName);
             return service.CultureIsSupport(cul);
         }
-        public static void Add<TSource>(this ILanguageService service, 
+        public static void Add<TSource>(this ILanguageService service,
             CultureInfo cultureInfo, params TSource[] fileSources)
             where TSource : IConfigurationSource
         {
@@ -100,7 +95,7 @@ namespace Ao.Lang
         {
             Add(service, CultureInfo.CurrentCulture, fileSources);
         }
-        public static void Add<TSource>(this ILanguageService service,string culutre, params TSource[] fileSources)
+        public static void Add<TSource>(this ILanguageService service, string culutre, params TSource[] fileSources)
              where TSource : IConfigurationSource
         {
             var culture = new CultureInfo(culutre);

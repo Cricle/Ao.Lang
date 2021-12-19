@@ -41,14 +41,14 @@ namespace Ao.Lang.Wpf.Test
             Assert.ThrowsException<ArgumentNullException>(() => LangExtensions.BindText(tbx, null));
             Assert.ThrowsException<ArgumentNullException>(() => LangExtensions.BindText(run, null));
 
-            Assert.ThrowsException<ArgumentNullException>(() => LangExtensions.CreateLangBinding(null,"a"));
-            Assert.ThrowsException<ArgumentNullException>(() => LangExtensions.CreateLangBinding(LanguageManager.Instance,null));
+            Assert.ThrowsException<ArgumentNullException>(() => LangExtensions.CreateLangBinding(null, "a"));
+            Assert.ThrowsException<ArgumentNullException>(() => LangExtensions.CreateLangBinding(LanguageManager.Instance, null));
         }
         [TestMethod]
         [STAThread]
         public void CreateBind_MustReturnBinding()
         {
-            var bind = LangExtensions.CreateLangBinding(LanguageManager.Instance,"hello");
+            var bind = LangExtensions.CreateLangBinding(LanguageManager.Instance, "hello");
             Assert.IsNotNull(bind);
         }
         [TestMethod]
@@ -64,7 +64,7 @@ namespace Ao.Lang.Wpf.Test
             var runBind = run.GetBindingExpression(Run.TextProperty);
             Assert.IsNotNull(runBind);
 
-            LangExtensions.BindText(tbx,new LanguageManager(), "hello");
+            LangExtensions.BindText(tbx, new LanguageManager(), "hello");
             tbxBind = tbx.GetBindingExpression(TextBlock.TextProperty);
             Assert.IsNotNull(tbxBind);
             LangExtensions.BindText(run, new LanguageManager(), "hello");

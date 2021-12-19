@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Threading;
-using Microsoft.Extensions.Configuration;
 
 namespace Ao.Lang
 {
     public class DefaultLanguageMetadata : List<IConfigurationSource>, ILanguageMetadata
     {
-        protected DefaultLanguageMetadata()
+        public DefaultLanguageMetadata(CultureInfo cultureInfo)
+            : this(cultureInfo, 0)
         {
 
         }
-        public DefaultLanguageMetadata(CultureInfo cultureInfo)
+        public DefaultLanguageMetadata(CultureInfo cultureInfo, int capacity)
+            : base(capacity)
         {
             if (cultureInfo is null)
             {
@@ -25,6 +22,7 @@ namespace Ao.Lang
 
             Culture = cultureInfo;
         }
+
         public DefaultLanguageMetadata(CultureInfo cultureInfo, IEnumerable<IConfigurationSource> sources)
         {
             if (cultureInfo is null)

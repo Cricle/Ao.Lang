@@ -1,10 +1,6 @@
 ﻿using Ao.Lang.Lookup;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
-using Microsoft.Extensions.FileProviders;
 using System;
-using System.Globalization;
-using System.Text;
 
 namespace Ao.Lang.Sample
 {
@@ -23,12 +19,12 @@ namespace Ao.Lang.Sample
             while (true)
             {
                 var l = Console.ReadLine();
-                if (l=="zh")
+                if (l == "zh")
                 {
                     Console.WriteLine(zhRoot["Title"]);
                     Console.WriteLine(zhRoot["Name"]);
                 }
-                else if(l=="en")
+                else if (l == "en")
                 {
                     Console.WriteLine(enRoot["Title"]);
                     Console.WriteLine(enRoot["Name"]);

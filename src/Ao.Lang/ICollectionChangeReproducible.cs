@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace Ao.Lang
+﻿namespace Ao.Lang
 {
-    public interface ICollectionChangeReproducible: IReproducible
+    public interface ICollectionChangeReproducible : IReproducible
     {
         bool ReBuildIfCollectionChanged { get; set; }
     }

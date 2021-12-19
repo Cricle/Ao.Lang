@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Microsoft.Extensions.Configuration.Resx.Test
@@ -13,7 +10,7 @@ namespace Microsoft.Extensions.Configuration.Resx.Test
     public class ResxHelperTest
     {
         private static readonly string ResxPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Resource1.resx");
-        private void Check(IDictionary<string,string> map)
+        private void Check(IDictionary<string, string> map)
         {
             var title = map["Title"];
             var name = map["Name"];

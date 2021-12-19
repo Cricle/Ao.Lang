@@ -1,11 +1,6 @@
 ﻿using Ao.Lang.Lookup;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ao.Lang.Test.Lookup
 {
@@ -39,8 +34,8 @@ namespace Ao.Lang.Test.Lookup
         {
             var path = "C:\\hello.zh-cn.json";
             var box = new LangLookupBox(path);
-            Assert.AreEqual("hello.zh-cn.json",box.Name);
-            Assert.AreEqual("json",box.Extension);
+            Assert.AreEqual("hello.zh-cn.json", box.Name);
+            Assert.AreEqual("json", box.Extension);
             Assert.AreEqual("zh-cn", box.GetLangIdentity('.'));
             Assert.AreEqual("zh-cn", box.GetLangIdentity('.', 1));
 

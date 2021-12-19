@@ -1,5 +1,4 @@
-﻿using Ao.Lang;
-using Ao.Lang.Generator;
+﻿using Ao.Lang.Generator;
 using Ao.Lang.Generator.Editor;
 using System;
 using System.Globalization;
@@ -15,7 +14,7 @@ namespace EditSome.CompileAndLoad
 
             var langMgr = new LangManager(folder);
             var editor = langMgr.CreateJsonLanguageEditor<LangBlock>();
-            var scope=editor.GetScope("hello");
+            var scope = editor.GetScope("hello");
 
             scope.LangBlocks.Add(new LangBlock
             {
@@ -30,10 +29,10 @@ namespace EditSome.CompileAndLoad
 
             var langSer = editor.ToLanguageService();
 
-            var zhNode=langSer.GetLangNode(new CultureInfo("zh-cn"));
+            var zhNode = langSer.GetLangNode(new CultureInfo("zh-cn"));
             var enNode = langSer.GetLangNode(new CultureInfo("en-us"));
 
-            var cn=zhNode.Root["a"];
+            var cn = zhNode.Root["a"];
             var en = enNode.Root["a"];
             Console.WriteLine("zh-cn=>" + cn);
             Console.WriteLine("en-us=>" + en);

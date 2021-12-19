@@ -26,15 +26,15 @@ namespace Ao.Lang.Runtime
                 throw new ArgumentException($"Property {property} declare type is not assignable from {instance}");
             }
 #else
-            var type= property.DeclaringType;
+            var type = property.DeclaringType;
             var objType = typeof(object);
-            var instanceType=instance.GetType();
+            var instanceType = instance.GetType();
             var ok = false;
-            while (type!=null)
+            while (type != null)
             {
-                if (type== instanceType)
+                if (type == instanceType)
                 {
-                    ok= true;
+                    ok = true;
                     break;
                 }
                 type = type.DeclaringType;
@@ -45,7 +45,7 @@ namespace Ao.Lang.Runtime
             }
 #endif
 
-            if (property.PropertyType!=typeof(string))
+            if (property.PropertyType != typeof(string))
             {
                 throw new ArgumentException($"Property {property} type is not string");
             }
@@ -74,11 +74,13 @@ namespace Ao.Lang.Runtime
             var par1 = Expression.Parameter(typeof(object));
             var par2 = Expression.Parameter(typeof(string));
 
-            var exp = Expression.Call( Expression.Convert(par1,property.DeclaringType),property.SetMethod, par2);
+            var exp = Expression.Call(Expression.Convert(par1, property.DeclaringType), property.SetMethod, par2);
+
+            return Expression.Lambda<StringSetter>(exp, par1, par2)
 #if !NETSTANDARD1_1
-            return Expression.Lambda(exp, par1, par2).CompileFast<StringSetter>();
+                .CompileFast();
 #else
-            return Expression.Lambda<StringSetter>(exp, par1, par2).Compile();
+                .Compile();
 #endif
         }
     }

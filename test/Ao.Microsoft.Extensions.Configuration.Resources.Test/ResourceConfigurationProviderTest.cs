@@ -2,9 +2,7 @@
 using Microsoft.Extensions.FileProviders;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Resources;
-using System.Text;
 
 namespace Ao.Microsoft.Extensions.Configuration.Resources.Test
 {

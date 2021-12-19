@@ -70,10 +70,7 @@ namespace Ao.Lang.Wpf
             {
                 return binding;
             }
-            else
-            {
-                return binding.ProvideValue(serviceProvider);
-            }
+            return binding.ProvideValue(serviceProvider);
         }
     }
 }

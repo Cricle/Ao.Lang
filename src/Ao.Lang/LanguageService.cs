@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
 
 namespace Ao.Lang
 {
@@ -47,7 +42,7 @@ namespace Ao.Lang
                 ReBuildIfCollectionChangedValueChanged?.Invoke(this, value);
             }
         }
-        public IReadOnlyCollection<CultureInfo> SupportCultures => cultureToLangs.Keys.ToArray();
+        public IReadOnlyCollection<CultureInfo> SupportCultures => cultureToLangs.Keys.ToList();
 
         public int Count => sources.Count;
 

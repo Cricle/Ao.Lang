@@ -1,9 +1,7 @@
-﻿using Microsoft.Extensions.FileProviders;
+﻿using Microsoft.Extensions.Configuration.Resx;
+using Microsoft.Extensions.FileProviders;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using Microsoft.Extensions.Configuration.Resx;
 namespace Microsoft.Extensions.Configuration
 {
     public static class ResxConfigurationExtensions
@@ -13,7 +11,7 @@ namespace Microsoft.Extensions.Configuration
 #if NETSTANDARD2_0
             return builder.Add(configureSource);
 #else
-            var s=new ResxConfigurationSource();
+            var s = new ResxConfigurationSource();
             configureSource?.Invoke(s);
             builder.Add(s);
             return builder;

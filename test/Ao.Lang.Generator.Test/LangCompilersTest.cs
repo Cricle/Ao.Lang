@@ -2,16 +2,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ao.Lang.Generator.Test
 {
     [TestClass]
     public class LangCompilersTest
     {
-        private readonly Dictionary<LangIdentity,string> datas= new Dictionary<LangIdentity, string>
+        private readonly Dictionary<LangIdentity, string> datas = new Dictionary<LangIdentity, string>
         {
             [new LangIdentity()] = "a",
             [new LangIdentity { C = "a" }] = "b"

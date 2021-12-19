@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using Microsoft.Extensions.Configuration;
 
 namespace Ao.Lang
 {
@@ -50,7 +47,7 @@ namespace Ao.Lang
         {
             return new LangLookup(langSer);
         }
-        public static void Add(this ILangLookup adders,AddLang addLang)
+        public static void Add(this ILangLookup adders, AddLang addLang)
         {
             if (adders is null)
             {
@@ -89,7 +86,7 @@ namespace Ao.Lang
 
             return RaiseDirectory(adders, folder, SearchOption.TopDirectoryOnly);
         }
-        public static string[] RaiseDirectory(this ILangLookup adders, 
+        public static string[] RaiseDirectory(this ILangLookup adders,
             string folder,
             SearchOption searchOption)
         {
@@ -121,11 +118,11 @@ namespace Ao.Lang
                 throw new ArgumentException($"“{nameof(folder)}”不能为 null 或空。", nameof(folder));
             }
 
-            var files = Directory.GetFiles(folder,"*.*", searchOption);
+            var files = Directory.GetFiles(folder, "*.*", searchOption);
             var okFiles = new List<string>();
             foreach (var item in files)
             {
-                var ok = Raise(adders, item,optional,reloadOnChanged);
+                var ok = Raise(adders, item, optional, reloadOnChanged);
                 if (ok)
                 {
                     okFiles.Add(item);
@@ -134,7 +131,7 @@ namespace Ao.Lang
             return okFiles.ToArray();
         }
 #endif
-        private static bool Raise(ILangLookup lookup,LangLookupBox box)
+        private static bool Raise(ILangLookup lookup, LangLookupBox box)
         {
             foreach (var item in lookup)
             {

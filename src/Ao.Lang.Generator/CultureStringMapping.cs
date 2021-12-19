@@ -8,17 +8,17 @@ namespace Ao.Lang.Generator
         #region 构造函数
 
 
-        public CultureStringMapping(IDictionary<string, string> dictionary) 
-            : base(dictionary,StringComparer.OrdinalIgnoreCase)
+        public CultureStringMapping(IDictionary<string, string> dictionary)
+            : base(dictionary, StringComparer.OrdinalIgnoreCase)
         {
         }
 
-        public CultureStringMapping() 
+        public CultureStringMapping()
             : base(StringComparer.OrdinalIgnoreCase)
         {
         }
 
-        public CultureStringMapping(int capacity) 
+        public CultureStringMapping(int capacity)
             : base(capacity, StringComparer.OrdinalIgnoreCase)
         {
         }

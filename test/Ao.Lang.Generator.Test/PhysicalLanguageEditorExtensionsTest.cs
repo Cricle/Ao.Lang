@@ -1,15 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ao.Lang.Generator;
-using Microsoft.Extensions.Configuration;
-using System.IO;
-using Ao.Lang;
+﻿using Ao.Lang.Generator.Editor;
 using Ao.Lang.Generator.Test.Editor;
-using Ao.Lang.Generator.Editor;
+using Microsoft.Extensions.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.IO;
 
 namespace Ao.Lang.Generator.Test
 {
@@ -57,12 +51,12 @@ namespace Ao.Lang.Generator.Test
             Assert.ThrowsException<ArgumentNullException>(() => PhysicalLanguageEditorExtensions.FindAndAll<LangBlock>(editor, (IConfigurationBuilder)null, false, false));
 
             Assert.ThrowsException<ArgumentNullException>(() => PhysicalLanguageEditorExtensions.ToLanguageService<LangBlock>(null));
-            Assert.ThrowsException<ArgumentNullException>(() => PhysicalLanguageEditorExtensions.ToLanguageService<LangBlock>(null,false,false));
+            Assert.ThrowsException<ArgumentNullException>(() => PhysicalLanguageEditorExtensions.ToLanguageService<LangBlock>(null, false, false));
         }
         [TestMethod]
         public void GivenAnyFiles_FindAndAdd_MustAdded()
         {
-            var dir = new DirectoryInfo(Path.Combine(Environment.CurrentDirectory,"a"));
+            var dir = new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, "a"));
             if (dir.Exists)
             {
                 dir.Delete(true);
@@ -79,7 +73,7 @@ namespace Ao.Lang.Generator.Test
                 scope.Compile(LangIdentityCompiler.Default);
             }
             var langSer = new LanguageService();
-            var fi=jsonEditor.FindAndAll(langSer);
+            var fi = jsonEditor.FindAndAll(langSer);
             Assert.AreEqual(5 * 2, fi.Length);
 
             fi = jsonEditor.FindAndAll(langSer, true, false);
@@ -89,13 +83,13 @@ namespace Ao.Lang.Generator.Test
             fi = jsonEditor.FindAndAll(builder);
             Assert.AreEqual(5 * 2, fi.Length);
 
-            fi = jsonEditor.FindAndAll(builder,true,false);
+            fi = jsonEditor.FindAndAll(builder, true, false);
             Assert.AreEqual(5 * 2, fi.Length);
 
             var ser = jsonEditor.ToLanguageService();
             Assert.IsNotNull(ser);
 
-            ser = jsonEditor.ToLanguageService(false,false);
+            ser = jsonEditor.ToLanguageService(false, false);
             Assert.IsNotNull(ser);
 
             dir.Delete(true);

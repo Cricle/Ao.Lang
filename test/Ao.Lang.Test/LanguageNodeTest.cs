@@ -1,12 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Memory;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Memory;
 using System.Threading;
 
 namespace Ao.Lang.Test
@@ -55,7 +53,7 @@ namespace Ao.Lang.Test
             var root3 = node.Root;
             Assert.AreNotEqual(root2, root3);
             val = root3["Title"];
-            Assert.AreEqual("title",val);
+            Assert.AreEqual("title", val);
         }
         [TestMethod]
         public void WhenRebuildOnChange_GetAny_MustReturnString()

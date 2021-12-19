@@ -1,14 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Markup;
-using CLang=Ao.Lang.Wpf.Lang;
+using CLang = Ao.Lang.Wpf.Lang;
 
 namespace Ao.Lang.Wpf.Test
 {

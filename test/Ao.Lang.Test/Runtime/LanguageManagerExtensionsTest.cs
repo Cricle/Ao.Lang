@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace Ao.Lang.Runtime.Test
 {
@@ -14,10 +12,10 @@ namespace Ao.Lang.Runtime.Test
         {
             Assert.ThrowsException<ArgumentNullException>(() => LanguageManagerExtensions.IsCulture(null, "zh-cn"));
             Assert.ThrowsException<ArgumentException>(() => LanguageManagerExtensions.IsCulture(LanguageManager.Instance, null));
-            
+
             Assert.ThrowsException<ArgumentException>(() => LanguageManagerExtensions.SetCulture(LanguageManager.Instance, null));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageManagerExtensions.SetCulture(null, "zh-cn"));
-            
+
             Assert.ThrowsException<ArgumentNullException>(() => LanguageManagerExtensions.SwitchIfNot(null, "zh-cn", "en-us"));
             Assert.ThrowsException<ArgumentException>(() => LanguageManagerExtensions.SwitchIfNot(LanguageManager.Instance, null, "en-us"));
             Assert.ThrowsException<ArgumentException>(() => LanguageManagerExtensions.SwitchIfNot(LanguageManager.Instance, null, new CultureInfo("zh-cn")));

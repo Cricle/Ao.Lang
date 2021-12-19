@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\eng\pkg.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DefineConstants>UNO_PLATFORM</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Uno.Microsoft.Xaml.Behaviors.Uwp.Managed" Version="2.0.5" />
+    <PackageReference Include="Uno.UI" Version="4.0.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Ao.Lang.Uwp\*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ao.Lang\Ao.Lang.csproj" />
+  </ItemGroup>
+</Project>

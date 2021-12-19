@@ -1,12 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Ao.Lang
 {
@@ -26,7 +22,16 @@ namespace Ao.Lang
         public new ILanguageRoot Build()
         {
             Debug.Assert(Culture != null);
+#if NETSTANDARD1_1||NET452
             var providers = Sources.Select(x => x.Build(this)).ToArray();
+#else
+            var sourceCount = Sources.Count();
+            var providers = new IConfigurationProvider[sourceCount];
+            for (int i = 0; i < sourceCount; i++)
+            {
+                providers[i] = Sources[i].Build(this);
+            }
+#endif
             return new LanguageRoot(Culture, providers);
         }
     }

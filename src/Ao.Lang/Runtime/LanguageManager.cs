@@ -6,19 +6,21 @@ namespace Ao.Lang.Runtime
     public class LanguageManager
     {
         public static readonly LanguageManager Instance = new LanguageManager();
+
         private CultureInfo cultureInfo = CultureInfo.CurrentUICulture;
 
-        private ILanguageService langService= LanguageService.Default;
-        public ILanguageService LangService 
+        private ILanguageService langService = LanguageService.Default;
+
+        public ILanguageService LangService
         {
             get => langService;
-            set 
+            set
             {
-                if (value ==null)
+                if (langService != value)
                 {
-                    throw new ArgumentNullException(nameof(value));
+                    langService = value ?? throw new ArgumentNullException(nameof(value));
+                    LangServiceChanged?.Invoke(value);
                 }
-                langService = value;
             }
         }
         public CultureInfo CultureInfo
@@ -26,17 +28,17 @@ namespace Ao.Lang.Runtime
             get => cultureInfo;
             set
             {
-                if (value == null)
+                if (cultureInfo != value)
                 {
-                    throw new ArgumentNullException(nameof(value));
+                    cultureInfo = value ?? throw new ArgumentNullException(nameof(value));
+                    CultureInfoChanged?.Invoke(value);
                 }
-                cultureInfo = value;
-                CultureInfoChanged?.Invoke(value);
             }
         }
         public ILanguageRoot Root => LangService.GetRoot(CultureInfo);
 
         public event Action<CultureInfo> CultureInfoChanged;
 
+        public event Action<ILanguageService> LangServiceChanged;
     }
 }

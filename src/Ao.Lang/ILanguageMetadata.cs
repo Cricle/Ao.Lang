@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ao.Lang
 {
-    public interface ILanguageMetadata:ICultureIdentity,IEnumerable<IConfigurationSource>
+    public interface ILanguageMetadata : ICultureIdentity, IEnumerable<IConfigurationSource>
     {
     }
 }

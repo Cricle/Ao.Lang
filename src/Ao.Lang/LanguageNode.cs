@@ -60,15 +60,14 @@ namespace Ao.Lang
             {
                 builder.Add(item);
             }
-            var rt= builder.Build();
+            var rt = builder.Build();
             Rebuilt?.Invoke(this, rt);
             return rt;
         }
 
         public IConfigurationBuilder Add(IConfigurationSource source)
         {
-            var m = new DefaultLanguageMetadata(Culture) { source };
-            m.TrimExcess();
+            var m = new DefaultLanguageMetadata(Culture, 1) { source };
             Add(m);
             return this;
         }

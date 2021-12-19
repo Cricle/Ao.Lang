@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 
 namespace Ao.Lang.Lookup
 {
@@ -14,7 +13,7 @@ namespace Ao.Lang.Lookup
             StringComparer.OrdinalIgnoreCase);
 #else
         //https://source.dot.net/#System.Private.CoreLib/CultureData.cs,93714edd02838809
-        private static readonly Dictionary<string, string> RegionNames=
+        private static readonly Dictionary<string, string> RegionNames =
            new Dictionary<string, string>(257 /* prime */, StringComparer.OrdinalIgnoreCase)
            {
                 { "001", "en-001" },
@@ -285,7 +284,7 @@ namespace Ao.Lang.Lookup
 #if !NETSTANDARD1_1
             return avaliableCultures.Contains(culture);
 #else
-            return RegionNames.ContainsKey(culture)|| RegionNameRevs.ContainsKey(culture);
+            return RegionNames.ContainsKey(culture) || RegionNameRevs.ContainsKey(culture);
 #endif
         }
     }

@@ -1,10 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration.Resources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Resources;
-using System.Text;
 
 namespace Ao.Microsoft.Extensions.Configuration.Resources.Test
 {
@@ -65,7 +63,7 @@ namespace Ao.Microsoft.Extensions.Configuration.Resources.Test
             var res = new ResourceWriter(mem);
             res.AddResource("a", "1");
             res.AddResource("b", "2");
-            res.AddResource("q", new byte[] { 1, 2, 3});
+            res.AddResource("q", new byte[] { 1, 2, 3 });
             res.Generate();
             mem.Seek(0, SeekOrigin.Begin);
 

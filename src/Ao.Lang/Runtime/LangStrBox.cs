@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Runtime.CompilerServices;
 
 namespace Ao.Lang.Runtime
 {
@@ -29,7 +28,7 @@ namespace Ao.Lang.Runtime
                         args = new LangValueChangeEventArgs(old, value);
                         ValueChanged.Invoke(this, args);
                     }
-                    if (MulLang!=null)
+                    if (MulLang != null)
                     {
                         if (args == null)
                         {

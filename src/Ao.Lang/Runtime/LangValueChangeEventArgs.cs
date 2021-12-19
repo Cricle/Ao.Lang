@@ -2,7 +2,7 @@
 
 namespace Ao.Lang.Runtime
 {
-    public class LangValueChangeEventArgs:EventArgs
+    public class LangValueChangeEventArgs : EventArgs
     {
         public LangValueChangeEventArgs(string old, string @new)
         {
