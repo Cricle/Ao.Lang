@@ -20,7 +20,7 @@ So it support hot reload, any different types of files(json/xml/ini etc...)
 
 # How to use
 
-1. Install package `Ao.Lang`
+1. Install package `Ao.Lang`, install your target platform package like `Ao.Lang.Wpf`, `Ao.Lang.Uno`
 2. Chose your like string provider file type
     - You can only install `Microsoft.Extensions.Configuration.*` libraries
     - You can install `Ao.Lang.Sources`(It will support *.json, *.xml, *.ini, *.yaml, *.resx, *.resources files)
@@ -80,6 +80,12 @@ textblock = new TextBlock();
 textblock.BindText("Title");
 ```
 
+If you want to bind to object
+
+```csharp
+LangBindExtensions.BindTo<TObj>(langMgr,obj,x=>x.prop);
+```
+
 ## If you want dynamic generator lang
 
 Please Use package `Ao.Lang.Generator`, is implement json and resource compile.
@@ -87,7 +93,7 @@ Please Use package `Ao.Lang.Generator`, is implement json and resource compile.
 # After
 
 - [ ] Add more unit test
-- [ ] Make it support MAUI, Blazor, AvaloniaUI...
+- [√] Make it support MAUI, Blazor, AvaloniaUI, Uno platform...
 
 # Samples
 
@@ -133,7 +139,7 @@ You can watch `samples\Ao.Lang.Sample` or `samples\Ao.Lang.Wpf.Sample`
 |:-:|:-:|
 |1.x.x|In [Nuget](https://www.nuget.org/packages/Ao.Lang/1.3.1)|
 |3.0.0|In [Nuget](https://www.nuget.org/packages/Ao.Lang/3.0.0), Is was a break change for 1.x.x|
-|4.0.0|In [Nuget](https://www.nuget.org/packages/Ao.Lang/4.0.0)(It was a break change for 3.0.0)|
+|4.x.x|In [Nuget](https://www.nuget.org/packages/Ao.Lang/4.0.0)(It was a break change for 3.0.0)|
 
 # Project extensions
 

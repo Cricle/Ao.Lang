@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<package >
+    <metadata>
+    <id>Ao.Lang.Uwp</id>
+    <version>1.0.0</version>
+    <title>Ao.Lang.Uwp</title>
+    <authors>Ao.Lang</authors>
+    <owners>Ao.Lang</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    This is cross platform i18n library.
+    It not only can provider static string, and it can hot reload/hot switch culture, use in wpf xaml etc...
+    This package is base on Microsoft.Extensions.Configuration.
+    If you want some other support files, you can intall package Microsoft.Extensions.Configuration.* or install Ao.Lang.Sources.
+    If you want us it in wpf, you can install Ao.Lang.Wpf.
+    
+    Already implement *.resx and *.resources(or stream) reader. If you wan use embed resources, you can use extensions methods.
+    If you want auto add lang files, you can named file *.zh-cn.json/*.zh-cn.resx to Raise.
+    If you want auto add lang resources, you can named compile rex file *.zh_cn.*.resouces and index your lang identity.
+
+    </description>
+    <releaseNotes>Relase for wpf, uwp, avaloniaui, uno platform</releaseNotes>
+    <tags>ao;lang;i18n;localization;uwp;wpf;avaloniaui;uno</tags>
+    </metadata>
+    <files>
+      <file src="bin\Release\Ao.Lang.Uwp.dll" target="lib\uap10.0"/>
+      <file src="bin\Release\Ao.Lang.Uwp.pdb" target="lib\uap10.0"/>
+      <file src="bin\Release\Ao.Lang.Uwp.pri" target="lib\uap10.0"/>
+
+        <!-- WinMd and IntelliSense files -->
+      <file src="bin\ARM\Release\Ao.Lang.Uwp.dll" target="runtimes\win10-arm"/>
+      <file src="bin\ARM\Release\Ao.Lang.Uwp.pdb" target="runtimes\win10-arm"/>
+      <file src="bin\ARM\Release\Ao.Lang.Uwp.pri" target="runtimes\win10-arm"/>
+      
+      <file src="bin\ARM64\Release\Ao.Lang.Uwp.dll" target="runtimes\win10-arm64"/>
+      <file src="bin\ARM64\Release\Ao.Lang.Uwp.pdb" target="runtimes\win10-arm64"/>
+      <file src="bin\ARM64\Release\Ao.Lang.Uwp.pri" target="runtimes\win10-arm64"/>
+
+
+      <file src="bin\x64\Release\Ao.Lang.Uwp.dll" target="runtimes\win10-x64"/>
+      <file src="bin\x64\Release\Ao.Lang.Uwp.pdb" target="runtimes\win10-x64"/>
+      <file src="bin\x64\Release\Ao.Lang.Uwp.pri" target="runtimes\win10-x64"/>
+
+
+      <file src="bin\x86\Release\Ao.Lang.Uwp.dll" target="runtimes\win10-x86"/>
+      <file src="bin\x86\Release\Ao.Lang.Uwp.pdb" target="runtimes\win10-x86"/>
+      <file src="bin\x86\Release\Ao.Lang.Uwp.pri" target="runtimes\win10-x86"/>
+
+    </files>
+</package>
