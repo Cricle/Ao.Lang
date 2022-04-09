@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 
 namespace Ao.Lang
@@ -11,53 +12,26 @@ namespace Ao.Lang
     /// </summary>
     public static class LanguageMetadataExtensions
     {
-        public static string[] RaiseAssemblyResources<TAssemblyType>(this ILanguageService langSer, int langRevIndex)
+        public static string[] RaiseAssemblyResources<T>(this ILanguageService langSer,
+            int langRevIndex)
         {
-            if (langSer is null)
-            {
-                throw new ArgumentNullException(nameof(langSer));
-            }
-
-            var ass = typeof(TAssemblyType).Assembly;
-            return RaiseAssemblyResources(langSer, ass, langRevIndex);
+            return RaiseAssemblyResources(langSer, typeof(T).Assembly, langRevIndex);
         }
         public static string[] RaiseAssemblyResources(this ILanguageService langSer,
             Assembly assembly,
             int langRevIndex)
         {
-            if (langSer is null)
-            {
-                throw new ArgumentNullException(nameof(langSer));
-            }
-
-            if (assembly is null)
-            {
-                throw new ArgumentNullException(nameof(assembly));
-            }
-
-            var added = new List<string>();
-            var names = assembly.GetManifestResourceNames();
-            foreach (var item in names)
-            {
-                if (!item.EndsWith(".resources"))
-                {
-                    continue;
-                }
-                var sps = item.Split('.');
-                if (sps.Length > 1 && sps.Length >= langRevIndex)
-                {
-                    var lang = sps[sps.Length - langRevIndex - 1].Replace('_', '-');
-                    if (CultureInfoHelper.IsAvaliableCulture(lang))
-                    {
-                        var stream = assembly.GetManifestResourceStream(item);
-                        var node = langSer.EnsureGetLangNode(lang);
-                        node.AddResourceStream(stream);
-                        added.Add(item);
-                    }
-                }
-            }
-            return added.ToArray();
+            return LangLookupExtensions.RaiseAssemblyResources(langSer,
+                assembly, 
+                ".resources", 
+                langRevIndex,AddResource);
         }
+
+        private static void AddResource(ILanguageNode node, Stream stream, string lang)
+        {
+            node.AddResourceStream(stream);
+        }
+
         public static void EnableJson(this ILangLookup lookup)
         {
             if (lookup is null)

@@ -7,7 +7,7 @@ namespace Ao.Lang
     {
         string this[string key] { get; }
         string this[string key, params object[] args] { get; }
-        IReadOnlyCollection<CultureInfo> SupportCultures { get; }
+        IReadOnlyList<CultureInfo> SupportCultures { get; }
         ILanguageRoot GetRoot(CultureInfo cultureInfo);
         bool CultureIsSupport(CultureInfo cultureInfo);
         bool IsBuilt(CultureInfo cultureInfo);

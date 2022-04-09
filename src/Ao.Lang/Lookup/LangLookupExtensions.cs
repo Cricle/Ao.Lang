@@ -3,11 +3,73 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
 
 namespace Ao.Lang
 {
+    public delegate void RaiseNodeHandle(ILanguageNode node,Stream stream, string lang);
     public static class LangLookupExtensions
     {
+#if !NETSTANDARD1_1
+        public static string[] RaiseAssemblyResources<TAssemblyType>(this ILanguageService langSer,
+            string extensions,
+            int langRevIndex,
+            RaiseNodeHandle nodeAction)
+        {
+            if (langSer is null)
+            {
+                throw new ArgumentNullException(nameof(langSer));
+            }
+
+            var ass = typeof(TAssemblyType).Assembly;
+            return RaiseAssemblyResources(langSer, ass, extensions, langRevIndex, nodeAction);
+        }
+#endif
+        public static string[] RaiseAssemblyResources(this ILanguageService langSer,
+            Assembly assembly,
+            string extensions,
+            int langRevIndex,
+            RaiseNodeHandle nodeAction)
+        {
+            if (langSer is null)
+            {
+                throw new ArgumentNullException(nameof(langSer));
+            }
+
+            if (assembly is null)
+            {
+                throw new ArgumentNullException(nameof(assembly));
+            }
+
+            if (nodeAction is null)
+            {
+                throw new ArgumentNullException(nameof(nodeAction));
+            }
+
+            var added = new List<string>();
+            var names = assembly.GetManifestResourceNames();
+            foreach (var item in names)
+            {
+                if (!item.EndsWith(extensions))
+                {
+                    continue;
+                }
+                var sps = item.Split('.');
+                if (sps.Length > 1 && sps.Length >= langRevIndex)
+                {
+                    var lang = sps[sps.Length - langRevIndex - 1].Replace('_', '-');
+                    if (CultureInfoHelper.IsAvaliableCulture(lang))
+                    {
+                        var stream = assembly.GetManifestResourceStream(item);
+                        var node = langSer.EnsureGetLangNode(lang);
+                        nodeAction(node,stream, lang);
+                        //node.AddResourceStream(stream);
+                        added.Add(item);
+                    }
+                }
+            }
+            return added.ToArray();
+        }
         public static void EnableFileType(this ILangLookup lookup,
            string extensions,
            Action<ILanguageNode, LangLookupBox> addition)

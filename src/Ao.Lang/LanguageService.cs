@@ -42,7 +42,7 @@ namespace Ao.Lang
                 ReBuildIfCollectionChangedValueChanged?.Invoke(this, value);
             }
         }
-        public IReadOnlyCollection<CultureInfo> SupportCultures => cultureToLangs.Keys.ToList();
+        public IReadOnlyList<CultureInfo> SupportCultures => cultureToLangs.Keys.ToList();
 
         public int Count => sources.Count;
 
