@@ -4,9 +4,6 @@
     <TargetFrameworks>net452;netcoreapp3.0;net5.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="FastExpressionCompiler" Version="3.2.1" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Ao.Lang\Ao.Lang.csproj" />
