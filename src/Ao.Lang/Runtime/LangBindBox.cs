@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
-#if !NETSTANDARD1_1
-using FastExpressionCompiler;
-#endif
 
 namespace Ao.Lang.Runtime
 {
@@ -77,11 +74,7 @@ namespace Ao.Lang.Runtime
             var exp = Expression.Call(Expression.Convert(par1, property.DeclaringType), property.SetMethod, par2);
 
             return Expression.Lambda<StringSetter>(exp, par1, par2)
-#if !NETSTANDARD1_1
-                .CompileFast();
-#else
                 .Compile();
-#endif
         }
     }
 }
