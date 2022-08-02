@@ -1,12 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\eng\pkg.props" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <DefineConstants>$(DefineConstants);AVALONIAUI_PLATFORM</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.10.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Ao.Lang.Wpf\*.cs" />
   </ItemGroup>
 
   <ItemGroup>

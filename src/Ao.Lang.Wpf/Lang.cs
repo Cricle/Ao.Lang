@@ -4,6 +4,9 @@ using System;
 using System.Windows.Data;
 using System.Windows.Markup;
 using System.Windows;
+#elif AVALONIAUI_PLATFORM
+using Avalonia.Data;
+using Avalonia.Markup.Xaml;
 #else
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
@@ -16,6 +19,8 @@ namespace Ao.Lang.Uno
 namespace Ao.Lang.Wpf
 #elif UWP_PLATFORM
 namespace Ao.Lang.Uwp
+#elif AVALONIAUI_PLATFORM
+namespace Ao.Lang.AvaloniaUI
 #endif
 {
     public class Lang : MarkupExtension
@@ -66,7 +71,7 @@ namespace Ao.Lang.Uwp
         public string DefaultValue { get; set; }
 
         public bool NoUpdate { get; set; }
-#if WPF_PLATFORM
+#if WPF_PLATFORM || AVALONIAUI_PLATFORM
         public override object ProvideValue(IServiceProvider serviceProvider)
 #else
         protected override object ProvideValue()
@@ -88,6 +93,13 @@ namespace Ao.Lang.Uwp
                 return binding;
             }
             return binding.ProvideValue(serviceProvider);
+#elif AVALONIAUI_PLATFORM
+            var binding = new Binding
+            {
+                Path = nameof(ILangStrBox.Value),
+                Source = box
+            };
+            return binding;
 #else
             var binding = new Binding
             {
