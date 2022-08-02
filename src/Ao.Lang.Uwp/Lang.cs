@@ -1,70 +1,36 @@
 ﻿using Ao.Lang.Runtime;
-using System;
-using System.Collections.Generic;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Markup;
 
 #if UNO_PLATFORM
 namespace Ao.Lang.Uno
+#elif WPF_PLATFORM
+namespace Ao.Lang.Wpf
 #elif UWP_PLATFORM
 namespace Ao.Lang.Uwp
 #endif
 {
-    public static class Lang
+    public class LangEx : MarkupExtension
     {
-        private static readonly Dictionary<Type, IControlLang> controlBindMap = new Dictionary<Type, IControlLang>();
+        public string Path { get; set; }
 
-        static Lang()
-        {
-            Add(TextBoxLang.Instance);
-            Add(TextBlockLang.Instance);
-            Add(RunLang.Instance);
-            Add(ToolTipLang.Instance);
-        }
+        public object Arg { get; set; }
 
-        public static void Add(IControlLang lang)
+        protected override object ProvideValue()
         {
-            if (lang is null)
+            var box = LangBindExtensions.CreateLangBox(LanguageManager.Instance,
+                Path,
+                null,
+                null,
+                null,
+                false);
+            var bd = new Binding
             {
-                throw new ArgumentNullException(nameof(lang));
-            }
-            controlBindMap[lang.SupportType] = lang;
-        }
-
-        private static LanguageManager langManager = LanguageManager.Instance;
-
-        public static LanguageManager LangManager
-        {
-            get => langManager;
-            set
-            {
-                langManager = value ?? throw new ArgumentNullException(nameof(value));
-            }
-        }
-
-        public static string GetText(DependencyObject obj)
-        {
-            return (string)obj.GetValue(TextProperty);
-        }
-
-        public static void SetText(DependencyObject obj, string value)
-        {
-            obj.SetValue(TextProperty, value);
-        }
-
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.RegisterAttached("Text", typeof(string), typeof(Lang), new PropertyMetadata(null, OnPropertyChanged));
-
-        private static void OnPropertyChanged(DependencyObject @object, DependencyPropertyChangedEventArgs e)
-        {
-            var key = (string)e.NewValue;
-            if (!string.IsNullOrEmpty(key))
-            {
-                if (controlBindMap.TryGetValue(@object.GetType(), out var controlLang))
-                {
-                    var ctx = new ControlLangBindContext(@object, e, langManager);
-                    controlLang.Bind(ctx);
-                }
-            }
+                Path= new PropertyPath(nameof(ILangStrBox.Value)),
+                Source =box
+            };
+            return bd;
         }
     }
 }

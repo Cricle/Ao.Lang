@@ -11,16 +11,16 @@
         <StackPanel x:Name="Sp" Orientation="Vertical">
             <TextBlock x:Name="ObjectBind"/>
             <Button Click="Button_Click">change</Button>
-            <TextBlock Text="{l:Lang Title}"/>
-            <TextBlock Text="{l:Lang Title}"/>
-            <TextBlock Text="{l:Lang Title}"/>
-            <TextBlock Text="{l:Lang Title}"/>
-            <TextBlock Text="{l:Lang Title}"/>
-            <TextBlock Text="{l:Lang Title}"/>
-            <TextBlock Text="{l:Lang Title}"/>
-            <TextBlock Text="{l:Lang Title}"/>
-            <TextBlock Text="{l:Lang Title}"/>
-            <TextBlock Text="{l:Lang Title}"/>
+            <TextBlock Text="{l:Lang Name}"/>
+            <TextBlock Text="{l:Lang Titlex}"/>
+            <TextBlock Text="{l:Lang Titlex}"/>
+            <TextBlock Text="{l:Lang Titlex}"/>
+            <TextBlock Text="{l:Lang Titlex}"/>
+            <TextBlock Text="{l:Lang Titlex}"/>
+            <TextBlock Text="{l:Lang Titlex}"/>
+            <TextBlock Text="{l:Lang Titlex}"/>
+            <TextBlock Text="{l:Lang Titlex}"/>
+            <TextBlock Text="{l:Lang Titlex}"/>
             <!--<ListView x:Name="Lv" VirtualizingPanel.IsVirtualizing="True">
             <ListView.ItemTemplate>
                 <DataTemplate>

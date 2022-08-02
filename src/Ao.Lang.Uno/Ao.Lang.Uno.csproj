@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <DefineConstants>UNO_PLATFORM</DefineConstants>
+    <DefineConstants>$(DefineConstants);UNO_PLATFORM</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,7 +11,7 @@
     <PackageReference Include="Uno.UI" Version="4.0.11" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Ao.Lang.Uwp\*.cs" />
+    <Compile Include="..\Ao.Lang.Wpf\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ao.Lang\Ao.Lang.csproj" />

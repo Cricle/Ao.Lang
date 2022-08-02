@@ -74,7 +74,7 @@ namespace Ao.Lang
 
         IConfigurationRoot IConfigurationBuilder.Build()
         {
-            throw new NotSupportedException("Please use Root property!");
+            throw new NotSupportedException("Please ILanguageRoot Build()!");
         }
     }
 }

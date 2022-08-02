@@ -11,12 +11,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Orientation="Vertical">
-        <TextBlock>
-            <i:Interaction.Behaviors>
-                <l:LangBehavior Property="Text" Key="Title"/>                    
-            </i:Interaction.Behaviors>
-        </TextBlock>
-        <TextBlock l:Lang.Text="Title"/>
+        <TextBlock Text="{l:Lang Key=Title}"/>
         <Button Click="Button_Click">切换</Button>
     </StackPanel>
 </Page>

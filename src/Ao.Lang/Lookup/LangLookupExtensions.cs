@@ -63,7 +63,6 @@ namespace Ao.Lang
                         var stream = assembly.GetManifestResourceStream(item);
                         var node = langSer.EnsureGetLangNode(lang);
                         nodeAction(node,stream, lang);
-                        //node.AddResourceStream(stream);
                         added.Add(item);
                     }
                 }
