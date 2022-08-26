@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\eng\ext.props" />
+  <Import Project="..\..\eng\pkg.props" />
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <Description>It support *.resx or stream configuration.</Description>

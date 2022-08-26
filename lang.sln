@@ -55,7 +55,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.AvaloniaUI.Sample",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eng", "eng", "{ADE9C08D-B203-4402-9BE7-51B912829227}"
 	ProjectSection(SolutionItems) = preProject
-		eng\ext.props = eng\ext.props
 		eng\pkg.props = eng\pkg.props
 		eng\sources.props = eng\sources.props
 	EndProjectSection

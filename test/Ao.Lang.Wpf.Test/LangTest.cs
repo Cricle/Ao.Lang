@@ -15,43 +15,12 @@ namespace Ao.Lang.Wpf.Test
         {
             var l = new CLang();
             Assert.IsNull(l.Key);
-            Assert.IsNull(l.Args);
+            Assert.AreEqual(0,l.Args.Capacity);
 
 
             l = new CLang("hello");
             Assert.AreEqual("hello", l.Key);
 
-            var args = new object[] { 1 };
-            l = new CLang("h", args);
-            Assert.AreEqual("h", l.Key);
-            Assert.AreEqual(args, l.Args);
-
-            l = new CLang("h", 1);
-            Assert.AreEqual("h", l.Key);
-            Assert.AreEqual(1, l.Args[0]);
-            Assert.AreEqual(1, l.Args.Length);
-
-            l = new CLang("h", 1, 2);
-            Assert.AreEqual("h", l.Key);
-            Assert.AreEqual(1, l.Args[0]);
-            Assert.AreEqual(2, l.Args[1]);
-            Assert.AreEqual(2, l.Args.Length);
-
-            l = new CLang("h", 1, 2, 3);
-            Assert.AreEqual("h", l.Key);
-            Assert.AreEqual(1, l.Args[0]);
-            Assert.AreEqual(2, l.Args[1]);
-            Assert.AreEqual(3, l.Args[2]);
-            Assert.AreEqual(3, l.Args.Length);
-
-
-            l = new CLang("h", 1, 2, 3, 4);
-            Assert.AreEqual("h", l.Key);
-            Assert.AreEqual(1, l.Args[0]);
-            Assert.AreEqual(2, l.Args[1]);
-            Assert.AreEqual(3, l.Args[2]);
-            Assert.AreEqual(4, l.Args[3]);
-            Assert.AreEqual(4, l.Args.Length);
         }
         class ValueProvideValueTarget : IProvideValueTarget
         {
