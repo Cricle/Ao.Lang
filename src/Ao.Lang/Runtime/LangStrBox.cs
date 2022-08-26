@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 
 namespace Ao.Lang.Runtime
 {
     internal class LangStrBox : ILangStrBox
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private static readonly PropertyChangedEventArgs valueChangedEventArgs = new PropertyChangedEventArgs(nameof(Value));
+        internal static readonly PropertyChangedEventArgs valueChangedEventArgs = new PropertyChangedEventArgs(nameof(Value));
 
         private string value;
 
@@ -40,6 +42,9 @@ namespace Ao.Lang.Runtime
             }
         }
 
+        private bool hasOutterArg;
+        private IList args;
+
         public LanguageManager LangMgr { get; set; }
 
         public ILanguageRoot LangRoot { get; set; }
@@ -48,13 +53,21 @@ namespace Ao.Lang.Runtime
 
         public string Key { get; set; }
 
-        public object[] Args { get; set; }
+        public IList Args
+        {
+            get => args;
+            set
+            {
+                args = value;
+                hasOutterArg = value != null && value.OfType<ILangArgument>().Any();
+            }
+        }
 
         public string FixedCulture { get; set; }
 
         public string DefaultValue { get; set; }
 
-        IReadOnlyList<object> ILangStrBox.Args => Args;
+        IReadOnlyList<object> ILangStrBox.Args => args?.Cast<object>().ToList();
 
         private IDisposable disposable;
 
@@ -101,7 +114,35 @@ namespace Ao.Lang.Runtime
         }
         internal void UpdateValue()
         {
-            Value = LangRoot?[Key, Args] ?? DefaultValue;
+            if (LangRoot!=null)
+            {
+                if (hasOutterArg)
+                {
+                    var args = new object[Args.Count];
+                    for (int i = 0; i < Args.Count; i++)
+                    {
+                        var arg = Args[i];
+                        if (arg is ILangArgument getter)
+                        {
+                            args[i] = getter.Value;
+                        }
+                        else
+                        {
+                            args[i] = arg;
+                        }
+                    }
+                    Value = LangRoot[Key, args] ?? DefaultValue;
+                }
+                else
+                {
+                    Value = LangRoot[Key, Args] ?? DefaultValue;
+                }
+            }
+            else
+            {
+                Value = null;
+            }
+            
         }
 
         private void RaiseCultureInfoChanged(CultureInfo cultureInfo)
@@ -110,8 +151,42 @@ namespace Ao.Lang.Runtime
         }
         public void Dispose()
         {
+            Stop();
             LanguageManager.Instance.CultureInfoChanged -= RaiseCultureInfoChanged;
             GC.SuppressFinalize(this);
+        }
+
+        public void Start()
+        {
+            if (args != null)
+            {
+                foreach (var arg in args)
+                {
+                    if (arg is ILangArgument npc)
+                    {
+                        npc.Updated += OnNpcUpdated;
+                    }
+                }
+            }
+        }
+
+        private void OnNpcUpdated(object sender, EventArgs e)
+        {
+            UpdateValue();
+        }
+
+        public void Stop()
+        {
+            if (args != null)
+            {
+                foreach (var arg in args)
+                {
+                    if (arg is ILangArgument npc)
+                    {
+                        npc.Updated -= OnNpcUpdated;
+                    }
+                }
+            }
         }
     }
 }

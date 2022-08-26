@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using LExpression = System.Linq.Expressions;
 
@@ -9,7 +11,7 @@ namespace Ao.Lang.Runtime
         public static ILangStrBox BindTo<T>(this LanguageManager langMgr, string key,
             T instance,
             LExpression.Expression<Func<T, object>> propertySelector,
-            object[] args = null,
+            IList args = null,
             string defaultValue = null,
             string fixedCulture = null,
             bool noUpdate = false)
@@ -34,7 +36,7 @@ namespace Ao.Lang.Runtime
         public static ILangStrBox BindTo(this LanguageManager langMgr, string key,
             object instance,
             PropertyInfo property,
-            object[] args = null,
+            IList args = null,
             string defaultValue = null,
             string fixedCulture = null,
             bool noUpdate = false)
@@ -54,7 +56,7 @@ namespace Ao.Lang.Runtime
             return CreateLangBox(langMgr, key, mul, args, defaultValue, fixedCulture, noUpdate);
         }
         public static ILangStrBox BindTo(this LanguageManager langMgr, string key, IMulLang lang,
-            object[] args = null,
+            IList args = null,
             string defaultValue = null,
             string fixedCulture = null,
             bool noUpdate = false)
@@ -62,7 +64,7 @@ namespace Ao.Lang.Runtime
             return CreateLangBox(langMgr, key, lang, args, defaultValue, fixedCulture, noUpdate);
         }
         public static ILangStrBox CreateLangBox(this LanguageManager langMgr, string key,
-            object[] args = null,
+            IList args = null,
             string defaultValue = null,
             string fixedCulture = null,
             bool noUpdate = false)
@@ -70,7 +72,7 @@ namespace Ao.Lang.Runtime
             return CreateLangBox(langMgr, key, null, args, defaultValue, fixedCulture, noUpdate);
         }
         private static ILangStrBox CreateLangBox(this LanguageManager langMgr, string key, IMulLang mulLang,
-            object[] args = null,
+            IList args = null,
             string defaultValue = null,
             string fixedCulture = null,
             bool noUpdate = false)

@@ -5,22 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ao.Lang.Wpf.Sample"
         xmlns:l="https://github.com/Cricle/Ao.Lang"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:coll="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <ScrollViewer>
         <StackPanel x:Name="Sp" Orientation="Vertical">
+            <TextBox x:Name="Tbx" Text="123"/>
             <TextBlock x:Name="ObjectBind"/>
             <Button Click="Button_Click">change</Button>
             <TextBlock Text="{l:Lang Name}"/>
             <TextBlock Text="{l:Lang Titlex}"/>
-            <TextBlock Text="{l:Lang Titlex}"/>
-            <TextBlock Text="{l:Lang Titlex}"/>
-            <TextBlock Text="{l:Lang Titlex}"/>
-            <TextBlock Text="{l:Lang Titlex}"/>
-            <TextBlock Text="{l:Lang Titlex}"/>
-            <TextBlock Text="{l:Lang Titlex}"/>
-            <TextBlock Text="{l:Lang Titlex}"/>
-            <TextBlock Text="{l:Lang Titlex}"/>
+            <TextBlock x:Name="XmlBind"
+                       DataContext="{Binding ElementName=Tbx}">
+                <TextBlock.Text>
+                    <l:Lang Key="F1">
+                        <l:LangArgument Value="{Binding DataContext.Text}"/>
+                        <l:LangArgument Value="{Binding DataContext.DataContext.A}"/>
+                    </l:Lang>
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock x:Name="BindArgs">
+            </TextBlock>
+
             <!--<ListView x:Name="Lv" VirtualizingPanel.IsVirtualizing="True">
             <ListView.ItemTemplate>
                 <DataTemplate>

@@ -24,15 +24,9 @@ namespace Ao.Lang.AvaloniaUI.Sample
             tbx.BindText("Title");
             var btn = new Button { Content="ÇÐ»»"};
             btn.Click += Btn_Click;
-            Content = new StackPanel
-            {
-                Orientation= Orientation.Vertical,
-                Children =
-                {
-                    tbx,
-                    btn
-                }
-            };
+            var sp = Content as StackPanel;
+            sp.Children.Add(tbx);
+            sp.Children.Add(btn);
         }
 
         private void Btn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

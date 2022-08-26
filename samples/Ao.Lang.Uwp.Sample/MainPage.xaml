@@ -6,12 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:l="using:Ao.Lang.Uwp"
-    xmlns:i="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Orientation="Vertical">
         <TextBlock Text="{l:Lang Key=Title}"/>
         <Button Click="Button_Click">切换</Button>
+        <TextBox x:Name="Tbx" Text="123"/>
+        <TextBlock DataContext="{Binding ElementName=Tbx}">
+            <TextBlock.Text>
+                <l:Lang Key="F1">
+                    <l:LangArgument Value="{Binding Text}"/>
+                </l:Lang>
+            </TextBlock.Text>
+        </TextBlock>
     </StackPanel>
 </Page>

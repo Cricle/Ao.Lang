@@ -6,4 +6,16 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Ao.Lang.AvaloniaUI.Sample.MainWindow"
         Title="Ao.Lang.AvaloniaUI.Sample">
+  <StackPanel>
+    <TextBox x:Name="Tbx" Text="123"/>
+    <TextBlock DataContext="{Binding ElementName=Tbx}">
+      <TextBlock.Text>
+        <l:Lang Key="F1">
+          <l:Lang.Args>
+            <l:LangArgument Value="{Binding Text}"/>
+          </l:Lang.Args>
+        </l:Lang>
+      </TextBlock.Text>
+    </TextBlock>
+  </StackPanel>
 </Window>

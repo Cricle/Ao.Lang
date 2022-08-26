@@ -6,6 +6,10 @@ using System.Windows.Data;
 
 namespace Ao.Lang.Wpf.Sample
 {
+    public class Q
+    {
+        public string A { get; set; }
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -32,6 +36,7 @@ namespace Ao.Lang.Wpf.Sample
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
+            DataContext = new Q { A = "123" };
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -48,7 +53,17 @@ namespace Ao.Lang.Wpf.Sample
             {
                 Source = m
             });
-
+            var box = LanguageManager.Instance.CreateLangBox("F1", new object[]
+            {
+                new DependencyArgument(Tbx,TextBox.TextProperty),
+                new DefaultLangArgument{Value="123"}
+            });
+            
+            box.Start();
+            BindArgs.SetBinding(TextBlock.TextProperty, new Binding(nameof(ILangStrBox.Value))
+            {
+                Source = box
+            });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

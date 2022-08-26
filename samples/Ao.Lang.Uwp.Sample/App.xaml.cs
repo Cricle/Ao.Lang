@@ -34,12 +34,14 @@ namespace Ao.Lang.Uwp.Sample
             var root = inst.LangService.EnsureGetLangNode("zh-CN");
             root.AddInMemoryCollection(new Dictionary<string, string>
             {
-                ["Title"]="标题"
+                ["Title"]="标题",
+                ["F1"]= "你好{0}, 哈哈哈!"
             }); 
             root = inst.LangService.EnsureGetLangNode("en-US");
             root.AddInMemoryCollection(new Dictionary<string, string>
             {
-                ["Title"] = "title"
+                ["Title"] = "title",
+                ["F1"] = "Hello {0}, hahaha!"
             });
             this.InitializeComponent();
             this.Suspending += OnSuspending;

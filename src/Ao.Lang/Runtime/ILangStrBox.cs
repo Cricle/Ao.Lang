@@ -22,6 +22,10 @@ namespace Ao.Lang.Runtime
 
         IMulLang MulLang { get; }
 
+        void Start();
+
+        void Stop();
+
         event EventHandler<LangValueChangeEventArgs> ValueChanged;
     }
 }
