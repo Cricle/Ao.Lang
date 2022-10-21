@@ -133,6 +133,8 @@ ser.RaiseAssemblyResources<App>(2);
 
 You can watch `samples\Ao.Lang.Sample` or `samples\Ao.Lang.Wpf.Sample`
 
+Follow https://github.com/Cricle/Ao.Lang/issues/2 it can preview in design time.
+
 ## Project schedule
 
 |Version|Status|
