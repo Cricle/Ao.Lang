@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Strings\*\*.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Ao.Lang.Wpf\Ao.Lang.Wpf.csproj" />
+    <ProjectReference Include="..\..\src\Ao.Lang\Ao.Lang.csproj" />
+    <ProjectReference Include="..\..\src\Ao.Microsoft.Extensions.Configuration.Resources\Ao.Microsoft.Extensions.Configuration.Resources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Strings\*\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Strings\zh_CN\main.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>main.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Strings\zh_CN\main.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>main.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

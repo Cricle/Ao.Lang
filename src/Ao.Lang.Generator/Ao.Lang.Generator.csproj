@@ -7,7 +7,6 @@
     <ProjectReference Include="..\Ao.Lang\Ao.Lang.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <Compile Remove="Editor\"></Compile>
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0"/>
     <PackageReference Include="System.IO" Version="4.3.0" />
   </ItemGroup>
