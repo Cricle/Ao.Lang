@@ -1,4 +1,5 @@
 {
   "title": "Shop",
-  "buy": "bug"
+  "buy": "bug",
+  "welcome": "Welcome {0} go shop!"
 }

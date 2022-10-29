@@ -11,6 +11,14 @@
     <StackPanel>
         <Button Content="{l:Lang QQQ}" Foreground="Red" Width="100" Height="100"/>
         <Button Content="{l:Lang buy}" Foreground="Red" Width="100" Height="100"/>
-        <Button Content="{l:Lang title}" Foreground="Red" Width="100" Height="100"/>
+        <Button Foreground="Red" Width="100" Height="100"
+                DataContext="{Binding ElementName=Tbx}">
+            <Button.Content>
+                <l:Lang Key="welcome">
+                    <l:LangArgument Value="{Binding DataContext.Text}"/>
+                </l:Lang>
+            </Button.Content>
+        </Button>
+        <TextBox x:Name="Tbx" Text="123"></TextBox>
     </StackPanel>
 </Window>
