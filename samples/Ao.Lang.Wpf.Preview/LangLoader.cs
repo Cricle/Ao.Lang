@@ -6,29 +6,22 @@ using System.IO;
 
 namespace Ao.Lang.Wpf.Preview
 {
-    internal class LanguageLoader : FileLanguageLoaderBase
-    {
-        protected override void CoreLoadCulture(ILanguageService langSer, ILanguageNode root, FileInfo input)
-        {
-            if (string.Equals(input.Extension,".json", StringComparison.OrdinalIgnoreCase))
-            {
-                root.AddJsonFile(input.FullName);
-            }
-        }
-    }
-    internal class LangLoader
+    internal class LangLoader : FileLanguageLoaderBase
     {
         public static void Load()
         {
             LanguageManager.Instance.SetCulture("zh-CN");
             var ser = LanguageManager.Instance.LangService;
-            ser.AddFolder(new DirectoryInfo(GetStringFile()), new LanguageLoader());
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Strings");
+            ser.AddFolder(new DirectoryInfo(path), new LangLoader());
         }
 
-        private static string GetStringFile(params string[] nodes)
+        protected override void CoreLoadCulture(ILanguageService langSer, ILanguageNode root, FileInfo input)
         {
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Strings");
-            return Path.Combine(path, Path.Combine(nodes));
+            if (string.Equals(input.Extension, ".json", StringComparison.OrdinalIgnoreCase))
+            {
+                root.AddJsonFile(input.FullName);
+            }
         }
     }
 }
