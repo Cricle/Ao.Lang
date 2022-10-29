@@ -10,20 +10,4 @@ namespace Ao.Lang.Runtime
     {
         void LoadCulture(ILanguageService langSer,CultureInfo culture,TInput input);
     }
-    public interface IFileLanguageLoader : ILanguageLoader<FileInfo>
-    {
-
-    }
-    public abstract class FileLanguageLoaderBase: LanguageLoaderBase<FileInfo>, IFileLanguageLoader
-    {
-
-    }
-    public abstract class LanguageLoaderBase<TInput> : ILanguageLoader<TInput>
-    {
-        public void LoadCulture(ILanguageService langSer, CultureInfo culture, TInput input)
-        {
-            CoreLoadCulture(langSer, langSer.EnsureGetLangNode(culture), input);
-        }
-        protected abstract void CoreLoadCulture(ILanguageService langSer, ILanguageNode root, TInput input);
-    }
 }

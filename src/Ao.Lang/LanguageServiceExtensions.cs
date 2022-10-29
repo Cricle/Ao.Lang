@@ -104,6 +104,11 @@ namespace Ao.Lang
             var culture = new CultureInfo(culutre);
             Add(service, culture, fileSources);
         }
+        public static List<FileInfo> AddDefaultFolder(this ILanguageService langSer, IFileLanguageLoader fileLanguageLoader)
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Strings");
+            return AddFolder(langSer, new DirectoryInfo(path), fileLanguageLoader);
+        }
         public static List<FileInfo> AddFolder(this ILanguageService langSer, DirectoryInfo dir, IFileLanguageLoader fileLanguageLoader)
         {
             var fs = new List<FileInfo>();

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Globalization;
 using System.IO;
+using System.Threading;
 
 namespace Ao.Lang.Wpf.Preview
 {
@@ -12,13 +13,12 @@ namespace Ao.Lang.Wpf.Preview
         {
             LanguageManager.Instance.SetCulture("zh-CN");
             var ser = LanguageManager.Instance.LangService;
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Strings");
-            ser.AddFolder(new DirectoryInfo(path), new LangLoader());
+            ser.AddDefaultFolder(new LangLoader());
         }
 
         protected override void CoreLoadCulture(ILanguageService langSer, ILanguageNode root, FileInfo input)
         {
-            if (string.Equals(input.Extension, ".json", StringComparison.OrdinalIgnoreCase))
+            if (".json".Equals(input.Extension, StringComparison.OrdinalIgnoreCase))
             {
                 root.AddJsonFile(input.FullName);
             }
