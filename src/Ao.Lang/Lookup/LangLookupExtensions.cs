@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Ao.Lang
 {
-    public delegate void RaiseNodeHandle(ILanguageNode node,Stream stream, string lang);
+    public delegate void RaiseNodeHandle(ILanguageNode node, Stream stream, string lang);
     public static class LangLookupExtensions
     {
 #if !NETSTANDARD1_3
@@ -62,7 +62,7 @@ namespace Ao.Lang
                     {
                         var stream = assembly.GetManifestResourceStream(item);
                         var node = langSer.EnsureGetLangNode(lang);
-                        nodeAction(node,stream, lang);
+                        nodeAction(node, stream, lang);
                         added.Add(item);
                     }
                 }

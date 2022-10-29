@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
+﻿using System.Globalization;
 
 namespace Ao.Lang.Runtime
 {
     public interface ILanguageLoader<TInput>
     {
-        void LoadCulture(ILanguageService langSer,CultureInfo culture,TInput input);
+        void LoadCulture(ILanguageService langSer, CultureInfo culture, TInput input);
     }
 }

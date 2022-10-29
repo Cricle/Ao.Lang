@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Ao.Lang.Runtime;
+﻿using Ao.Lang.Runtime;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace Ao.Lang.Uwp.Sample
@@ -34,9 +25,9 @@ namespace Ao.Lang.Uwp.Sample
             var root = inst.LangService.EnsureGetLangNode("zh-CN");
             root.AddInMemoryCollection(new Dictionary<string, string>
             {
-                ["Title"]="标题",
-                ["F1"]= "你好{0}, 哈哈哈!"
-            }); 
+                ["Title"] = "标题",
+                ["F1"] = "你好{0}, 哈哈哈!"
+            });
             root = inst.LangService.EnsureGetLangNode("en-US");
             root.AddInMemoryCollection(new Dictionary<string, string>
             {

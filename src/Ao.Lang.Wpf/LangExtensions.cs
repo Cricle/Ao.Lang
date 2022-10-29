@@ -129,7 +129,7 @@ namespace Ao.Lang.AvaloniaUI
 #if AVALONIAUI_PLATFORM
                 Path = nameof(ILangStrBox.Value),
 #else
-                Path=new PropertyPath(nameof(ILangStrBox.Value)),
+                Path = new PropertyPath(nameof(ILangStrBox.Value)),
 #endif
                 Source = box,
                 Mode = BindingMode.OneWay

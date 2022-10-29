@@ -114,7 +114,7 @@ namespace Ao.Lang.Runtime
         }
         internal void UpdateValue()
         {
-            if (LangRoot!=null)
+            if (LangRoot != null)
             {
                 if (hasOutterArg)
                 {
@@ -142,7 +142,7 @@ namespace Ao.Lang.Runtime
             {
                 Value = null;
             }
-            
+
         }
 
         private void RaiseCultureInfoChanged(CultureInfo cultureInfo)

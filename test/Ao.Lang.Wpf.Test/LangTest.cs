@@ -15,7 +15,7 @@ namespace Ao.Lang.Wpf.Test
         {
             var l = new CLang();
             Assert.IsNull(l.Key);
-            Assert.AreEqual(0,l.Args.Capacity);
+            Assert.AreEqual(0, l.Args.Capacity);
 
 
             l = new CLang("hello");

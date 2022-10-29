@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 
 [assembly: XmlnsDefinition("https://github.com/Cricle/Ao.Lang", "Ao.Lang")]
 #if !AVALONIAUI_PLATFORM
-[assembly: XmlnsDefinition("https://github.com/Cricle/Ao.Lang", "Ao.Lang.Runtime", AssemblyName ="Ao.Lang")]
+[assembly: XmlnsDefinition("https://github.com/Cricle/Ao.Lang", "Ao.Lang.Runtime", AssemblyName = "Ao.Lang")]
 #endif
 #if WPF_PLATFORM
 [assembly: XmlnsDefinition("https://github.com/Cricle/Ao.Lang", "Ao.Lang.Wpf")]

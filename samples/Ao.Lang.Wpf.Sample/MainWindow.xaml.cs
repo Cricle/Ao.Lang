@@ -58,7 +58,7 @@ namespace Ao.Lang.Wpf.Sample
                 new DependencyArgument(Tbx,TextBox.TextProperty),
                 new DefaultLangArgument{Value="123"}
             });
-            
+
             box.Start();
             BindArgs.SetBinding(TextBlock.TextProperty, new Binding(nameof(ILangStrBox.Value))
             {

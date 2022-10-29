@@ -2,7 +2,7 @@
 
 namespace Ao.Lang.Runtime
 {
-    public abstract class FileLanguageLoaderBase: LanguageLoaderBase<FileInfo>, IFileLanguageLoader
+    public abstract class FileLanguageLoaderBase : LanguageLoaderBase<FileInfo>, IFileLanguageLoader
     {
 
     }

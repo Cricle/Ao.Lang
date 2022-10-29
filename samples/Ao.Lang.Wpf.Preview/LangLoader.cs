@@ -1,9 +1,7 @@
 ﻿using Ao.Lang.Runtime;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Globalization;
 using System.IO;
-using System.Threading;
 
 namespace Ao.Lang.Wpf.Preview
 {

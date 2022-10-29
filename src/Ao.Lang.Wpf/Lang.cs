@@ -1,7 +1,5 @@
 ﻿using Ao.Lang.Runtime;
 using System;
-using System.ComponentModel;
-using System.Collections;
 using System.Collections.Generic;
 #if WPF_PLATFORM
 using System.Windows.Data;
@@ -31,7 +29,7 @@ namespace Ao.Lang.AvaloniaUI
 #if AVALONIAUI_PLATFORM
     public class DependencyArgument : DefaultLangArgument
     {
-        public DependencyArgument(AvaloniaObject @object, AvaloniaProperty property,Action<Binding> action=null)
+        public DependencyArgument(AvaloniaObject @object, AvaloniaProperty property, Action<Binding> action = null)
         {
             Object = @object ?? throw new ArgumentNullException(nameof(@object));
             Property = property ?? throw new ArgumentNullException(nameof(property));
@@ -58,7 +56,7 @@ namespace Ao.Lang.AvaloniaUI
             var bd = new Binding
             {
                 Source = this,
-                Path=new PropertyPath(nameof(Value)),
+                Path = new PropertyPath(nameof(Value)),
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             };
@@ -96,7 +94,7 @@ namespace Ao.Lang.AvaloniaUI
             DependencyProperty.Register("Value", typeof(object), typeof(LangArgument), new PropertyMetadata(null, OnValueChanged));
 
 
-        private static void OnValueChanged(DependencyObject @object,DependencyPropertyChangedEventArgs args)
+        private static void OnValueChanged(DependencyObject @object, DependencyPropertyChangedEventArgs args)
         {
             var o = (LangArgument)@object;
             o.UpdateChanged();
@@ -166,7 +164,7 @@ namespace Ao.Lang.AvaloniaUI
                 NoUpdate);
             box.Start();
 #if WPF_PLATFORM
-            if (Args!=null)
+            if (Args != null)
             {
                 foreach (var item in Args)
                 {

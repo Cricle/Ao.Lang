@@ -1,7 +1,6 @@
 ﻿using Ao.Lang.Lookup;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -22,9 +21,9 @@ namespace Ao.Lang
             int langRevIndex)
         {
             return LangLookupExtensions.RaiseAssemblyResources(langSer,
-                assembly, 
-                ".resources", 
-                langRevIndex,AddResource);
+                assembly,
+                ".resources",
+                langRevIndex, AddResource);
         }
 
         private static void AddResource(ILanguageNode node, Stream stream, string lang)
