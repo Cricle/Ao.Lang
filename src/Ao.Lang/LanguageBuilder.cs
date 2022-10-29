@@ -22,7 +22,7 @@ namespace Ao.Lang
         public new ILanguageRoot Build()
         {
             Debug.Assert(Culture != null);
-#if NETSTANDARD1_1||NET452
+#if NETSTANDARD1_3||NET452
             var providers = Sources.Select(x => x.Build(this)).ToArray();
 #else
             var sourceCount = Sources.Count();

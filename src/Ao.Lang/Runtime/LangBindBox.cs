@@ -17,7 +17,7 @@ namespace Ao.Lang.Runtime
             Property = property ?? throw new ArgumentNullException(nameof(property));
             Instance = instance ?? throw new ArgumentNullException(nameof(instance));
 
-#if !NETSTANDARD1_1
+#if !NETSTANDARD1_3
             if (!property.DeclaringType.IsAssignableFrom(instance.GetType()))
             {
                 throw new ArgumentException($"Property {property} declare type is not assignable from {instance}");

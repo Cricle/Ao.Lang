@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Ao.Lang.Runtime;
+using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 
 namespace Ao.Lang
@@ -100,6 +103,21 @@ namespace Ao.Lang
         {
             var culture = new CultureInfo(culutre);
             Add(service, culture, fileSources);
+        }
+        public static List<FileInfo> AddFolder(this ILanguageService langSer,DirectoryInfo dir,IFileLanguageLoader fileLanguageLoader)
+        {
+            var fs = new List<FileInfo>();
+            foreach (var item in dir.GetDirectories())
+            {
+                var cultureName = item.Name.Replace("_", "-");
+                var culture = new CultureInfo(cultureName);
+                foreach (var file in item.GetFiles())
+                {
+                    fileLanguageLoader.LoadCulture(langSer, culture, file);
+                    fs.Add(file);
+                }
+            }
+            return fs;
         }
     }
 }

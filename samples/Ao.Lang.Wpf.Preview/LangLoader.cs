@@ -1,22 +1,28 @@
 ﻿using Ao.Lang.Runtime;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Globalization;
 using System.IO;
 
 namespace Ao.Lang.Wpf.Preview
 {
+    internal class LanguageLoader : FileLanguageLoaderBase
+    {
+        protected override void CoreLoadCulture(ILanguageService langSer, ILanguageNode root, FileInfo input)
+        {
+            if (string.Equals(input.Extension,".json", StringComparison.OrdinalIgnoreCase))
+            {
+                root.AddJsonFile(input.FullName);
+            }
+        }
+    }
     internal class LangLoader
     {
         public static void Load()
         {
             LanguageManager.Instance.SetCulture("zh-CN");
             var ser = LanguageManager.Instance.LangService;
-            var zhCNNode = ser.EnsureGetLangNode("zh-CN");
-            zhCNNode.AddJsonFile(GetStringFile("zh_CN", "main.json"));
-            var asm = typeof(LangLoader).Assembly;
-            zhCNNode.AddResourceStream(typeof(LangLoader).Assembly.GetManifestResourceStream("Ao.Lang.Wpf.Preview.Strings.zh_CN.main.resources"));
-            var enUSNode = ser.EnsureGetLangNode("en-US");
-            enUSNode.AddJsonFile(GetStringFile("en_US", "main.json"));
+            ser.AddFolder(new DirectoryInfo(GetStringFile()), new LanguageLoader());
         }
 
         private static string GetStringFile(params string[] nodes)

@@ -10,7 +10,7 @@ namespace Ao.Lang
     public delegate void RaiseNodeHandle(ILanguageNode node,Stream stream, string lang);
     public static class LangLookupExtensions
     {
-#if !NETSTANDARD1_1
+#if !NETSTANDARD1_3
         public static string[] RaiseAssemblyResources<TAssemblyType>(this ILanguageService langSer,
             string extensions,
             int langRevIndex,

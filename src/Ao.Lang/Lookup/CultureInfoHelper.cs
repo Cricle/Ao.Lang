@@ -7,7 +7,7 @@ namespace Ao.Lang.Lookup
 {
     public static class CultureInfoHelper
     {
-#if !NETSTANDARD1_1
+#if !NETSTANDARD1_3
         private static readonly HashSet<string> avaliableCultures = new HashSet<string>(
             CultureInfo.GetCultures(CultureTypes.AllCultures).Select(x => x.Name),
             StringComparer.OrdinalIgnoreCase);
@@ -281,7 +281,7 @@ namespace Ao.Lang.Lookup
             {
                 throw new ArgumentException($"“{nameof(culture)}”不能为 null 或空。", nameof(culture));
             }
-#if !NETSTANDARD1_1
+#if !NETSTANDARD1_3
             return avaliableCultures.Contains(culture);
 #else
             return RegionNames.ContainsKey(culture) || RegionNameRevs.ContainsKey(culture);
