@@ -8,17 +8,39 @@
         xmlns:l="https://github.com/Cricle/Ao.Lang"
         Title="{l:Lang title}" mc:Ignorable="d" Height="450" Width="800">
     <!--Although he has wavy lines, he is normal-->
-    <StackPanel>
-        <Button Content="{l:Lang QQQ}" Foreground="Red" Width="100" Height="100"/>
-        <Button Content="{l:Lang buy}" Foreground="Red" Width="100" Height="100"/>
-        <Button Foreground="Red" Width="100" Height="100"
-                DataContext="{Binding ElementName=Tbx}">
-            <Button.Content>
-                <l:Lang Key="welcome">
-                    <l:LangArgument Value="{Binding DataContext.Text}"/>
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Padding" Value="15"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Margin" Value="15"/>
+            </Style>
+        </Grid.Resources>
+        <WrapPanel Orientation="Horizontal">
+            <Button>
+                <l:Lang Key="items:Apple Juice">
+                    <l:LangArgument Value="11"/>
                 </l:Lang>
-            </Button.Content>
-        </Button>
-        <TextBox x:Name="Tbx" Text="123"></TextBox>
-    </StackPanel>
+            </Button>
+            <Button>
+                <l:Lang Key="items:Stir fried cat food">
+                    <l:LangArgument Value="33"/>
+                </l:Lang>
+            </Button>
+            <Button>
+                <l:Lang Key="items:Pan fried cat litter">
+                    <l:LangArgument Value="44"/>
+                </l:Lang>
+            </Button>
+            <Button>
+                <l:Lang Key="items:Scallion oil mobile phone">
+                    <l:LangArgument Value="55"/>
+                </l:Lang>
+            </Button>
+        </WrapPanel>
+        <Button HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Content="{l:Lang Switch language}"
+                Click="Button_Click"/>
+    </Grid>
 </Window>

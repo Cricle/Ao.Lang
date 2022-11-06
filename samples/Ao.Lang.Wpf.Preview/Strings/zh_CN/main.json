@@ -1,5 +1,10 @@
 {
-  "title": "商店",
-  "buy": "买",
-  "welcome": "欢迎{0}进店"
+  "title": "哆啦C梦商店",
+  "items": {
+    "Apple Juice": "苹果汁{0}￥",
+    "Stir fried cat food": "爆炒猫粮{0}￥",
+    "Pan fried cat litter": "香煎猫砂{0}￥",
+    "Scallion oil mobile phone": "葱油手机{0}￥"
+  },
+  "Switch language": "切换语言"
 }

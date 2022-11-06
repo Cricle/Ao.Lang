@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Ao.Lang.Runtime;
+using System.Windows;
 
 namespace Ao.Lang.Wpf.Preview
 {
@@ -10,6 +11,18 @@ namespace Ao.Lang.Wpf.Preview
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (LanguageManager.Instance.IsCulture("zh-cn"))
+            {
+                LanguageManager.Instance.SetCulture("en-us");
+            }
+            else
+            {
+                LanguageManager.Instance.SetCulture("zh-cn");
+            }
         }
     }
 }

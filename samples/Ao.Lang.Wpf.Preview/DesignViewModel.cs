@@ -7,7 +7,7 @@ namespace Ao.Lang.Wpf.Preview
     {
         public DesignViewModel()
         {
-            LangLoader.Load();
+            LangLoader.Load("en-us");
         }
 
         public override object ProvideValue(IServiceProvider serviceProvider)

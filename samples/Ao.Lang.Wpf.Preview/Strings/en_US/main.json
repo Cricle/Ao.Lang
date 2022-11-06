@@ -1,5 +1,10 @@
 {
-  "title": "Shop",
-  "buy": "bug",
-  "welcome": "Welcome {0} go shop!"
+  "title": "Dorcemon Store",
+  "items": {
+    "Apple Juice": "Apple juice {0}$",
+    "Stir fried cat food": "Stir fried cat food{0}$",
+    "Pan fried cat litter": "Pan fried cat litter{0}$",
+    "Scallion oil mobile phone": "Scallion oil mobile phone{0}$"
+  },
+  "Switch language": "Switch language"
 }

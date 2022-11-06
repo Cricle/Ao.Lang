@@ -28,19 +28,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Strings\zh_CN\main.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>main.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Strings\zh_CN\main.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>main.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-
 </Project>
