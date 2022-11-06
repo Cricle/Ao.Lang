@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>4.3.0-preview.1</Version>
+        <Version>4.3.0-preview.2</Version>
         <NoWarn>CS1591;</NoWarn>
         <Description>
         This is cross platform i18n library.
@@ -14,12 +14,14 @@
         If you want auto add lang files, you can named file *.zh-cn.json/*.zh-cn.resx to Raise.
         If you want auto add lang resources, you can named compile rex file *.zh_cn.*.resouces and index your lang identity.
         In 4.3.x, support argument binding!
+        
+        And it support wpf, uwp, avaloniaui, uno, asp.net core
         </Description>
         <Company>Ao.Lang</Company>
         <Product>Ao.Lang</Product>
         <RepositoryUrl>https://github.com/Cricle/Ao.Lang</RepositoryUrl>
-        <PackageTags>ao;lang;i18n;localization;uwp;wpf;avaloniaui;uno</PackageTags>
-        <PackageReleaseNotes>Relase for wpf, uwp, avaloniaui, uno platform</PackageReleaseNotes>
+        <PackageTags>ao;lang;i18n;localization;uwp;wpf;avaloniaui;uno;asp;</PackageTags>
+        <PackageReleaseNotes>Relase for wpf, uwp, avaloniaui, uno platform, asp.net core</PackageReleaseNotes>
         <PackageProjectUrl>https://github.com/Cricle/Ao.Lang</PackageProjectUrl>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)'=='Release'">

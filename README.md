@@ -143,6 +143,10 @@ Follow https://github.com/Cricle/Ao.Lang/issues/2 it can preview in design time.
 |3.0.0|In [Nuget](https://www.nuget.org/packages/Ao.Lang/3.0.0), Is was a break change for 1.x.x|
 |4.x.x|In [Nuget](https://www.nuget.org/packages/Ao.Lang/4.0.0)(It was a break change for 3.0.0)|
 
+## Support platform(or framework)
+
+`WPF`, `UWP`, `UNO`, `AvaloniaUI`, `Asp.NET Core`...
+
 # Project extensions
 
 ## [Ao.SavableConfig](https://github.com/Cricle/Ao.SavableConfig)

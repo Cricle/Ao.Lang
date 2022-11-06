@@ -8,7 +8,7 @@ namespace Ao.Lang.Wpf.Preview
     {
         public static void Load(string culture=null)
         {
-            LanguageManager.Instance.SetCulture(culture??"zh-cn");
+            LanguageManager.Instance.SetCulture(culture ?? "zh-cn");
             var ser = LanguageManager.Instance.LangService;
             ser.AddDefaultFolder(new LangLoader());
         }

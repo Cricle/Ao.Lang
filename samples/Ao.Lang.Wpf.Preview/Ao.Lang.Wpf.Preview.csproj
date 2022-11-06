@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Ao.Lang.Wpf\Ao.Lang.Wpf.csproj" />
     <ProjectReference Include="..\..\src\Ao.Lang\Ao.Lang.csproj" />
-    <ProjectReference Include="..\..\src\Ao.Microsoft.Extensions.Configuration.Resources\Ao.Microsoft.Extensions.Configuration.Resources.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -11,9 +11,4 @@
   <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0' and '$(TargetFramework)'!='net461'">
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="1.1.2" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
-    <PackageReference Include="System.IO.FileSystem">
-      <Version>4.3.0</Version>
-    </PackageReference>
-  </ItemGroup>
 </Project>
