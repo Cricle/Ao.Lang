@@ -1,0 +1,14 @@
+﻿@page
+@using Ao.Lang.Asp.Pages
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<IndexModel> localizer
+@model Ao.Lang.Asp.Pages.IndexModel
+
+@*@localizer["hello"]*@
+
+@{
+    foreach(var e in Model.ModelState.SelectMany(x=>x.Value.Errors))
+    {
+        <div>@e.ErrorMessage</div>
+    }
+}

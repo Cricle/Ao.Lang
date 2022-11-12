@@ -63,9 +63,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ao.Lang.Uwp.Sample", "sampl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.Wpf.Preview", "samples\Ao.Lang.Wpf.Preview\Ao.Lang.Wpf.Preview.csproj", "{FB75C0D9-4F62-438E-803F-01BBB64F5EBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ao.Lang.AspNetCore", "src\Ao.Lang.AspNetCore\Ao.Lang.AspNetCore.csproj", "{4D95F6A6-7962-4D39-82B1-3B0DB9409216}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.AspNetCore", "src\Ao.Lang.AspNetCore\Ao.Lang.AspNetCore.csproj", "{4D95F6A6-7962-4D39-82B1-3B0DB9409216}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ao.Lang.Asp", "samples\Ao.Lang.Asp\Ao.Lang.Asp.csproj", "{B460B941-6C11-4AF4-A733-7794F44500C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ao.Lang.Asp", "samples\Ao.Lang.Asp\Ao.Lang.Asp.csproj", "{B460B941-6C11-4AF4-A733-7794F44500C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
