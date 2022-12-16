@@ -30,7 +30,7 @@ namespace Ao.Lang.Runtime
             get => cultureInfo;
             set
             {
-                if (cultureInfo != value)
+                if (Equals(cultureInfo, value) == false)
                 {
                     cultureInfo = value ?? throw new ArgumentNullException(nameof(value));
                     CultureInfoChanged?.Invoke(value);
@@ -43,7 +43,7 @@ namespace Ao.Lang.Runtime
             get => defaultCultureInfo;
             set
             {
-                if (defaultCultureInfo != value)
+                if (Equals(defaultCultureInfo, value) == false)
                 {
                     defaultCultureInfo = value ?? throw new ArgumentNullException(nameof(value));
                     CultureInfoChanged?.Invoke(value);
