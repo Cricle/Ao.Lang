@@ -1,6 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.Extensions.Configuration.Memory;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace Ao.Lang.Runtime.Test
 {
@@ -15,12 +18,14 @@ namespace Ao.Lang.Runtime.Test
             Assert.IsNotNull(c);
             Assert.IsNotNull(ser);
         }
+
         [TestMethod]
         public void SwitchNull_MustThrowException()
         {
             Assert.ThrowsException<ArgumentNullException>(() => LanguageManager.Instance.CultureInfo = null);
             Assert.ThrowsException<ArgumentNullException>(() => LanguageManager.Instance.LangService = null);
         }
+
         [TestMethod]
         public void Switch_PropertyMustSwitched()
         {
@@ -31,6 +36,7 @@ namespace Ao.Lang.Runtime.Test
             LanguageManager.Instance.CultureInfo = culture;
             Assert.AreEqual(culture, LanguageManager.Instance.CultureInfo);
         }
+
         [TestMethod]
         public void GetRoot_MustReturnLangSerRoot()
         {
@@ -40,6 +46,7 @@ namespace Ao.Lang.Runtime.Test
             var node = mgr.LangService.EnsureGetLangNode(c);
             Assert.AreEqual(node.Root, mgr.Root);
         }
+
         [TestMethod]
         public void SwitchCulture_CultureInfoChangedMustBeRaise()
         {
@@ -49,6 +56,36 @@ namespace Ao.Lang.Runtime.Test
             var setc = new CultureInfo("fr");
             mgr.CultureInfo = setc;
             Assert.AreEqual(setc, c);
+        }
+
+        [TestMethod]
+        public void DefaultCultureInfo_MustReturnValueFromDefaultCulture()
+        {
+            var mgr = LanguageManager.Instance;
+            mgr.DefaultCultureInfo = new CultureInfo("en-US");
+            mgr.CultureInfo = new CultureInfo("zh-TW");
+
+            var defaultMemSource = new MemoryConfigurationSource
+            {
+                InitialData = new Dictionary<string, string>
+                {
+                    ["Title"] = "title",
+                    ["Name"] = "name"
+                }
+            };
+            mgr.LangService.EnsureGetLangNode(mgr.DefaultCultureInfo).Add(defaultMemSource);
+
+            var memSource = new MemoryConfigurationSource
+            {
+                InitialData = new Dictionary<string, string>
+                {
+                    ["Title"] = "標題",
+                }
+            };
+            mgr.LangService.EnsureGetLangNode(mgr.CultureInfo).Add(memSource);
+
+            Assert.AreEqual(mgr.CreateLangBox("Title").Value, memSource.InitialData.First(x => x.Key == "Title").Value);
+            Assert.AreEqual(mgr.CreateLangBox("Name").Value, defaultMemSource.InitialData.First(x => x.Key == "Name").Value);
         }
     }
 }

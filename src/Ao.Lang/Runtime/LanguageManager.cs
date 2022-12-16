@@ -8,6 +8,7 @@ namespace Ao.Lang.Runtime
         public static readonly LanguageManager Instance = new LanguageManager();
 
         private CultureInfo cultureInfo = CultureInfo.CurrentUICulture;
+        private CultureInfo defaultCultureInfo = CultureInfo.CurrentUICulture;
 
         private ILanguageService langService = LanguageService.Default;
 
@@ -23,6 +24,7 @@ namespace Ao.Lang.Runtime
                 }
             }
         }
+
         public CultureInfo CultureInfo
         {
             get => cultureInfo;
@@ -35,7 +37,22 @@ namespace Ao.Lang.Runtime
                 }
             }
         }
+
+        public CultureInfo DefaultCultureInfo
+        {
+            get => defaultCultureInfo;
+            set
+            {
+                if (defaultCultureInfo != value)
+                {
+                    defaultCultureInfo = value ?? throw new ArgumentNullException(nameof(value));
+                    CultureInfoChanged?.Invoke(value);
+                }
+            }
+        }
+
         public ILanguageRoot Root => LangService.GetRoot(CultureInfo);
+        public ILanguageRoot DefaultRoot => LangService.GetRoot(DefaultCultureInfo);
 
         public event Action<CultureInfo> CultureInfoChanged;
 
