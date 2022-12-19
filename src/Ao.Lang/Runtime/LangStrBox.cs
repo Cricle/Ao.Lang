@@ -10,6 +10,7 @@ namespace Ao.Lang.Runtime
     internal class LangStrBox : ILangStrBox
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         internal static readonly PropertyChangedEventArgs valueChangedEventArgs = new PropertyChangedEventArgs(nameof(Value));
 
         private string value;
@@ -48,6 +49,7 @@ namespace Ao.Lang.Runtime
         public LanguageManager LangMgr { get; set; }
 
         public ILanguageRoot LangRoot { get; set; }
+        public ILanguageRoot DefaultLangRoot { get; set; }
 
         public IMulLang MulLang { get; set; }
 
@@ -77,6 +79,7 @@ namespace Ao.Lang.Runtime
         {
             Dispose();
         }
+
         internal void Init()
         {
             if (string.IsNullOrEmpty(FixedCulture))
@@ -84,6 +87,7 @@ namespace Ao.Lang.Runtime
                 Regist();
                 LangMgr.CultureInfoChanged += RaiseCultureInfoChanged;
                 LangRoot = LangMgr.Root;
+                DefaultLangRoot = LangMgr.DefaultRoot;
             }
             else
             {
@@ -91,9 +95,11 @@ namespace Ao.Lang.Runtime
             }
             UpdateValue();
         }
+
         internal void SwitchRoot()
         {
             LangRoot = LangMgr.Root;
+            DefaultLangRoot = LangMgr.DefaultRoot;
 
             Regist();
             UpdateValue();
@@ -112,6 +118,7 @@ namespace Ao.Lang.Runtime
                     }, null);
             }
         }
+
         internal void UpdateValue()
         {
             if (LangRoot != null)
@@ -131,24 +138,25 @@ namespace Ao.Lang.Runtime
                             args[i] = arg;
                         }
                     }
-                    Value = LangRoot[Key, args] ?? DefaultValue;
+
+                    Value = LangRoot[Key, args] ?? DefaultLangRoot?[Key, args] ?? DefaultValue;
                 }
                 else
                 {
-                    Value = LangRoot[Key, Args] ?? DefaultValue;
+                    Value = LangRoot[Key, Args] ?? DefaultLangRoot?[Key, Args] ?? DefaultValue;
                 }
             }
             else
             {
                 Value = null;
             }
-
         }
 
         private void RaiseCultureInfoChanged(CultureInfo cultureInfo)
         {
             SwitchRoot();
         }
+
         public void Dispose()
         {
             Stop();
