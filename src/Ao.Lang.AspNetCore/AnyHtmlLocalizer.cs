@@ -1,5 +1,4 @@
 ﻿using Ao.Lang;
-using Ao.Lang.Runtime;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.Localization;
 
@@ -12,7 +11,8 @@ namespace Microsoft.Extensions.DependencyInjection
         {
         }
     }
-    public class AnyHtmlLocalizer : AnyStringLocalizer,IHtmlLocalizer
+
+    public class AnyHtmlLocalizer : AnyStringLocalizer, IHtmlLocalizer
     {
         public AnyHtmlLocalizer(string sectionKey, ILanguageRoot root) : base(sectionKey, root)
         {
@@ -23,7 +23,7 @@ namespace Microsoft.Extensions.DependencyInjection
             get
             {
                 var s = base.GetString(name);
-                return new LocalizedHtmlString(name, s??string.Empty, s == null);
+                return new LocalizedHtmlString(name, s ?? string.Empty, s == null);
             }
         }
 
@@ -40,14 +40,14 @@ namespace Microsoft.Extensions.DependencyInjection
             }
         }
 
-        public LocalizedString GetString(string name)
+        public new LocalizedString GetString(string name)
         {
             return base[name];
         }
 
         public LocalizedString GetString(string name, params object[] arguments)
         {
-            return base[name,arguments];
+            return base[name, arguments];
         }
     }
 }
