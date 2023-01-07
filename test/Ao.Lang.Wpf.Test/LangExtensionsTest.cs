@@ -1,12 +1,6 @@
-﻿#if !NET5_0
-
-using Ao.Lang.Runtime;
+﻿using Ao.Lang.Runtime;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -50,6 +44,7 @@ namespace Ao.Lang.Wpf.Test
             t.Start();
             t.Join();
         }
+
         [TestMethod]
         [STAThread]
         public void CreateBind_MustReturnBinding()
@@ -57,6 +52,7 @@ namespace Ao.Lang.Wpf.Test
             var bind = LangExtensions.CreateLangBinding(LanguageManager.Instance, "hello");
             Assert.IsNotNull(bind);
         }
+
         [TestMethod]
         public void BindText_MustBeBinded()
         {
@@ -82,6 +78,7 @@ namespace Ao.Lang.Wpf.Test
             t.Start();
             t.Join();
         }
+
         [TestMethod]
         public void BindProperty_MustBeBinded()
         {
@@ -109,5 +106,3 @@ namespace Ao.Lang.Wpf.Test
         }
     }
 }
-
-#endif

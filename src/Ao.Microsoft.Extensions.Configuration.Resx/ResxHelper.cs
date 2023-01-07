@@ -6,8 +6,6 @@ using System.Xml;
 
 namespace Microsoft.Extensions.Configuration.Resx
 {
-#if NETSTANDARD2_0
-
     public class ResxStreamConfigurationProvider : StreamConfigurationProvider
     {
         public ResxStreamConfigurationProvider(StreamConfigurationSource source)
@@ -20,6 +18,7 @@ namespace Microsoft.Extensions.Configuration.Resx
             Data = ResxHelper.GetData(stream);
         }
     }
+
     public class ResxStreamConfigurataionSource : StreamConfigurationSource
     {
         public override IConfigurationProvider Build(IConfigurationBuilder builder)
@@ -27,36 +26,6 @@ namespace Microsoft.Extensions.Configuration.Resx
             return new ResxStreamConfigurationProvider(this);
         }
     }
-#else
-    public class ResxStreamConfigurationProvider : ConfigurationProvider
-    {
-        public ResxStreamConfigurationProvider(ResxStreamConfigurataionSource source)
-        {
-            ConfigurataionSource = source;
-        }
-
-        public ResxStreamConfigurataionSource ConfigurataionSource { get; }
-
-        public override void Load()
-        {
-            Data = ResxHelper.GetData(ConfigurataionSource.Stream);
-        }
-    }
-    public class ResxStreamConfigurataionSource : IConfigurationSource
-    {
-        public ResxStreamConfigurataionSource(Stream stream)
-        {
-            Stream = stream ?? throw new ArgumentNullException(nameof(stream));
-        }
-
-        public Stream Stream { get; }
-
-        public IConfigurationProvider Build(IConfigurationBuilder builder)
-        {
-            return new ResxStreamConfigurationProvider(this);
-        }
-    }
-#endif
 
     public class ResxConfigurationProvider : FileConfigurationProvider
     {
@@ -70,6 +39,7 @@ namespace Microsoft.Extensions.Configuration.Resx
             Data = ResxHelper.GetData(stream);
         }
     }
+
     public class ResxConfigurationSource : FileConfigurationSource
     {
         public override IConfigurationProvider Build(IConfigurationBuilder builder)
@@ -77,6 +47,7 @@ namespace Microsoft.Extensions.Configuration.Resx
             return new ResxConfigurationProvider(this);
         }
     }
+
     internal static class ResxHelper
     {
         public static IDictionary<string, string> GetData(Stream stream)
@@ -92,6 +63,7 @@ namespace Microsoft.Extensions.Configuration.Resx
                 return GetData(content);
             }
         }
+
         public static IDictionary<string, string> GetData(string content)
         {
             if (string.IsNullOrEmpty(content))
@@ -103,6 +75,7 @@ namespace Microsoft.Extensions.Configuration.Resx
             xmlDoc.LoadXml(content);
             return GetData(xmlDoc);
         }
+
         public static IDictionary<string, string> GetData(XmlDocument doc)
         {
             var root = doc.ChildNodes.OfType<XmlNode>().FirstOrDefault(x => x.Name == "root");

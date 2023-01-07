@@ -25,22 +25,16 @@ namespace Ao.Lang
                 ReBuild();
             }
         }
+
         private readonly Dictionary<string, object> propertites;
         private Lazy<ILanguageRoot> root;
         public ILanguageRoot Root => root.Value;
         public bool IsBuilt => root.IsValueCreated;
         public CultureInfo Culture { get; }
         public bool ReBuildIfCollectionChanged { get; set; }
-#if NETSTANDARD2_0||NET461
         public IDictionary<string, object> Properties => propertites;
 
         public IList<IConfigurationSource> Sources => this.SelectMany(x => x).ToArray();
-#else
-        public Dictionary<string, object> Properties => propertites;
-
-        public IEnumerable<IConfigurationSource> Sources => this.SelectMany(x => x).ToArray();
-
-#endif
 
         public event Action<ILanguageNode, ILanguageRoot> Rebuilt;
 

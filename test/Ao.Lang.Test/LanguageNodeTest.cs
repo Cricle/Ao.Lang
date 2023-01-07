@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Threading;
 
 namespace Ao.Lang.Test
 {
@@ -17,21 +16,21 @@ namespace Ao.Lang.Test
         {
             Assert.ThrowsException<ArgumentNullException>(() => new LanguageNode(null));
         }
+
         [TestMethod]
         public void BuildUseConfigurationBuilder_MustThrowException()
         {
             var node = new LanguageNode(new CultureInfo("zh-cn"));
             Assert.ThrowsException<NotSupportedException>(() => ((IConfigurationBuilder)node).Build());
         }
+
         [TestMethod]
         public void WhenNoRebuildOnChange_ChaneWasNotRebuilt()
         {
             var culture = new CultureInfo("en-us");
-#if NET452
-            Thread.CurrentThread.CurrentCulture = culture;
-#else
+
             CultureInfo.CurrentCulture = culture;
-#endif
+
             var node = new LanguageNode(culture);
             node.ReBuildIfCollectionChanged = false;
             var root = node.Root;
@@ -55,6 +54,7 @@ namespace Ao.Lang.Test
             val = root3["Title"];
             Assert.AreEqual("title", val);
         }
+
         [TestMethod]
         public void WhenRebuildOnChange_GetAny_MustReturnString()
         {

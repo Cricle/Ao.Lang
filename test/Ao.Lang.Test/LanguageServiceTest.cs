@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Threading;
 
 namespace Ao.Lang.Test
 {
@@ -24,6 +23,7 @@ namespace Ao.Lang.Test
             Assert.ThrowsException<ArgumentNullException>(() => ser.IsBuilt(null));
             Assert.ThrowsException<ArgumentNullException>(() => ser.Remove(null));
         }
+
         [TestMethod]
         public void AddMedata_RemoveIt_MustRemoved()
         {
@@ -37,6 +37,7 @@ namespace Ao.Lang.Test
             Assert.AreEqual(0, ser.Count);
             Assert.IsFalse(ser.Any());
         }
+
         [TestMethod]
         public void AddMedata_ClearIt_MustHasNothing()
         {
@@ -50,6 +51,7 @@ namespace Ao.Lang.Test
             Assert.IsFalse(((IEnumerable)ser).OfType<ILanguageMetadata>().Any());
             Assert.AreEqual(0, ser.SupportCultures.Count);
         }
+
         [TestMethod]
         public void AddMedata_GetRoot_MustGot()
         {
@@ -71,15 +73,12 @@ namespace Ao.Lang.Test
             var node2 = ser.EnsureGetLangNode(culture);
             Assert.AreEqual(node, node2);
         }
+
         [TestMethod]
         public void ReBuild_AllMedataMustRebuilt()
         {
             var culture = new CultureInfo("zh-cn");
-#if NET452
-            Thread.CurrentThread.CurrentCulture = culture;
-#else
             CultureInfo.CurrentCulture = culture;
-#endif
             var ser = new LanguageService();
             var m = new DefaultLanguageMetadata(culture);
             ser.Add(m);
@@ -91,6 +90,7 @@ namespace Ao.Lang.Test
             var root2 = ser.GetRoot(culture);
             Assert.IsFalse(root == root2);
         }
+
         [TestMethod]
         public void ReBuildOnChangedIsSyncMedatas()
         {
@@ -104,6 +104,7 @@ namespace Ao.Lang.Test
             ser.ReBuildIfCollectionChanged = true;
             Assert.IsTrue(node.ReBuildIfCollectionChanged);
         }
+
         [TestMethod]
         public void CultureIsSupport()
         {
@@ -114,6 +115,7 @@ namespace Ao.Lang.Test
             ser.Add(m);
             Assert.IsTrue(ser.CultureIsSupport(culture));
         }
+
         [TestMethod]
         public void IsBuild()
         {
@@ -125,6 +127,7 @@ namespace Ao.Lang.Test
             var root = ser.GetRoot(culture);
             Assert.IsTrue(ser.IsBuilt(culture));
         }
+
         [TestMethod]
         public void GetRoot()
         {
@@ -135,6 +138,7 @@ namespace Ao.Lang.Test
             ser.Add(m);
             Assert.IsNotNull(ser.GetRoot(culture));
         }
+
         [TestMethod]
         public void ReBuildIfCollectionChangedValueChanged()
         {
@@ -151,15 +155,12 @@ namespace Ao.Lang.Test
             Assert.AreEqual(ser, nser);
             Assert.IsTrue(value);
         }
+
         [TestMethod]
         public void ThisGetValue()
         {
             var culture = new CultureInfo("en-us");
-#if NET452
-            Thread.CurrentThread.CurrentCulture = culture;
-#else
             CultureInfo.CurrentCulture = culture;
-#endif
             var ser = new LanguageService();
             var node = ser.EnsureGetLangNode(culture);
             node.AddInMemoryCollection(new Dictionary<string, string>
@@ -173,15 +174,12 @@ namespace Ao.Lang.Test
             var nothing = ser["a"];
             Assert.IsNull(nothing);
         }
+
         [TestMethod]
         public void ThisGetValue_Format()
         {
             var culture = new CultureInfo("en-us");
-#if NET452
-            Thread.CurrentThread.CurrentCulture = culture;
-#else
             CultureInfo.CurrentCulture = culture;
-#endif
             var ser = new LanguageService();
             var node = ser.EnsureGetLangNode(culture);
             node.AddInMemoryCollection(new Dictionary<string, string>

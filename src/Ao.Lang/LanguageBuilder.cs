@@ -19,19 +19,19 @@ namespace Ao.Lang
         {
             return Build();
         }
+
         public new ILanguageRoot Build()
         {
             Debug.Assert(Culture != null);
-#if NETSTANDARD1_3||NET452
             var providers = Sources.Select(x => x.Build(this)).ToArray();
-#else
-            var sourceCount = Sources.Count();
-            var providers = new IConfigurationProvider[sourceCount];
-            for (int i = 0; i < sourceCount; i++)
-            {
-                providers[i] = Sources[i].Build(this);
-            }
-#endif
+
+            //var sourceCount = Sources.Count();
+            //var providers = new IConfigurationProvider[sourceCount];
+            //for (int i = 0; i < sourceCount; i++)
+            //{
+            //    providers[i] = Sources[i].Build(this);
+            //}
+
             return new LanguageRoot(Culture, providers);
         }
     }

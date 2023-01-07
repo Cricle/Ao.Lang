@@ -24,13 +24,15 @@ namespace Ao.Lang.Wpf.Test
             t.Start();
             t.Join();
         }
-        class ValueProvideValueTarget : IProvideValueTarget
+
+        private class ValueProvideValueTarget : IProvideValueTarget
         {
             public object TargetObject { get; set; }
 
             public object TargetProperty { get; set; }
         }
-        class ValueServiceProvider : IServiceProvider
+
+        private class ValueServiceProvider : IServiceProvider
         {
             public object Value { get; set; }
 
@@ -39,7 +41,7 @@ namespace Ao.Lang.Wpf.Test
                 return Value;
             }
         }
-#if !NET5_0
+
         [TestMethod]
         [DataRow(false)]
         [DataRow(true)]
@@ -63,6 +65,7 @@ namespace Ao.Lang.Wpf.Test
             t.Start();
             t.Join();
         }
-#endif
+
+        //#endif
     }
 }

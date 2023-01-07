@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\eng\pkg.props" />
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461;netstandard1.3;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;</TargetFrameworks>
     <NoWarn>CS1591;</NoWarn>
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
@@ -9,6 +9,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0' and '$(TargetFramework)'!='net461'">
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
   </ItemGroup>
 </Project>

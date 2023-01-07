@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Threading;
 
 namespace Ao.Lang.Test
 {
@@ -36,6 +35,7 @@ namespace Ao.Lang.Test
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.AddFromCurrentCulture(null, new IConfigurationSource[0]));
             Assert.ThrowsException<ArgumentNullException>(() => LanguageServiceExtensions.AddFromCurrentCulture<IConfigurationSource>(langSer, null));
         }
+
         private LanguageService MakeService()
         {
             var culture = new CultureInfo("zh-cn");
@@ -53,6 +53,7 @@ namespace Ao.Lang.Test
             ser.Add(meta);
             return ser;
         }
+
         [TestMethod]
         public void GetRoot()
         {
@@ -60,30 +61,27 @@ namespace Ao.Lang.Test
             var root = LanguageServiceExtensions.GetRoot(langSer, "zh-cn");
             Assert.IsNotNull(root);
         }
+
         [TestMethod]
         public void GetCurrentRoot()
         {
             var langSer = MakeService();
-#if NET452
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("zh-cn");
-#else
             CultureInfo.CurrentCulture = new CultureInfo("zh-cn");
-#endif
+
             var root = LanguageServiceExtensions.GetCurrentRoot(langSer);
             Assert.IsNotNull(root);
         }
+
         [TestMethod]
         public void GetCurrentValue()
         {
             var langSer = MakeService();
-#if NET452
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("zh-cn");
-#else
             CultureInfo.CurrentCulture = new CultureInfo("zh-cn");
-#endif
+
             var value = LanguageServiceExtensions.GetCurrentValue(langSer, "Title");
             Assert.AreEqual("title", value);
         }
+
         [TestMethod]
         public void CultureIsSupport()
         {
@@ -91,31 +89,25 @@ namespace Ao.Lang.Test
             var value = LanguageServiceExtensions.CultureIsSupport(langSer, "zh-cn");
             Assert.IsTrue(value);
         }
+
         [TestMethod]
         public void Add()
         {
             var langSer = MakeService();
             langSer.Add("en-us", new IConfigurationSource[]
             {
-
             });
             Assert.IsTrue(langSer.CultureIsSupport(new CultureInfo("en-us")));
 
             langSer.Add(new CultureInfo("fr"), new IConfigurationSource[]
             {
-
             });
             Assert.IsTrue(langSer.CultureIsSupport(new CultureInfo("fr")));
 
-#if NET452
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("jp");
-#else
             CultureInfo.CurrentCulture = new CultureInfo("jp");
-#endif
 
             langSer.AddFromCurrentCulture(new IConfigurationSource[]
             {
-
             });
             Assert.IsTrue(langSer.CultureIsSupport(new CultureInfo("jp")));
         }

@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;net452;net5.0</TargetFrameworks>
+    <TargetFrameworks>net462;net6.0</TargetFrameworks>
 
     <IsPackable>false</IsPackable>
+
+    <UserSecretsId>53de58d2-9eee-4dda-956c-14663959df03</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
