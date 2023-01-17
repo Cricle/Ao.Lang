@@ -41,6 +41,14 @@ jobs:
         run: |
           Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
           choco -v
+      - name: setup-msbuild
+        run: |
+          choco install visualstudio2022buildtools --package-parameters "--includeRecommended"   
+          choco install visualstudio2022-workload-universalbuildtools --package-parameters "--includeRecommended"
+          refreshenv
+      - name: Add Path
+        run: |
+          Add-Content $env:GITHUB_PATH "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\"   
       - name: Install opencover&codecov
         shell: powershell
         run: |
@@ -53,7 +61,8 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"Cricle_Ao.Lang" /o:"cricle" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="results.xml"
-          dotnet msbuild -property:Configuration=Release
+          & msbuild /p:Configuration=Release -t:restore -m
+          & msbuild /p:Configuration=Release -m
           OpenCover.Console.exe -target:test.bat -register:user
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
