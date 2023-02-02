@@ -55,6 +55,8 @@ namespace Ao.Lang.Runtime
 
         public string Key { get; set; }
 
+        public bool NoUpdate { get; set; }
+
         public IList Args
         {
             get => args;
@@ -149,6 +151,10 @@ namespace Ao.Lang.Runtime
             else
             {
                 Value = null;
+            }
+            if (Value != null && NoUpdate) 
+            {
+                Dispose();
             }
         }
 
