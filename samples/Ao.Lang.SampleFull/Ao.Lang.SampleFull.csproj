@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MahApps.Metro" Version="2.4.9" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Ao.Lang.Wpf\Ao.Lang.Wpf.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Strings\en_us\" />
+		<Folder Include="Strings\zh_tw\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Strings\*\*.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

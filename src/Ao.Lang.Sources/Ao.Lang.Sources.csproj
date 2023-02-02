@@ -2,7 +2,7 @@
   <Import Project="..\..\eng\pkg.props" />
   <Import Project="..\..\eng\sources.props" />
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461;net5.0;net452;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461;net6.0;</TargetFrameworks>
     <NoWarn>CS1591;</NoWarn>
   </PropertyGroup>
   <ItemGroup Condition="'$(UsingGreatOrEqualTf)'!='true'">

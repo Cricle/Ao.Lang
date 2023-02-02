@@ -1,16 +1,13 @@
-﻿using Ao.Lang.Runtime;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.IO;
+﻿using System;
 using System.Windows.Markup;
 
-namespace Ao.Lang.Wpf.Preview
+namespace Ao.Lang.SampleFull
 {
     public class DesignViewModel : MarkupExtension
     {
         public DesignViewModel()
         {
-            LangLoader.Load("en-us");
+            LangLoader.Load("zh-cn");
         }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
@@ -18,4 +15,5 @@ namespace Ao.Lang.Wpf.Preview
             return this;
         }
     }
+
 }
