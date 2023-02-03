@@ -7,16 +7,23 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Strings\en_us\**" />
+	  <Compile Remove="Strings\zh_tw\**" />
+	  <EmbeddedResource Remove="Strings\en_us\**" />
+	  <EmbeddedResource Remove="Strings\zh_tw\**" />
+	  <None Remove="Strings\en_us\**" />
+	  <None Remove="Strings\zh_tw\**" />
+	  <Page Remove="Strings\en_us\**" />
+	  <Page Remove="Strings\zh_tw\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 		<PackageReference Include="MahApps.Metro" Version="2.4.9" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\Ao.Lang.Wpf\Ao.Lang.Wpf.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Strings\en_us\" />
-		<Folder Include="Strings\zh_tw\" />
 	</ItemGroup>
 
 	<ItemGroup>

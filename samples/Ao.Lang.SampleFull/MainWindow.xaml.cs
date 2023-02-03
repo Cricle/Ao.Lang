@@ -24,6 +24,7 @@ namespace Ao.Lang.SampleFull
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 }
