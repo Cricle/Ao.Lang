@@ -1,0 +1,14 @@
+{
+  "main": {
+    "title": "quand la tâche est exécutée",
+    "switchlang": "changer de langue",
+    "create": "créer",
+    "delete": "supprimer",
+    "clear": "effacer",
+    "langs": {
+      "zh-cn": "chinois",
+      "en-us": "anglais",
+      "fr": "français"
+    }
+  }
+}
