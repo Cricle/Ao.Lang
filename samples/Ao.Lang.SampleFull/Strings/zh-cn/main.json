@@ -1,0 +1,14 @@
+{
+  "main": {
+    "title": "任务正在执行",
+    "switchlang": "切换语言",
+    "create": "创建",
+    "delete": "删除",
+    "clear": "清除",
+    "langs": {
+      "zh-cn": "中文",
+      "en-us": "英语",
+      "fr": "法语"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "main": {
+    "title": "Task is executing",
+    "switchlang": "Switch language",
+    "create": "Create",
+    "delete": "Delete",
+    "clear": "Clear",
+    "langs": {
+      "zh-cn": "Chinese",
+      "en-us": "English",
+      "fr": "French"
+    }
+  }
+}

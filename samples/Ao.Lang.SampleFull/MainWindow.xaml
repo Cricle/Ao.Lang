@@ -1,0 +1,76 @@
+﻿<mahapp:MetroWindow x:Class="Ao.Lang.SampleFull.MainWindow"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:mahapp="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:local="clr-namespace:Ao.Lang.SampleFull"
+                    xmlns:l="https://github.com/Cricle/Ao.Lang"
+                    mc:Ignorable="d"
+                    d:DataContext="{local:DesignViewModel}"
+                    Title="{l:Lang main:title}" Height="450" Width="800">
+    <mahapp:MetroWindow.RightWindowCommands>
+        <mahapp:WindowCommands>
+            <StackPanel Orientation="Horizontal">
+                <mahapp:DropDownButton Content="{l:Lang main:switchlang}"
+                                       ItemsSource="{Binding LangItems}">
+                    <mahapp:DropDownButton.ItemContainerStyle>
+                        <Style TargetType="MenuItem" 
+                               BasedOn="{StaticResource MahApps.Styles.MenuItem}">
+                            <Setter Property="Command" Value="{Binding ChangeCommand}"/>
+                        </Style>
+                    </mahapp:DropDownButton.ItemContainerStyle>
+                    <mahapp:DropDownButton.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Box.Value}"/>
+                        </DataTemplate>
+                    </mahapp:DropDownButton.ItemTemplate>
+                </mahapp:DropDownButton>
+            </StackPanel>
+        </mahapp:WindowCommands>
+    </mahapp:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15">
+            <TextBox MinWidth="270" Text="{Binding CurrentContent,Mode=TwoWay}"/>
+            <Button Content="{l:Lang main:create}" Command="{Binding CreateTodoCommand}" Margin="20,0,0,0"/>
+        </StackPanel>
+        <ListView Grid.Row="1" 
+                  ItemsSource="{Binding TodoManager.TodoList}"
+                  SelectedItem="{Binding CurrentTodoEntity,Mode=TwoWay}"
+                  HorizontalContentAlignment="Stretch">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{l:Lang main:delete}" Command="{Binding DeleteTodoCommand}"/>
+                    <MenuItem Header="{l:Lang main:clear}" Command="{Binding ClearTodoCommand}"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Content}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource MahApps.Styles.TextBlock}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Ok}" Value="true">
+                                            <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                            <Setter Property="Foreground" Value="Green"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Ok}" Value="false">
+                                            <Setter Property="TextDecorations" Value="None"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <CheckBox HorizontalAlignment="Right"
+                                  IsChecked="{Binding Ok,Mode=TwoWay}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</mahapp:MetroWindow>

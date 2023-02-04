@@ -94,15 +94,9 @@ namespace Ao.Lang.Runtime
                 FixedCulture = fixedCulture,
                 LangMgr = langMgr,
                 MulLang = mulLang,
+                NoUpdate=noUpdate
             };
-            if (noUpdate)
-            {
-                box.UpdateValue();
-            }
-            else
-            {
-                box.Init();
-            }
+            box.Init();
             return box;
         }
     }
