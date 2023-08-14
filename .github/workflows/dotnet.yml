@@ -8,18 +8,26 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
+    - name: setup-msbuild
+      run: |
+        choco install visualstudio2022buildtools --package-parameters "--includeRecommended"   
+        choco install visualstudio2022-workload-universalbuildtools --package-parameters "--includeRecommended"
+        refreshenv
+    - name: Add Path
+      run: |
+        Add-Content $env:GITHUB_PATH "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\"        
     - name: Build
-      run: dotnet build --no-restore
+      run: |
+        & msbuild /p:Configuration=Release -t:restore -m
+        & msbuild /p:Configuration=Release -m
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      # run: cmd /c "dotnet test --no-build -c Release"
+      run: dotnet vstest ((ls -Recurse *.Test.dll | % FullName) -Match "\\bin\\Release\\")

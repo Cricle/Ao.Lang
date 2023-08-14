@@ -14,6 +14,7 @@ namespace Ao.Lang
         {
             return service.EnsureGetLangNode(new CultureInfo(culture));
         }
+
         public static ILanguageRoot GetRoot(this ILanguageService service, string cultureName)
         {
             if (service is null)
@@ -27,6 +28,7 @@ namespace Ao.Lang
             }
             return service.GetRoot(new CultureInfo(cultureName));
         }
+
         public static ILanguageRoot GetCurrentRoot(this ILanguageService service)
         {
             if (service is null)
@@ -37,6 +39,7 @@ namespace Ao.Lang
             var cul = CultureInfo.CurrentCulture;
             return service.GetRoot(cul);
         }
+
         public static string GetCurrentValue(this ILanguageService service, string key)
         {
             if (service is null)
@@ -72,6 +75,7 @@ namespace Ao.Lang
             var cul = new CultureInfo(cultureName);
             return service.CultureIsSupport(cul);
         }
+
         public static void Add<TSource>(this ILanguageService service,
             CultureInfo cultureInfo, params TSource[] fileSources)
             where TSource : IConfigurationSource
@@ -93,24 +97,26 @@ namespace Ao.Lang
 
             service.Add(new DefaultLanguageMetadata(cultureInfo, fileSources.OfType<IConfigurationSource>().ToArray()));
         }
+
         public static void AddFromCurrentCulture<TSource>(this ILanguageService service, params TSource[] fileSources)
               where TSource : IConfigurationSource
         {
             Add(service, CultureInfo.CurrentCulture, fileSources);
         }
+
         public static void Add<TSource>(this ILanguageService service, string culutre, params TSource[] fileSources)
              where TSource : IConfigurationSource
         {
             var culture = new CultureInfo(culutre);
             Add(service, culture, fileSources);
         }
-#if !NETSTANDARD1_3
+
         public static List<FileInfo> AddDefaultFolder(this ILanguageService langSer, IFileLanguageLoader fileLanguageLoader)
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Strings");
             return AddFolder(langSer, new DirectoryInfo(path), fileLanguageLoader);
         }
-#endif
+
         public static List<FileInfo> AddFolder(this ILanguageService langSer, DirectoryInfo dir, IFileLanguageLoader fileLanguageLoader)
         {
             var fs = new List<FileInfo>();

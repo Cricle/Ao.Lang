@@ -8,9 +8,9 @@ using System.Reflection;
 namespace Ao.Lang
 {
     public delegate void RaiseNodeHandle(ILanguageNode node, Stream stream, string lang);
+
     public static class LangLookupExtensions
     {
-#if !NETSTANDARD1_3
         public static string[] RaiseAssemblyResources<TAssemblyType>(this ILanguageService langSer,
             string extensions,
             int langRevIndex,
@@ -24,7 +24,7 @@ namespace Ao.Lang
             var ass = typeof(TAssemblyType).Assembly;
             return RaiseAssemblyResources(langSer, ass, extensions, langRevIndex, nodeAction);
         }
-#endif
+
         public static string[] RaiseAssemblyResources(this ILanguageService langSer,
             Assembly assembly,
             string extensions,
@@ -69,6 +69,7 @@ namespace Ao.Lang
             }
             return added.ToArray();
         }
+
         public static void EnableFileType(this ILangLookup lookup,
            string extensions,
            Action<ILanguageNode, LangLookupBox> addition)
@@ -108,6 +109,7 @@ namespace Ao.Lang
         {
             return new LangLookup(langSer);
         }
+
         public static void Add(this ILangLookup adders, AddLang addLang)
         {
             if (adders is null)
@@ -117,6 +119,7 @@ namespace Ao.Lang
 
             adders.Add(new DelegateLangLookupAdder(addLang));
         }
+
         public static bool Raise(this ILangLookup adders, string filePath)
         {
             if (adders is null)
@@ -131,7 +134,7 @@ namespace Ao.Lang
 
             return Raise(adders, filePath, true, false);
         }
-#if !NETSTANDARD1_1
+
         public static string[] RaiseDirectory(this ILangLookup adders,
             string folder)
         {
@@ -147,6 +150,7 @@ namespace Ao.Lang
 
             return RaiseDirectory(adders, folder, SearchOption.TopDirectoryOnly);
         }
+
         public static string[] RaiseDirectory(this ILangLookup adders,
             string folder,
             SearchOption searchOption)
@@ -163,6 +167,7 @@ namespace Ao.Lang
 
             return RaiseDirectory(adders, folder, searchOption, true, false);
         }
+
         public static string[] RaiseDirectory(this ILangLookup adders,
             string folder,
             SearchOption searchOption,
@@ -191,7 +196,7 @@ namespace Ao.Lang
             }
             return okFiles.ToArray();
         }
-#endif
+
         private static bool Raise(ILangLookup lookup, LangLookupBox box)
         {
             foreach (var item in lookup)
@@ -203,6 +208,7 @@ namespace Ao.Lang
             }
             return false;
         }
+
         public static bool Raise(this ILangLookup lookup,
             Stream stream)
         {
@@ -219,6 +225,7 @@ namespace Ao.Lang
             var box = new LangLookupBox(null, stream, false, false);
             return Raise(lookup, box);
         }
+
         public static bool Raise(this ILangLookup lookup,
             string filePath,
             bool optional,

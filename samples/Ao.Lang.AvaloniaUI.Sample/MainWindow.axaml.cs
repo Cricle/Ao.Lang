@@ -23,9 +23,14 @@ namespace Ao.Lang.AvaloniaUI.Sample
             tbx.BindText("Title");
             var btn = new Button { Content = "ÇÐ»»" };
             btn.Click += Btn_Click;
-            var sp = Content as StackPanel;
-            sp.Children.Add(tbx);
-            sp.Children.Add(btn);
+
+            if (Content is StackPanel sp)
+            {
+                sp.Children.Add(tbx);
+                sp.Children.Add(btn);
+            }
+            else
+                throw new System.Exception("Should be StackPanel");
         }
 
         private void Btn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -38,8 +43,6 @@ namespace Ao.Lang.AvaloniaUI.Sample
             {
                 LanguageManager.Instance.SetCulture("zh-cn");
             }
-
-
         }
     }
 }

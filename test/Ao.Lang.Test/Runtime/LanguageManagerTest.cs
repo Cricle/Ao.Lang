@@ -62,30 +62,34 @@ namespace Ao.Lang.Runtime.Test
         public void DefaultCultureInfo_MustReturnValueFromDefaultCulture()
         {
             var mgr = LanguageManager.Instance;
-            mgr.DefaultCultureInfo = new CultureInfo("en-US");
+            mgr.DefaultCultureInfo = new CultureInfo("fr");
             mgr.CultureInfo = new CultureInfo("zh-TW");
+
+            var defaultMap = new Dictionary<string, string>
+            {
+                ["Title"] = "title",
+                ["Name"] = "name"
+            };
 
             var defaultMemSource = new MemoryConfigurationSource
             {
-                InitialData = new Dictionary<string, string>
-                {
-                    ["Title"] = "title",
-                    ["Name"] = "name"
-                }
+                InitialData = defaultMap
             };
             mgr.LangService.EnsureGetLangNode(mgr.DefaultCultureInfo).Add(defaultMemSource);
 
+            var memMap = new Dictionary<string, string>
+            {
+                ["Title"] = "標題",
+            };
+
             var memSource = new MemoryConfigurationSource
             {
-                InitialData = new Dictionary<string, string>
-                {
-                    ["Title"] = "標題",
-                }
+                InitialData = memMap
             };
             mgr.LangService.EnsureGetLangNode(mgr.CultureInfo).Add(memSource);
 
-            Assert.AreEqual(mgr.CreateLangBox("Title").Value, memSource.InitialData.First(x => x.Key == "Title").Value);
-            Assert.AreEqual(mgr.CreateLangBox("Name").Value, defaultMemSource.InitialData.First(x => x.Key == "Name").Value);
+            Assert.AreEqual(mgr.CreateLangBox("Title").Value, memMap["Title"]);
+            Assert.AreEqual(mgr.CreateLangBox("Name").Value, defaultMap["Name"]);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Ao.Lang
         {
             return RaiseAssemblyResources(langSer, typeof(T).Assembly, langRevIndex);
         }
+
         public static string[] RaiseAssemblyResources(this ILanguageService langSer,
             Assembly assembly,
             int langRevIndex)
@@ -44,14 +45,13 @@ namespace Ao.Lang
                 {
                     n.AddJsonFile(b.Path, b.Optional, b.ReloadOnChanged);
                 }
-#if !NET452
                 else
                 {
                     n.AddJsonStream(b.Stream);
                 }
-#endif
             });
         }
+
         public static void EnableIni(this ILangLookup lookup)
         {
             if (lookup is null)
@@ -65,15 +65,13 @@ namespace Ao.Lang
                 {
                     n.AddIniFile(b.Path, b.Optional, b.ReloadOnChanged);
                 }
-#if !NET452
                 else
                 {
                     n.AddIniStream(b.Stream);
                 }
-#endif
-
             });
         }
+
         public static void EnableXml(this ILangLookup lookup)
         {
             if (lookup is null)
@@ -87,14 +85,13 @@ namespace Ao.Lang
                    {
                        n.AddXmlFile(b.Path, b.Optional, b.ReloadOnChanged);
                    }
-#if !NET452
                    else
                    {
                        n.AddXmlStream(b.Stream);
                    }
-#endif
                });
         }
+
         public static void EnableYaml(this ILangLookup lookup)
         {
             if (lookup is null)
@@ -108,9 +105,9 @@ namespace Ao.Lang
                 {
                     n.AddYamlFile(b.Path, b.Optional, b.ReloadOnChanged);
                 }
-
             });
         }
+
         public static void EnableResources(this ILangLookup lookup)
         {
             lookup.EnableFileType("resources", (n, b) =>
@@ -125,6 +122,7 @@ namespace Ao.Lang
                 }
             });
         }
+
         public static void EnableResx(this ILangLookup lookup)
         {
             if (lookup is null)
@@ -144,6 +142,7 @@ namespace Ao.Lang
                 }
             });
         }
+
         public static void EnableAll(this ILangLookup lookup)
         {
             if (lookup is null)

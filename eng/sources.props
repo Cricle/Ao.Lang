@@ -3,7 +3,4 @@
     <UsingNETStandard>true</UsingNETStandard>
   <DefineConstants>UsingNETStandard;$(DefineConstants)</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0' or '$(TargetFramework)'=='net461' or '$(TargetFramework)'=='netcoreapp3.0' or '$(TargetFramework)'=='net5.0'">
-    <UsingGreatOrEqualTf>true</UsingGreatOrEqualTf>
-  </PropertyGroup>
 </Project>

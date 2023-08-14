@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <Import Project="..\..\eng\pkg.props" />
   <PropertyGroup>
-    <TargetFrameworks>net452;net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <DefineConstants>$(DefineConstants);WPF_PLATFORM</DefineConstants>
   </PropertyGroup>

@@ -2,12 +2,12 @@
   <Import Project="..\..\eng\pkg.props" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+	<TargetFrameworks>netstandard2.1;netstandard2.0;</TargetFrameworks>
     <DefineConstants>$(DefineConstants);AVALONIAUI_PLATFORM</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.10" />
+    <PackageReference Include="Avalonia" Version="0.10.18" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Ao.Lang.Wpf\*.cs" />
