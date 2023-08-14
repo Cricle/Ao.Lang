@@ -9,10 +9,7 @@
     <ProjectReference Include="..\Ao.Lang.Generator\Ao.Lang.Generator.csproj" />
     <ProjectReference Include="..\Ao.Lang\Ao.Lang.csproj" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='net452' or '$(TargetFramework)'=='netstandard1.3'">
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.2" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'!='net452' and '$(TargetFramework)'!='netstandard1.3'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
   </ItemGroup>
 

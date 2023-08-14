@@ -5,6 +5,6 @@
     <Description>It support *.resource or stream configuration.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
   </ItemGroup>
 </Project>
