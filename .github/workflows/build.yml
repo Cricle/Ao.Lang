@@ -45,6 +45,7 @@ jobs:
         run: |
           choco install visualstudio2022buildtools --package-parameters "--includeRecommended"   
           choco install visualstudio2022-workload-universalbuildtools --package-parameters "--includeRecommended"
+          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
           refreshenv
       - name: Add Path
         run: |
