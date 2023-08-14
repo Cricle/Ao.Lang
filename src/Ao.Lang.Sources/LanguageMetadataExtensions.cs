@@ -42,7 +42,6 @@ namespace Ao.Lang
             lookup.EnableFileType("json", (n, b) =>
             {
                 if (b.Stream == null)
-
                 {
                     n.AddJsonFile(b.Path, b.Optional, b.ReloadOnChanged);
                 }
