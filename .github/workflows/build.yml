@@ -43,8 +43,8 @@ jobs:
           choco -v
       - name: setup-msbuild
         run: |
-          choco upgrade -y visualstudio2022buildtools --package-parameters "--includeRecommended --allWorkloads" --debug --verbose
-          choco upgrade -y visualstudio2022-workload-universalbuildtools --package-parameters "--includeRecommended --allWorkloads" --debug --verbose
+          choco upgrade -y visualstudio2022buildtools --package-parameters "--includeRecommended --allWorkloads" -ErrorAction SilentlyContinue
+          choco upgrade -y visualstudio2022-workload-universalbuildtools --package-parameters "--includeRecommended --allWorkloads" -ErrorAction SilentlyContinue
           Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
           refreshenv
       - name: Add Path
