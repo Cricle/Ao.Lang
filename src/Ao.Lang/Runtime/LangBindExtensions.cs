@@ -32,6 +32,7 @@ namespace Ao.Lang.Runtime
             }
             throw new NotSupportedException($"Not support expression {propertySelector}");
         }
+
         public static ILangStrBox BindTo(this LanguageManager langMgr, string key,
             object instance,
             PropertyInfo property,
@@ -54,6 +55,7 @@ namespace Ao.Lang.Runtime
 
             return CreateLangBox(langMgr, key, mul, args, defaultValue, fixedCulture, noUpdate);
         }
+
         public static ILangStrBox BindTo(this LanguageManager langMgr, string key, IMulLang lang,
             IList args = null,
             string defaultValue = null,
@@ -62,6 +64,24 @@ namespace Ao.Lang.Runtime
         {
             return CreateLangBox(langMgr, key, lang, args, defaultValue, fixedCulture, noUpdate);
         }
+
+        /// <summary>
+        /// 取得目前的值
+        /// </summary>
+        /// <param name="langMgr"></param>
+        /// <param name="key"></param>
+        /// <param name="args"></param>
+        /// <param name="defaultValue">預設值</param>
+        /// <param name="fixedCulture">固定語系</param>
+        /// <returns></returns>
+        public static string GetValue(this LanguageManager langMgr, string key,
+            IList args = null,
+            string defaultValue = null,
+            string fixedCulture = null)
+        {
+            return CreateLangBox(langMgr, key, args, defaultValue, fixedCulture, noUpdate: true).Value;
+        }
+
         public static ILangStrBox CreateLangBox(this LanguageManager langMgr, string key,
             IList args = null,
             string defaultValue = null,
@@ -70,6 +90,7 @@ namespace Ao.Lang.Runtime
         {
             return CreateLangBox(langMgr, key, null, args, defaultValue, fixedCulture, noUpdate);
         }
+
         private static ILangStrBox CreateLangBox(this LanguageManager langMgr, string key, IMulLang mulLang,
             IList args = null,
             string defaultValue = null,
@@ -94,7 +115,7 @@ namespace Ao.Lang.Runtime
                 FixedCulture = fixedCulture,
                 LangMgr = langMgr,
                 MulLang = mulLang,
-                NoUpdate=noUpdate
+                NoUpdate = noUpdate
             };
             box.Init();
             return box;
