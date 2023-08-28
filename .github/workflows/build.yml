@@ -36,19 +36,8 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-      - name: Install choco
-        shell: powershell
-        run: |
-          Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-          choco -v
-      - name: setup-msbuild
-        run: |
-          choco install visualstudio2022buildtools --package-parameters "--includeRecommended"   
-          choco install visualstudio2022-workload-universalbuildtools --package-parameters "--includeRecommended"
-          refreshenv
-      - name: Add Path
-        run: |
-          Add-Content $env:GITHUB_PATH "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\"   
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.3.1   
       - name: Install opencover&codecov
         shell: powershell
         run: |
