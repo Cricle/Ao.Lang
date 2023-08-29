@@ -15,15 +15,11 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
-    - name: setup-msbuild
-      run: |
-        choco install visualstudio2022buildtools --package-parameters "--includeRecommended"   
-        choco install visualstudio2022-workload-universalbuildtools --package-parameters "--includeRecommended"
-        refreshenv
-    - name: Add Path
-      run: |
-        Add-Content $env:GITHUB_PATH "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\"        
+        dotnet-version: |
+          6.0.x
+          7.0.x
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.3.1
     - name: Build
       run: |
         & msbuild /p:Configuration=Release -t:restore -m
