@@ -7,6 +7,9 @@ namespace Ao.Lang.Runtime
 {
     public static class LangBindExtensions
     {
+        /// <summary>
+        /// Binds a property of an object instance to a language key.
+        /// </summary>
         public static ILangStrBox BindTo<T>(this LanguageManager langMgr, string key,
             T instance,
             LExpression.Expression<Func<T, object>> propertySelector,
@@ -32,6 +35,10 @@ namespace Ao.Lang.Runtime
             }
             throw new NotSupportedException($"Not support expression {propertySelector}");
         }
+
+        /// <summary>
+        /// Binds a property to a language key using a PropertyInfo instance.
+        /// </summary>
         public static ILangStrBox BindTo(this LanguageManager langMgr, string key,
             object instance,
             PropertyInfo property,
@@ -54,6 +61,10 @@ namespace Ao.Lang.Runtime
 
             return CreateLangBox(langMgr, key, mul, args, defaultValue, fixedCulture, noUpdate);
         }
+
+        /// <summary>
+        /// Binds an IMulLang instance to a language key.
+        /// </summary>
         public static ILangStrBox BindTo(this LanguageManager langMgr, string key, IMulLang lang,
             IList args = null,
             string defaultValue = null,
@@ -62,6 +73,21 @@ namespace Ao.Lang.Runtime
         {
             return CreateLangBox(langMgr, key, lang, args, defaultValue, fixedCulture, noUpdate);
         }
+
+        /// <summary>
+        /// Gets the current value associated with a language key.
+        /// </summary>
+        public static string GetValue(this LanguageManager langMgr, string key,
+            IList args = null,
+            string defaultValue = null,
+            string fixedCulture = null)
+        {
+            return CreateLangBox(langMgr, key, args, defaultValue, fixedCulture, noUpdate: true).Value;
+        }
+
+        /// <summary>
+        /// Creates a LangStrBox with the given parameters.
+        /// </summary>
         public static ILangStrBox CreateLangBox(this LanguageManager langMgr, string key,
             IList args = null,
             string defaultValue = null,
@@ -70,6 +96,10 @@ namespace Ao.Lang.Runtime
         {
             return CreateLangBox(langMgr, key, null, args, defaultValue, fixedCulture, noUpdate);
         }
+
+        /// <summary>
+        /// Internal method for creating a LangStrBox with the given parameters and an optional IMulLang instance.
+        /// </summary>
         private static ILangStrBox CreateLangBox(this LanguageManager langMgr, string key, IMulLang mulLang,
             IList args = null,
             string defaultValue = null,
@@ -94,7 +124,7 @@ namespace Ao.Lang.Runtime
                 FixedCulture = fixedCulture,
                 LangMgr = langMgr,
                 MulLang = mulLang,
-                NoUpdate=noUpdate
+                NoUpdate = noUpdate
             };
             box.Init();
             return box;
