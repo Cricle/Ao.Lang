@@ -43,7 +43,6 @@ namespace Ao.Lang.Runtime
             }
         }
 
-        private bool hasOutterArg;
         private IList args;
 
         public LanguageManager LangMgr { get; set; }
@@ -63,7 +62,6 @@ namespace Ao.Lang.Runtime
             set
             {
                 args = value;
-                hasOutterArg = value != null && value.OfType<ILangArgument>().Any();
             }
         }
 
@@ -125,34 +123,31 @@ namespace Ao.Lang.Runtime
         {
             if (LangRoot != null)
             {
-                if (hasOutterArg)
+                if (Args != null)
                 {
                     var args = new object[Args.Count];
                     for (int i = 0; i < Args.Count; i++)
                     {
                         var arg = Args[i];
-                        if (arg is ILangArgument getter)
+                        switch (arg)
                         {
-                            args[i] = getter.Value;
-                        }
-                        else
-                        {
-                            args[i] = arg;
+                            case ILangArgument getter:
+                                args[i] = getter.Value;
+                                break;
+
+                            default:
+                                // Do nothing
+                                break;
                         }
                     }
-
-                    Value = LangRoot[Key, args] ?? DefaultLangRoot?[Key, args] ?? DefaultValue;
                 }
-                else
-                {
-                    Value = LangRoot[Key, Args] ?? DefaultLangRoot?[Key, Args] ?? DefaultValue;
-                }
+                Value = LangRoot[Key, args] ?? DefaultLangRoot?[Key, args] ?? DefaultValue;
             }
             else
             {
                 Value = null;
             }
-            if (Value != null && NoUpdate) 
+            if (Value != null && NoUpdate)
             {
                 Dispose();
             }
