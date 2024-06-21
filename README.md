@@ -93,7 +93,7 @@ Please Use package `Ao.Lang.Generator`, is implement json and resource compile.
 # After
 
 - [ ] Add more unit test
-- [√] Make it support MAUI, Blazor, AvaloniaUI, Uno platform...
+- [x] Make it support MAUI, Blazor, AvaloniaUI, Uno platform...
 
 # Samples
 
