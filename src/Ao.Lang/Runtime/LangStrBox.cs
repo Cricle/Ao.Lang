@@ -53,7 +53,9 @@ namespace Ao.Lang.Runtime
 
         public IMulLang MulLang { get; set; }
 
-        public string Key { get; set; }
+        public ILangKey LangKey { get; set; }
+
+        public string Key => LangKey.Key;
 
         public bool NoUpdate { get; set; }
 
@@ -95,6 +97,12 @@ namespace Ao.Lang.Runtime
             {
                 LangRoot = LangMgr.LangService.GetRoot(FixedCulture);
             }
+            LangKey.PropertyChanged += OnLangKeyPropertyChanged;
+            UpdateValue();
+        }
+
+        private void OnLangKeyPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
             UpdateValue();
         }
 
@@ -145,7 +153,8 @@ namespace Ao.Lang.Runtime
                 }
                 else
                 {
-                    Value = LangRoot[Key, Args] ?? DefaultLangRoot?[Key, Args] ?? DefaultValue;
+                    var arr = Args is object[]? (object[])Args : Args?.Cast<object>().ToArray();
+                    Value = LangRoot[Key, arr] ?? DefaultLangRoot?[Key, arr] ?? DefaultValue;
                 }
             }
             else
@@ -166,6 +175,7 @@ namespace Ao.Lang.Runtime
         public void Dispose()
         {
             Stop();
+            LangKey.PropertyChanged -= OnLangKeyPropertyChanged;
             LanguageManager.Instance.CultureInfoChanged -= RaiseCultureInfoChanged;
             GC.SuppressFinalize(this);
         }

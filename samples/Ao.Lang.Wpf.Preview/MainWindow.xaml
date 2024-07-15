@@ -37,6 +37,10 @@
                     <l:LangArgument Value="55"/>
                 </l:Lang>
             </Button>
+            <Button x:Name="Btn">
+                
+            </Button>
+            <TextBox x:Name="Tbx" Text="items:Apple Juice" MinWidth="120"/>
         </WrapPanel>
         <Button HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"

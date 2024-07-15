@@ -1,6 +1,6 @@
-﻿using Ao.Lang.Runtime;
+﻿using Ao.Lang;
+using Ao.Lang.Runtime;
 #if WPF_PLATFORM
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 #elif AVALONIAUI_PLATFORM
@@ -123,6 +123,15 @@ namespace Ao.Lang.AvaloniaUI
             string fixedCulture = null,
             bool noUpdate = false)
         {
+            return CreateLangBinding(langMgr, new LangKey { Key = key }, args, defaultValue, fixedCulture, noUpdate);
+        }
+        public static Binding CreateLangBinding(this LanguageManager langMgr,
+            ILangKey key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
             var box = LangBindExtensions.CreateLangBox(langMgr, key, args, defaultValue, fixedCulture, noUpdate);
             var binding = new Binding
             {
@@ -144,11 +153,31 @@ namespace Ao.Lang.AvaloniaUI
             string fixedCulture = null,
             bool noUpdate = false)
         {
+            BindLang(fe, property, new LangKey { Key=key}, args, defaultValue, fixedCulture, noUpdate);
+        }
+        public static void BindLang(this DependencyObject fe,
+            DependencyProperty property,
+            ILangKey key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
             BindLang(fe, LanguageManager.Instance, property, key, args, defaultValue, fixedCulture, noUpdate);
         }
         public static void BindLang(this DependencyObject fe, LanguageManager langMgr,
             DependencyProperty property,
             string key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            BindLang(fe, langMgr, property, new LangKey { Key=key}, args, defaultValue, fixedCulture, noUpdate);
+        }
+        public static void BindLang(this DependencyObject fe, LanguageManager langMgr,
+            DependencyProperty property,
+            ILangKey key,
             object[] args = null,
             string defaultValue = null,
             string fixedCulture = null,
@@ -185,11 +214,32 @@ namespace Ao.Lang.AvaloniaUI
             string fixedCulture = null,
             bool noUpdate = false)
         {
+            BindLang(fe, property, new LangKey { Key = key }, args, defaultValue, fixedCulture, noUpdate);
+        }
+        public static void BindLang(this FrameworkContentElement fe,
+            DependencyProperty property,
+            ILangKey key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
             BindLang(fe, LanguageManager.Instance, property, key, args, defaultValue, fixedCulture, noUpdate);
         }
+
         public static void BindLang(this FrameworkContentElement fe, LanguageManager langMgr,
             DependencyProperty property,
             string key,
+            object[] args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            BindLang(fe, langMgr, property, new LangKey { Key = key }, args, defaultValue, fixedCulture, noUpdate);
+        }
+        public static void BindLang(this FrameworkContentElement fe, LanguageManager langMgr,
+            DependencyProperty property,
+            ILangKey key,
             object[] args = null,
             string defaultValue = null,
             string fixedCulture = null,
@@ -213,6 +263,7 @@ namespace Ao.Lang.AvaloniaUI
             var binding = CreateLangBinding(langMgr, key, args, defaultValue, fixedCulture, noUpdate);
             fe.SetBinding(property, binding);
         }
+
 #endif
     }
 }

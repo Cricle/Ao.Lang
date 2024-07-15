@@ -18,6 +18,19 @@ namespace Ao.Lang.Runtime
             string fixedCulture = null,
             bool noUpdate = false)
         {
+            return BindTo<T>(langMgr, key, instance, propertySelector, args, defaultValue, fixedCulture, noUpdate);
+        }
+        /// <summary>
+        /// Binds a property of an object instance to a language key.
+        /// </summary>
+        public static ILangStrBox BindTo<T>(this LanguageManager langMgr, ILangKey key,
+            T instance,
+            LExpression.Expression<Func<T, object>> propertySelector,
+            IList args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
             if (propertySelector is null)
             {
                 throw new ArgumentNullException(nameof(propertySelector));
@@ -40,6 +53,19 @@ namespace Ao.Lang.Runtime
         /// Binds a property to a language key using a PropertyInfo instance.
         /// </summary>
         public static ILangStrBox BindTo(this LanguageManager langMgr, string key,
+            object instance,
+            PropertyInfo property,
+            IList args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            return BindTo(langMgr, new LangKey { Key = key }, instance, property, args, defaultValue, fixedCulture, noUpdate);
+        }
+        /// <summary>
+        /// Binds a property to a language key using a PropertyInfo instance.
+        /// </summary>
+        public static ILangStrBox BindTo(this LanguageManager langMgr, ILangKey key,
             object instance,
             PropertyInfo property,
             IList args = null,
@@ -73,11 +99,33 @@ namespace Ao.Lang.Runtime
         {
             return CreateLangBox(langMgr, key, lang, args, defaultValue, fixedCulture, noUpdate);
         }
+        /// <summary>
+         /// Binds an IMulLang instance to a language key.
+         /// </summary>
+        public static ILangStrBox BindTo(this LanguageManager langMgr, ILangKey key, IMulLang lang,
+            IList args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            return CreateLangBox(langMgr, key, lang, args, defaultValue, fixedCulture, noUpdate);
+        }
 
         /// <summary>
         /// Gets the current value associated with a language key.
         /// </summary>
         public static string GetValue(this LanguageManager langMgr, string key,
+            IList args = null,
+            string defaultValue = null,
+            string fixedCulture = null)
+        {
+            return CreateLangBox(langMgr, key, args, defaultValue, fixedCulture, noUpdate: true).Value;
+        }
+
+        /// <summary>
+        /// Gets the current value associated with a language key.
+        /// </summary>
+        public static string GetValue(this LanguageManager langMgr, ILangKey key,
             IList args = null,
             string defaultValue = null,
             string fixedCulture = null)
@@ -98,9 +146,18 @@ namespace Ao.Lang.Runtime
         }
 
         /// <summary>
-        /// Internal method for creating a LangStrBox with the given parameters and an optional IMulLang instance.
+        /// Creates a LangStrBox with the given parameters.
         /// </summary>
-        private static ILangStrBox CreateLangBox(this LanguageManager langMgr, string key, IMulLang mulLang,
+        public static ILangStrBox CreateLangBox(this LanguageManager langMgr, ILangKey key,
+            IList args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            return CreateLangBox(langMgr, key, null, args, defaultValue, fixedCulture, noUpdate);
+        }
+
+        private static ILangStrBox CreateLangBox(this LanguageManager langMgr, ILangKey key, IMulLang mulLang,
             IList args = null,
             string defaultValue = null,
             string fixedCulture = null,
@@ -119,7 +176,7 @@ namespace Ao.Lang.Runtime
             var box = new LangStrBox
             {
                 Args = args,
-                Key = key,
+                LangKey = key,
                 DefaultValue = defaultValue,
                 FixedCulture = fixedCulture,
                 LangMgr = langMgr,
@@ -128,6 +185,17 @@ namespace Ao.Lang.Runtime
             };
             box.Init();
             return box;
+        }
+        /// <summary>
+        /// Internal method for creating a LangStrBox with the given parameters and an optional IMulLang instance.
+        /// </summary>
+        private static ILangStrBox CreateLangBox(this LanguageManager langMgr, string key, IMulLang mulLang,
+            IList args = null,
+            string defaultValue = null,
+            string fixedCulture = null,
+            bool noUpdate = false)
+        {
+            return CreateLangBox(langMgr, new LangKey { Key = key }, mulLang, args, defaultValue, fixedCulture, noUpdate);
         }
     }
 }
