@@ -1,5 +1,9 @@
 ﻿using Ao.Lang.Runtime;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 
 namespace Ao.Lang.Wpf.Preview
 {
@@ -8,9 +12,15 @@ namespace Ao.Lang.Wpf.Preview
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ILangKey langKey = new LangKey();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            Btn.BindLang(ContentProperty, langKey,new object[] {"123"});
+
+            Tbx.SetBinding(TextBox.TextProperty, new Binding { Source = langKey, Path = new PropertyPath("Key"), Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

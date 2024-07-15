@@ -19,6 +19,10 @@ namespace Ao.Lang
         {
             get
             {
+                if (key==null)
+                {
+                    return null;
+                }
                 var template = base[key];
                 if (string.IsNullOrEmpty(template))
                 {
